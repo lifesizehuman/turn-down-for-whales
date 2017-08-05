@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Turn Down For Whales</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <script src="https://www.gstatic.com/firebasejs/4.2.0/firebase.js"></script>
+</head>
+
+<body>
+    <div class="jumbotron text-center">
+        <h1>Turn Down For Whales</h1>
+        <h3>A Marine Wildlife Spotting Site</h3>
+    </div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-9">
+                <div id="mapid"></div>
+            </div>
+            <div class="col-sm-3">
+                <h3>Look For Whales</h3>
+                <select id="species-input">
+                    <option value="orca">Orca</option>
+                    <option value="humpback">Humpback</option>
+                    <option value="gray whale">Gray Whale</option>
+                    <option value="sea otter">Sea Otter</option>
+                    <option value="minke">Minke</option>
+                    <option value="atlantic white-sided dolphin">Atlantic White Sided Dolphin</option>
+                    <option value="pacific white-sided dolphin">Pacific White Sided Dolphin</option>
+                    <option value="dalls porpoise">Dalls Porpoise</option>
+                    <option value="harbor porpoise">Harbor Porpoise</option>
+                    <option value="harbor seal">Harbor Seal</option>
+                    <option value="northern elephant seal">Northern Elephant Seal</option>
+                    <option value="southern elephant seal">Southern Elephant Seal</option>
+                    <option value="california sea Lion">California Sea Lion</option>
+                    <option value="steller sea lion">Steller Sea Lion</option>
+                    <option value="other">Other</option>
+                    <option value="unknown">Unknown</option>
+                </select>
+                <p>
+                </p>
+                <button class="btn btn-default" id="submit" type="submit">Submit</button>
+                <p>
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                <h3>I Saw a Whale!</h3>
+                <p>
+                    <select id="species-control">
+                        <option value="orca">Orca</option>
+                        <option value="humpback">Humpback</option>
+                        <option value="gray whale">Gray Whale</option>
+                        <option value="sea otter">Sea Otter</option>
+                        <option value="minke">Minke</option>
+                        <option value="atlantic white-sided dolphin">Atlantic White Sided Dolphin</option>
+                        <option value="pacific white-sided dolphin">Pacific White Sided Dolphin</option>
+                        <option value="dalls porpoise">Dalls Porpoise</option>
+                        <option value="harbor porpoise">Harbor Porpoise</option>
+                        <option value="harbor seal">Harbor Seal</option>
+                        <option value="northern elephant seal">Northern Elephant Seal</option>
+                        <option value="southern elephant seal">Southern Elephant Seal</option>
+                        <option value="california sea Lion">California Sea Lion</option>
+                        <option value="steller sea lion">Steller Sea Lion</option>
+                        <option value="other">Other</option>
+                        <option value="unknown">Unknown</option>
+                    </select>
+                </p>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <p>
+                            <input type="text" class="form-control" id="sighting-description" placeholder="Sighting Description">
+                        </p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-6">
+                        <input type="text" class="form-control" id="location-input" placeholder="Location">
+                    </div>
+                    <div class="col-xs-6">
+                        <input class="btn btn-default" type="button" value="Get My Location">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-6">
+                        <h6>Sighting Date</h6>
+                        <input type="date" class="form-control" id="sighting-date" placeholder="Sighting Date">
+                    </div>
+                    <div class="col-xs-6">
+                        <h6>Sighting Time</h6>
+                        <input type="time" class="form-control" id="sighting-time" placeholder="Sighting Time">
+                    </div>
+                </div>
+                <p>
+                </p>
+                <div class="row">
+                    <div class="col-xs-6">
+                        <p>
+                            <button class="btn btn-default" id="submit-sighting" type="submit">Submit My Sighting</button>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="js/logic.js"></script>
+</body>
+
+</html>
