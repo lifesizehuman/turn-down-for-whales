@@ -47,7 +47,7 @@ $(document).ready(function() {
                 group.addLayer(marker);
 
                 marker.bindPopup(
-                    "<p>" + "Species: " + response[i].animal + "</p>" +
+                    "<p>" + "Species: " + response[i].species + "</p>" +
                     "<p>" + "Description: " + response[i].description + "</p>" +
                     "<p>" + "Seen at: " + response[i].latitude + " / " + response[i].longitude + "</p>" +
                     "<p>" + "On: " + response[i].sighted_at + "</p>"
@@ -111,5 +111,26 @@ $(document).ready(function() {
             latitude: latitude,
             longitude: longitude
         })
+
+        database.ref().on("child_added", function(childSnapshot, prevChildKey) {
+
+            console.log(childSnapshot.val());
+
+            // Store everything into a variable.
+            var empSpecies = childSnapshot.val().species;
+            var empDescription = childSnapshot.val().description;
+            var empLat = childSnapshot.val().latitude;
+            var empLong = childSnapshot.val().longitude;
+
+
+            $("#species-table > tbody").append(
+                "<tr><td>" + empSpecies + 
+                "</td><td>" + empDescription + 
+                "</td><td>" + empLat + empLong +
+                // "</td><td>" + empMonths + 
+                // "</td><td>" + empRate + 
+                // "</td><td>" + empBilled + 
+                "</td></tr>");
+        });
     })
 })
