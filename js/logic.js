@@ -126,7 +126,7 @@ $(document).ready(function() {
             $("#species-table > tbody").append(
                 "<tr><td>" + empSpecies + 
                 "</td><td>" + empDescription + 
-                "</td><td>" + empLat + empLong +
+                "</td><td>" + "Lat: " + empLat + " / Long: " + empLong +
                 // "</td><td>" + empMonths + 
                 // "</td><td>" + empRate + 
                 // "</td><td>" + empBilled + 
