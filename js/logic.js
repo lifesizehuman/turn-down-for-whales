@@ -30,7 +30,9 @@ $(document).ready(function() {
 
         var species = $('#species-input').val();
 
-        var queryURL = "https://hotline.whalemuseum.org/api.json?species=" + species;
+        var key = "0264f08b3e111d209f27ea82508ec5a4"; 
+
+        var queryURL = "http://api.petfinder.com/pet.getRandom?key=" + key + "=&output=full";
         
         $.ajax({
             url: queryURL,
