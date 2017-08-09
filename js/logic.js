@@ -20,6 +20,7 @@ $(document).ready(function() {
 
     var mymap = L.map('mapid').setView([48, -123], 6);
 
+
     L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
         attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
         maxZoom: 18,
@@ -43,7 +44,7 @@ $(document).ready(function() {
 
                 for (var i = 0; i < response.length; i++) {
 
-                var marker = L.marker([response[i].latitude, response[i].longitude]);
+                var marker = L.marker([response[i].latitude, response[i].longitude]).addTo(mymap);
                 group.addLayer(marker);
 
                 marker.bindPopup(
