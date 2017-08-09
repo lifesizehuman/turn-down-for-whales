@@ -82,7 +82,16 @@ $(document).ready(function() {
         }
     })
 
+    var popup = L.popup();
 
+    function onMapClick(e) {
+        popup
+            .setLatLng(e.latlng)
+            .setContent(e.latlng.toString())
+            .openOn(mymap);
+    }
+
+    mymap.on('click', onMapClick);
 
     $('#getLocation').on('click', function(event) {
         event.preventDefault();
@@ -181,10 +190,8 @@ $(document).ready(function() {
         })
     })
 
-$('#clear-map').on('click', function(event) {
-    markers.clearLayers();
-    group.clearLayers();
-})
-
-
+    $('#clear-map').on('click', function(event) {
+        markers.clearLayers();
+        group.clearLayers();
+    })
 })
