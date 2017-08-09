@@ -99,8 +99,8 @@ $(document).ready(function() {
         var description = $('#sighting-description').val();
         var sightingDate = $('#sighting-date').val().trim;
         var sightingTime = $('#sighting-time').val().trim;
-        var latitude = $('#latitude-input').val().trim;
-        var longitude = $('#longitude-input').val().trim;
+        var latitude = $('#latitude-input').val();
+        var longitude = $('#longitude-input').val();
         // var userName = $('#username').val.trim();
 
         database.ref().push({
