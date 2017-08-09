@@ -1,5 +1,10 @@
 $(document).ready(function() {
 
+    $.ajaxPrefilter(function(options) {
+        if (options.crossDomain && $.support.cors) {
+            options.url = 'https://cors-anywhere.herokuapp.com/' + options.url;
+        }
+    });
 
     var config = {
         apiKey: "AIzaSyAqMI1aab7fpTQsdo7zUXnXAhnIwVTdBAs",
@@ -12,7 +17,6 @@ $(document).ready(function() {
     firebase.initializeApp(config);
 
     var database = firebase.database();
-
 
     var mymap = L.map('mapid').setView([48, -123], 6);
 
@@ -30,10 +34,8 @@ $(document).ready(function() {
 
         var species = $('#species-input').val();
 
-        var key = "0264f08b3e111d209f27ea82508ec5a4"; 
+        var queryURL = "http://hotline.whalemuseum.org/api.json?species=" + species;
 
-        var queryURL = "http://api.petfinder.com/pet.getRandom?key=" + key + "=&output=full";
-        
         $.ajax({
             url: queryURL,
             method: "GET"
@@ -45,7 +47,7 @@ $(document).ready(function() {
                 group.addLayer(marker);
 
                 marker.bindPopup(
-                    "<p>" + "Species: " + response[i].species + "</p>" +
+                    "<p>" + "Species: " + response[i].animal + "</p>" +
                     "<p>" + "Description: " + response[i].description + "</p>" +
                     "<p>" + "Seen at: " + response[i].latitude + " / " + response[i].longitude + "</p>" +
                     "<p>" + "On: " + response[i].sighted_at + "</p>"
@@ -56,7 +58,6 @@ $(document).ready(function() {
             })
         })
         group.clearLayers();
-        console.log(species);
     })
 
     $('#submit-sighting').on('click', function(event) {
@@ -69,9 +70,9 @@ $(document).ready(function() {
         // var userName = $('#username').val.trim();
 
         database.ref().push({
-        	species: speciesInput,
-        	description:description
-        	// sighted_at:sightingTime,
+            species: speciesInput,
+            description: description
+            // sighted_at:sightingTime,
 
         })
 
