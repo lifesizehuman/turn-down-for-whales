@@ -104,7 +104,7 @@ $(document).ready(function() {
         // var userName = $('#username').val.trim();
 
         database.ref().push({
-            species: speciesInput,
+            species: speciesControl,
             description: description,
             // date: sightingDate,
             // time: sightingTime,
