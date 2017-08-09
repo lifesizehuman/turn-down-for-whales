@@ -81,7 +81,7 @@ $(document).ready(function() {
         }
     })
 
-    
+
 
     $('#getLocation').on('click', function(event) {
         event.preventDefault();
@@ -158,16 +158,6 @@ $(document).ready(function() {
             "</td><td>" + empTime +
             "</td></tr>");
 
-        // var marker = L.marker([empLat, empLong]);
-        // // group.addLayer(marker);
-
-        // marker.bindPopup(
-        //     "<p>" + "Species: " + empSpecies + "</p>" +
-        //     "<p>" + "Description: " + empDescription + "</p>" +
-        //     "<p>" + "Seen at: " + empLat + " / " + empLong + "</p>" +
-        //     "<p>" + "On: " + empTime + " on " + empDate + "</p>"
-        // );
-
         $('#recent-sighting').on('click', function(event) {
             event.preventDefault();
 
@@ -178,9 +168,10 @@ $(document).ready(function() {
             var empDate = childSnapshot.val().date;
             var empTime = childSnapshot.val().time;
 
-            var marker2 = L.marker([empLat, empLong]).addTo(group);
+            var marker = L.marker([empLat, empLong]);
+            group.addLayer(marker);
 
-            marker2.bindPopup(
+            marker.bindPopup(
                 "<p>" + "Species: " + empSpecies + "</p>" +
                 "<p>" + "Description: " + empDescription + "</p>" +
                 "<p>" + "Seen at: " + empLat + " / " + empLong + "</p>" +
