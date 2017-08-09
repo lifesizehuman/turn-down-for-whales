@@ -34,7 +34,7 @@ $(document).ready(function() {
 
         var species = $('#species-input').val();
 
-        var queryURL = "https://hotline.whalemuseum.org/api.json?species=" + species;
+        var queryURL = "https://lifesizehuman.github.io/turn-down-for-whales?url=https://hotline.whalemuseum.org/api.json?species=" + species;
 
         $.ajax({
             url: queryURL,
