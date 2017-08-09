@@ -1,119 +1,115 @@
 $(document).ready(function() {
 
-            $.ajaxPrefilter(function(options) {
-                if (options.crossDomain && $.support.cors) {
-                    options.url = 'https://cors-anywhere.herokuapp.com/' + options.url;
-                }
-            });
+    $.ajaxPrefilter(function(options) {
+        if (options.crossDomain && $.support.cors) {
+            options.url = 'https://cors-anywhere.herokuapp.com/' + options.url;
+        }
+    });
 
-            var config = {
-                apiKey: "AIzaSyAqMI1aab7fpTQsdo7zUXnXAhnIwVTdBAs",
-                authDomain: "turn-down-for-whales.firebaseapp.com",
-                databaseURL: "https://turn-down-for-whales.firebaseio.com",
-                projectId: "turn-down-for-whales",
-                storageBucket: "turn-down-for-whales.appspot.com",
-                messagingSenderId: "612763934802"
-            };
-            firebase.initializeApp(config);
+    var config = {
+        apiKey: "AIzaSyAqMI1aab7fpTQsdo7zUXnXAhnIwVTdBAs",
+        authDomain: "turn-down-for-whales.firebaseapp.com",
+        databaseURL: "https://turn-down-for-whales.firebaseio.com",
+        projectId: "turn-down-for-whales",
+        storageBucket: "turn-down-for-whales.appspot.com",
+        messagingSenderId: "612763934802"
+    };
+    firebase.initializeApp(config);
 
-            var database = firebase.database();
+    var database = firebase.database();
 
-            var mymap = L.map('mapid').setView([48, -123], 6);
+    var mymap = L.map('mapid').setView([48, -123], 6);
 
-            L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
-                attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
-                maxZoom: 18,
-                id: 'mapbox.streets',
-                accessToken: 'pk.eyJ1IjoibGlmZXNpemVodW1hbiIsImEiOiJjajV5N3h5aTIwYm95MzJ0YmZrMDN1Z3BwIn0.ArVX3kcpkvnawxCcNcCWhg'
-            }).addTo(mymap);
+    L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+        attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
+        maxZoom: 18,
+        id: 'mapbox.streets',
+        accessToken: 'pk.eyJ1IjoibGlmZXNpemVodW1hbiIsImEiOiJjajV5N3h5aTIwYm95MzJ0YmZrMDN1Z3BwIn0.ArVX3kcpkvnawxCcNcCWhg'
+    }).addTo(mymap);
 
-            var group = L.layerGroup([])
-                .addTo(mymap);
+    var group = L.layerGroup([])
+        .addTo(mymap);
 
-            $("#submit").on('click', function(event) {
+    $("#submit").on('click', function(event) {
 
-                var species = $('#species-input').val();
+        var species = $('#species-input').val();
 
-                var queryURL = "http://hotline.whalemuseum.org/api.json?species=" + species;
+        var queryURL = "http://hotline.whalemuseum.org/api.json?species=" + species;
 
-                $.ajax({
-                    url: queryURL,
-                    method: "GET"
-                }).done(function(response) {
+        $.ajax({
+            url: queryURL,
+            method: "GET"
+        }).done(function(response) {
 
-                    for (var i = 0; i < response.length; i++) {
+            for (var i = 0; i < response.length; i++) {
 
-                        var marker = L.marker([response[i].latitude, response[i].longitude]);
-                        group.addLayer(marker);
+                var marker = L.marker([response[i].latitude, response[i].longitude]);
+                group.addLayer(marker);
 
-                        marker.bindPopup(
-                            "<p>" + "Species: " + response[i].animal + "</p>" +
-                            "<p>" + "Description: " + response[i].description + "</p>" +
-                            "<p>" + "Seen at: " + response[i].latitude + " / " + response[i].longitude + "</p>" +
-                            "<p>" + "On: " + response[i].sighted_at + "</p>"
-                        ).openPopup();
-                    }
-                    $('select').change(function() {
-                        species = this.value;
-                    })
-                })
-                group.clearLayers();
+                marker.bindPopup(
+                    "<p>" + "Species: " + response[i].animal + "</p>" +
+                    "<p>" + "Description: " + response[i].description + "</p>" +
+                    "<p>" + "Seen at: " + response[i].latitude + " / " + response[i].longitude + "</p>" +
+                    "<p>" + "On: " + response[i].sighted_at + "</p>"
+                ).openPopup();
+            }
+            $('select').change(function() {
+                species = this.value;
             })
+        })
+        group.clearLayers();
+    })
 
-            $('#getLocation').on('click', function(event) {
-                event.preventDefault();
-                if ("geolocation" in navigator) {
-                    console.log("geolocation IS available");
-                } else {
-                    console.log("geolocation IS NOT available");
-                }
+    $('#getLocation').on('click', function(event) {
+        event.preventDefault();
+        if ("geolocation" in navigator) {
+            console.log("geolocation IS available");
+        } else {
+            console.log("geolocation IS NOT available");
+        }
 
-                var options = {
-                    enableHighAccuracy: true,
-                    timeout: 5000,
-                    maximumAge: 0
-                };
+        var options = {
+            enableHighAccuracy: true,
+            timeout: 5000,
+            maximumAge: 0
+        };
 
-                function success(pos) {
-                    var crd = pos.coords;
+        function success(pos) {
+            var crd = pos.coords;
 
-                    console.log('Your current position is:');
-                    console.log(`${crd.latitude}`);
-                    console.log(`${crd.longitude}`);
-                    console.log(`More or less ${crd.accuracy} meters.`);
-                    $('#latitude-input').val(`${crd.latitude}`);
-                    $('#longitude-input').val(`${crd.longitude}`);
-                };
+            // console.log('Your current position is:');
+            // console.log(`${crd.latitude}`);
+            // console.log(`${crd.longitude}`);
+            // console.log(`More or less ${crd.accuracy} meters.`);
+            $('#latitude-input').val(`${crd.latitude}`);
+            $('#longitude-input').val(`${crd.longitude}`);
+        };
 
-                function error(err) {
-                    console.warn(`ERROR(${err.code}): ${err.message}`);
-                };
+        function error(err) {
+            console.warn(`ERROR(${err.code}): ${err.message}`);
+        };
 
-                navigator.geolocation.getCurrentPosition(success, error, options);
+        navigator.geolocation.getCurrentPosition(success, error, options);
+    })
 
+    $('#submit-sighting').on('click', function(event) {
+        event.preventDefault();
 
+        var speciesControl = $('#species-control').val();
+        var description = $('#sighting-description').val();
+        var sightingDate = $('#sighting-date').val().trim;
+        var sightingTime = $('#sighting-time').val().trim;
+        var latitude = $('#latitude-input').val().trim;
+        var longitude = $('#longitude-input').val().trim;
+        // var userName = $('#username').val.trim();
 
-            })
-
-                $('#submit-sighting').on('click', function(event) {
-                    event.preventDefault();
-
-                    var speciesControl = $('#species-control').val();
-                    var description = $('#sighting-description').val();
-                    var sightingDate = $('#sighting-date').val().trim;
-                    var sightingTime = $('#sighting-time').val().trim;
-                    var latitude = $('#latitude-input').val().trim;
-                    var longitude = $('#longitude-input').val().trim;
-                    // var userName = $('#username').val.trim();
-
-                    database.ref().push({
-                        species: speciesInput,
-                        description: description,
-                        // date: sightingDate,
-                        // time: sightingTime,
-                        latitude: latitude,
-                        longitude: longitude
-                    })
-                })
-            })
-            
+        database.ref().push({
+            species: speciesInput,
+            description: description,
+            // date: sightingDate,
+            // time: sightingTime,
+            latitude: latitude,
+            longitude: longitude
+        })
+    })
+})
