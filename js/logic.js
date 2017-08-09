@@ -65,6 +65,7 @@ $(document).ready(function() {
 
     function clearMap() {
         mymap.removeLayer(markers);
+        group.clearLayers();
     }
 
     $("#submit").on('click', function(event) {
@@ -178,6 +179,12 @@ $(document).ready(function() {
                 "<p>" + "On: " + empTime + " on " + empDate + "</p>"
             );
         })
-        clearMap();
     })
+
+$('#clear-map').on('click', function(event) {
+    markers.clearLayers();
+    group.clearLayers();
+})
+
+
 })
