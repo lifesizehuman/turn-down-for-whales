@@ -41,12 +41,12 @@ $(document).ready(function() {
             method: "GET"
         }).done(function(response) {
 
-            for (var i = 0; i < response.length; i++) {
+                for (var i = 0; i < response.length; i++) {
 
-                var marker = L.marker([response[i].latitude, response[i].longitude]);
+                var marker1 = L.marker([response[i].latitude, response[i].longitude]);
                 group.addLayer(marker);
 
-                marker.bindPopup(
+                marker1.bindPopup(
                     "<p>" + "Species: " + response[i].species + "</p>" +
                     "<p>" + "Description: " + response[i].description + "</p>" +
                     "<p>" + "Seen at: " + response[i].latitude + " / " + response[i].longitude + "</p>" +
@@ -114,8 +114,8 @@ $(document).ready(function() {
 
         $('#species-control').val('');
         $('#sighting-description').val('');
-        $('#sighting-date').val('').trim;
-        $('#sighting-time').val('').trim;
+        $('#sighting-date').val('');
+        $('#sighting-time').val('');
         $('#latitude-input').val('');
         $('#longitude-input').val('');
     })
@@ -141,5 +141,18 @@ $(document).ready(function() {
                 "</td><td>" + empTime + 
                 // "</td><td>" + empBilled + 
                 "</td></tr>");
+
+            for (var i = 0; i < childSnapshot.length; i++) {
+
+                var marker2 = L.marker([childSnapshot[i].latitude, childSnapshot[i].longitude]);
+                group.addLayer(marker2);
+
+                marker2.bindPopup(
+                    "<p>" + "Species: " + response[i].species + "</p>" +
+                    "<p>" + "Description: " + response[i].description + "</p>" +
+                    "<p>" + "Seen at: " + response[i].latitude + " / " + response[i].longitude + "</p>" +
+                    "<p>" + "On: " + response[i].sighted_at + "</p>"
+                ).openPopup();
+            }
         });
     })
