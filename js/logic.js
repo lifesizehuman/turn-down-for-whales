@@ -97,8 +97,8 @@ $(document).ready(function() {
 
         var speciesControl = $('#species-control').val();
         var description = $('#sighting-description').val();
-        var sightingDate = $('#sighting-date').val().trim;
-        var sightingTime = $('#sighting-time').val().trim;
+        var sightingDate = $('#sighting-date').val();
+        var sightingTime = $('#sighting-time').val();
         var latitude = $('#latitude-input').val();
         var longitude = $('#longitude-input').val();
         // var userName = $('#username').val.trim();
