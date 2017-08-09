@@ -5,3 +5,7 @@
 .container-fluid {
 	margin-bottom: 50px;
 }
+
+#recent-search-area, #recent-sightings-area {
+	overflow: auto;
+}
