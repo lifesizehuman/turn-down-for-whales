@@ -142,17 +142,17 @@ $(document).ready(function() {
                 // "</td><td>" + empBilled + 
                 "</td></tr>");
 
-            for (var i = 0; i < childSnapshot.length; i++) {
+            // for (var i = 0; i < childSnapshot.length; i++) {
 
-                var marker2 = L.marker([childSnapshot[i].latitude, childSnapshot[i].longitude]);
-                group.addLayer(marker2);
+            //     var marker2 = L.marker([childSnapshot[i].latitude, childSnapshot[i].longitude]);
+            //     group.addLayer(marker2);
 
-                marker2.bindPopup(
-                    "<p>" + "Species: " + response[i].species + "</p>" +
-                    "<p>" + "Description: " + response[i].description + "</p>" +
-                    "<p>" + "Seen at: " + response[i].latitude + " / " + response[i].longitude + "</p>" +
-                    "<p>" + "On: " + response[i].sighted_at + "</p>"
-                ).openPopup();
-            }
+            //     marker2.bindPopup(
+            //         "<p>" + "Species: " + response[i].species + "</p>" +
+            //         "<p>" + "Description: " + response[i].description + "</p>" +
+            //         "<p>" + "Seen at: " + response[i].latitude + " / " + response[i].longitude + "</p>" +
+            //         "<p>" + "On: " + response[i].sighted_at + "</p>"
+            //     ).openPopup();
+            // }
         });
     })
