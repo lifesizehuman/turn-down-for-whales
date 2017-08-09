@@ -43,10 +43,10 @@ $(document).ready(function() {
 
                 for (var i = 0; i < response.length; i++) {
 
-                var marker1 = L.marker([response[i].latitude, response[i].longitude]);
+                var marker = L.marker([response[i].latitude, response[i].longitude]);
                 // group.addLayer();
 
-                marker1.bindPopup(
+                marker.bindPopup(
                     "<p>" + "Species: " + response[i].species + "</p>" +
                     "<p>" + "Description: " + response[i].description + "</p>" +
                     "<p>" + "Seen at: " + response[i].latitude + " / " + response[i].longitude + "</p>" +
