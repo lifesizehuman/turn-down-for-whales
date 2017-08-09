@@ -65,17 +65,13 @@ $(document).ready(function() {
 
         var speciesControl = $('#species-control').val();
         var description = $('#sighting-description').val();
-        // var sightingDate = $('#sighting-date').val().trim;
-        // var sightingTime = $('#sighting-time').val().trim;
+        var sightingDate = $('#sighting-date').val().trim;
+        var sightingTime = $('#sighting-time').val().trim;
         // var userName = $('#username').val.trim();
 
         database.ref().push({
             species: speciesInput,
             description: description
-            // sighted_at:sightingTime,
-
         })
-
     })
-
 })
