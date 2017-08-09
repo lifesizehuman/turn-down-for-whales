@@ -54,7 +54,7 @@ $(document).ready(function() {
                     "<p>" + "On: " + response[i].sighted_at + "</p>"
                 );
             }
-            
+
             $('select').change(function() {
                 species = this.value;
             })
@@ -138,6 +138,17 @@ $(document).ready(function() {
             "</td><td>" + empTime +
             "</td></tr>");
 
+  
+
+    $('#recent-sighting').on('click', function(event) {
+        event.preventDefault();
+        var empSpecies = childSnapshot.val().species;
+        var empDescription = childSnapshot.val().description;
+        var empLat = childSnapshot.val().latitude;
+        var empLong = childSnapshot.val().longitude;
+        var empDate = childSnapshot.val().date;
+        var empTime = childSnapshot.val().time;
+
         var marker = L.marker([empLat, empLong]);
         group.addLayer(marker);
 
@@ -147,5 +158,6 @@ $(document).ready(function() {
             "<p>" + "Seen at: " + empLat + " / " + empLong + "</p>" +
             "<p>" + "On: " + empTime + " on " + empDate + "</p>"
         );
+          });
     })
 })
