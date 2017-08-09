@@ -44,7 +44,7 @@ $(document).ready(function() {
                 for (var i = 0; i < response.length; i++) {
 
                 var marker1 = L.marker([response[i].latitude, response[i].longitude]);
-                group.addLayer(marker);
+                group.addLayer();
 
                 marker1.bindPopup(
                     "<p>" + "Species: " + response[i].species + "</p>" +
