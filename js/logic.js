@@ -42,7 +42,7 @@ $(document).ready(function() {
             method: "GET"
         }).done(function(response) {
 
-                for (var i = 0; i < response.length; i++) {
+            for (var i = 0; i < response.length; i++) {
 
                 var marker = L.marker([response[i].latitude, response[i].longitude]).addTo(mymap);
                 group.addLayer(marker);
@@ -52,8 +52,9 @@ $(document).ready(function() {
                     "<p>" + "Description: " + response[i].description + "</p>" +
                     "<p>" + "Seen at: " + response[i].latitude + " / " + response[i].longitude + "</p>" +
                     "<p>" + "On: " + response[i].sighted_at + "</p>"
-                ).openPopup();
+                );
             }
+            
             $('select').change(function() {
                 species = this.value;
             })
@@ -78,10 +79,6 @@ $(document).ready(function() {
         function success(pos) {
             var crd = pos.coords;
 
-            // console.log('Your current position is:');
-            // console.log(`${crd.latitude}`);
-            // console.log(`${crd.longitude}`);
-            // console.log(`More or less ${crd.accuracy} meters.`);
             $('#latitude-input').val(`${crd.latitude}`);
             $('#longitude-input').val(`${crd.longitude}`);
         };
@@ -102,7 +99,6 @@ $(document).ready(function() {
         var sightingTime = $('#sighting-time').val();
         var latitude = $('#latitude-input').val();
         var longitude = $('#longitude-input').val();
-        // var userName = $('#username').val.trim();
 
         database.ref().push({
             species: speciesControl,
@@ -121,39 +117,35 @@ $(document).ready(function() {
         $('#longitude-input').val('');
     })
 
-        database.ref().on("child_added", function(childSnapshot, prevChildKey) {
+    database.ref().on("child_added", function(childSnapshot, prevChildKey) {
 
-            console.log(childSnapshot.val());
+        console.log(childSnapshot.val());
 
-            // Store everything into a variable.
-            var empSpecies = childSnapshot.val().species;
-            var empDescription = childSnapshot.val().description;
-            var empLat = childSnapshot.val().latitude;
-            var empLong = childSnapshot.val().longitude;
-            var empDate = childSnapshot.val().date;
-            var empTime = childSnapshot.val().time;
+        // Store everything into a variable.
+        var empSpecies = childSnapshot.val().species;
+        var empDescription = childSnapshot.val().description;
+        var empLat = childSnapshot.val().latitude;
+        var empLong = childSnapshot.val().longitude;
+        var empDate = childSnapshot.val().date;
+        var empTime = childSnapshot.val().time;
 
 
-            $("#species-table > tbody").append(
-                "<tr><td>" + empSpecies + 
-                "</td><td>" + empDescription + 
-                "</td><td>" + "Lat: " + empLat + " / Long: " + empLong +
-                "</td><td>" + empDate + 
-                "</td><td>" + empTime + 
-                // "</td><td>" + empBilled + 
-                "</td></tr>");
+        $("#species-table > tbody").append(
+            "<tr><td>" + empSpecies +
+            "</td><td>" + empDescription +
+            "</td><td>" + "Lat: " + empLat + " / Long: " + empLong +
+            "</td><td>" + empDate +
+            "</td><td>" + empTime +
+            "</td></tr>");
 
-            // for (var i = 0; i < childSnapshot.length; i++) {
+        var marker = L.marker([empLat, empLong]);
+        group.addLayer(marker);
 
-            //     var marker2 = L.marker([childSnapshot[i].latitude, childSnapshot[i].longitude]);
-            //     group.addLayer(marker2);
-
-            //     marker2.bindPopup(
-            //         "<p>" + "Species: " + response[i].species + "</p>" +
-            //         "<p>" + "Description: " + response[i].description + "</p>" +
-            //         "<p>" + "Seen at: " + response[i].latitude + " / " + response[i].longitude + "</p>" +
-            //         "<p>" + "On: " + response[i].sighted_at + "</p>"
-            //     ).openPopup();
-            // }
-        });
+        marker.bindPopup(
+            "<p>" + "Species: " + empSpecies + "</p>" +
+            "<p>" + "Description: " + empDescription + "</p>" +
+            "<p>" + "Seen at: " + empLat + " / " + empLong + "</p>" +
+            "<p>" + "On: " + empTime + " on " + empDate + "</p>"
+        );
     })
+})
