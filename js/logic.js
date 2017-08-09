@@ -114,8 +114,8 @@ $(document).ready(function() {
 
         $('#species-control').val('');
         $('#sighting-description').val('');
-        $('#sighting-date').val('').trim;
-        $('#sighting-time').val('').trim;
+        $('#sighting-date').val('');
+        $('#sighting-time').val('');
         $('#latitude-input').val('');
         $('#longitude-input').val('');
     })
