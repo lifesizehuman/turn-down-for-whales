@@ -106,8 +106,8 @@ $(document).ready(function() {
         database.ref().push({
             species: speciesControl,
             description: description,
-            // date: sightingDate,
-            // time: sightingTime,
+            date: sightingDate,
+            time: sightingTime,
             latitude: latitude,
             longitude: longitude
         })
@@ -121,14 +121,16 @@ $(document).ready(function() {
             var empDescription = childSnapshot.val().description;
             var empLat = childSnapshot.val().latitude;
             var empLong = childSnapshot.val().longitude;
+            var empDate = childSnapshot.val().date;
+            var empTime = childSnapshot.val().time;
 
 
             $("#species-table > tbody").append(
                 "<tr><td>" + empSpecies + 
                 "</td><td>" + empDescription + 
                 "</td><td>" + "Lat: " + empLat + " / Long: " + empLong +
-                // "</td><td>" + empMonths + 
-                // "</td><td>" + empRate + 
+                "</td><td>" + empDate + 
+                "</td><td>" + empTime + 
                 // "</td><td>" + empBilled + 
                 "</td></tr>");
         });
