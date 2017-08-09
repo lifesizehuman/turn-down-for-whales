@@ -112,6 +112,14 @@ $(document).ready(function() {
             longitude: longitude
         })
 
+        $('#species-control').val('');
+        $('#sighting-description').val('');
+        $('#sighting-date').val('').trim;
+        $('#sighting-time').val('').trim;
+        $('#latitude-input').val('');
+        $('#longitude-input').val('');
+    })
+
         database.ref().on("child_added", function(childSnapshot, prevChildKey) {
 
             console.log(childSnapshot.val());
@@ -133,4 +141,3 @@ $(document).ready(function() {
                 "</td></tr>");
         });
     })
-})
