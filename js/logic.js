@@ -4,7 +4,7 @@ $(document).ready(function() {
         if (options.crossDomain && $.support.cors) {
             options.url = 'https://cors-anywhere.herokuapp.com/' + options.url;
         }
-    });
+    })
 
     var config = {
         apiKey: "AIzaSyAqMI1aab7fpTQsdo7zUXnXAhnIwVTdBAs",
@@ -18,7 +18,7 @@ $(document).ready(function() {
 
     var database = firebase.database();
 
-    var mymap = L.map('mapid').setView([48, -123], 6);
+    var mymap = L.map('mapid').setView([38, -123], 3);
 
 
     L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
@@ -31,10 +31,10 @@ $(document).ready(function() {
     var group = L.layerGroup([])
         .addTo(mymap);
 
-    $("#submit").on('click', function(event) {
+    var markers = new L.FeatureGroup();
 
+    function populateMap() {
         var species = $('#species-input').val();
-
         var queryURL = "http://hotline.whalemuseum.org/api.json?species=" + species;
 
         $.ajax({
@@ -44,8 +44,7 @@ $(document).ready(function() {
 
             for (var i = 0; i < response.length; i++) {
 
-                var marker = L.marker([response[i].latitude, response[i].longitude]).addTo(mymap);
-                group.addLayer(marker);
+                var marker = L.marker([response[i].latitude, response[i].longitude]);
 
                 marker.bindPopup(
                     "<p>" + "Species: " + response[i].species + "</p>" +
@@ -53,14 +52,36 @@ $(document).ready(function() {
                     "<p>" + "Seen at: " + response[i].latitude + " / " + response[i].longitude + "</p>" +
                     "<p>" + "On: " + response[i].sighted_at + "</p>"
                 );
+                markers.addLayer(marker);
             }
 
             $('select').change(function() {
                 species = this.value;
             })
         })
-        group.clearLayers();
+        mymap.addLayer(markers);
+        return false;
+    }
+
+    function clearMap() {
+        mymap.removeLayer(markers);
+    }
+
+    $("#submit").on('click', function(event) {
+        populateMap();
+        var recentSearches = [];
+        var searchValue = $('select').val();
+
+        recentSearches.push(searchValue);
+
+        for (var i = 0; i < recentSearches.length; i++) {
+            $('#recent-searches > tbody').append(
+                "<tr><td>" + recentSearches[i] +
+                "</td></tr>");
+        }
     })
+
+    
 
     $('#getLocation').on('click', function(event) {
         event.preventDefault();
@@ -129,7 +150,6 @@ $(document).ready(function() {
         var empDate = childSnapshot.val().date;
         var empTime = childSnapshot.val().time;
 
-
         $("#species-table > tbody").append(
             "<tr><td>" + empSpecies +
             "</td><td>" + empDescription +
@@ -138,26 +158,35 @@ $(document).ready(function() {
             "</td><td>" + empTime +
             "</td></tr>");
 
-  
+        // var marker = L.marker([empLat, empLong]);
+        // // group.addLayer(marker);
 
-    $('#recent-sighting').on('click', function(event) {
-        event.preventDefault();
-        var empSpecies = childSnapshot.val().species;
-        var empDescription = childSnapshot.val().description;
-        var empLat = childSnapshot.val().latitude;
-        var empLong = childSnapshot.val().longitude;
-        var empDate = childSnapshot.val().date;
-        var empTime = childSnapshot.val().time;
+        // marker.bindPopup(
+        //     "<p>" + "Species: " + empSpecies + "</p>" +
+        //     "<p>" + "Description: " + empDescription + "</p>" +
+        //     "<p>" + "Seen at: " + empLat + " / " + empLong + "</p>" +
+        //     "<p>" + "On: " + empTime + " on " + empDate + "</p>"
+        // );
 
-        var marker = L.marker([empLat, empLong]);
-        group.addLayer(marker);
+        $('#recent-sighting').on('click', function(event) {
+            event.preventDefault();
 
-        marker.bindPopup(
-            "<p>" + "Species: " + empSpecies + "</p>" +
-            "<p>" + "Description: " + empDescription + "</p>" +
-            "<p>" + "Seen at: " + empLat + " / " + empLong + "</p>" +
-            "<p>" + "On: " + empTime + " on " + empDate + "</p>"
-        );
-          });
+            var empSpecies = childSnapshot.val().species;
+            var empDescription = childSnapshot.val().description;
+            var empLat = childSnapshot.val().latitude;
+            var empLong = childSnapshot.val().longitude;
+            var empDate = childSnapshot.val().date;
+            var empTime = childSnapshot.val().time;
+
+            var marker2 = L.marker([empLat, empLong]).addTo(group);
+
+            marker2.bindPopup(
+                "<p>" + "Species: " + empSpecies + "</p>" +
+                "<p>" + "Description: " + empDescription + "</p>" +
+                "<p>" + "Seen at: " + empLat + " / " + empLong + "</p>" +
+                "<p>" + "On: " + empTime + " on " + empDate + "</p>"
+            );
+        })
+        clearMap();
     })
 })
