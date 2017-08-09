@@ -48,8 +48,13 @@
                 <button class="btn btn-default" id="submit" type="submit">Submit</button>
                 <p>
                 </p>
+                <div class="panel panel-default">
+    <div class="panel-heading">Recent Searches</div>
+    <div class="panel-body" style="height:100px">
+                 </div>
+               </div>
             </div>
-        </div>
+         </div>
         <div class="row">
             <div class="col-sm-12">
                 <h3>I Saw a Whale!</h3>
@@ -76,7 +81,9 @@
                 <div class="row">
                     <div class="col-xs-12">
                         <p>
-                            <input type="text" class="form-control" id="sighting-description" placeholder="Sighting Description">
+                            <input type="text" class="form-control"
+                            style="height:100px"
+                             id="sighting-description" placeholder="Sighting Description">
                         </p>
                     </div>
                 </div>
@@ -110,6 +117,22 @@
             </div>
         </div>
     </div>
+    <div class="container-fluid">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Whale</th>
+        <th>Description</th>
+        <th>Location</th>
+        <th>Date</th>
+        <th>Time</th>
+      </tr>
+    </thead>
+    <tbody>
+  </tbody>
+  </table>
+</div>
+
     <script src="js/logic.js"></script>
 </body>
 
