@@ -48,8 +48,6 @@ var myIcon = L.icon({
     var markers = new L.FeatureGroup();
     var layer;
 
-
-
 function populateMap() {
         var species = $('#species-input').val();
         var queryURL = "http://hotline.whalemuseum.org/api.json?species=" + species;
@@ -195,17 +193,12 @@ function populateMap() {
     })
   })
 
-    // var query = firebase.database().ref("turn-down-for-whales").orderByKey();
-    // query.once("value")
-    //   .then(function(snapshot) {
-    //   snapshot.forEach(function(childSnapshot) {
-    // // key will be "ada" the first time and "alan" the second time
-    // var key = childSnapshot.key;
-    // // childData will be the actual contents of the child
-    // var childData = childSnapshot.val();
-    // console.log(query);
-    // console.log(key);
-    // console.log(childData);
-    // });
-    // });
-})
+    var ref = firebase.database().ref("turn-down-for-whales");
+    ref.once("value")
+  .then(function(snapshot) {
+    var a = snapshot.numChildren(); // 1 ("name")
+    var b = snapshot.child("name").numChildren(); // 2 ("first", "last")
+    var c = snapshot.child("name/first").numChildren(); // 0
+  });
+
+    });
