@@ -10,13 +10,3 @@
 	overflow: auto;
 }
 
-#update {
-  position: absolute;
-  left: 10px;
-  top: 10px;
-}
-
-svg {
-	width: 100vw;
-	height:500px;
-}
