@@ -85,17 +85,6 @@ $(document).ready(function() {
         }
     })
 
-    var popup = L.popup();
-
-    function onMapClick(e) {
-        popup
-            .setLatLng(e.latlng)
-            .setContent(e.latlng.toString())
-            .openOn(mymap);
-    }
-
-    mymap.on('click', onMapClick);
-
     $('#getLocation').on('click', function(event) {
         event.preventDefault();
         if ("geolocation" in navigator) {
@@ -155,7 +144,6 @@ $(document).ready(function() {
 
         console.log(childSnapshot.val());
 
-        // Store everything into a variable.
         var empSpecies = childSnapshot.val().species;
         var empDescription = childSnapshot.val().description;
         var empLat = childSnapshot.val().latitude;
