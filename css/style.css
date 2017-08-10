@@ -8,11 +8,13 @@
 
 .navbar {
     border-radius: 0px !important;
+		margin-bottom: 0px;
 }
 
 #mapid {
 	height: 60vh;
 	width:100%;
+	margin-bottom: 30px;
 }
 
 #recent-search-area, #recent-sightings-area {

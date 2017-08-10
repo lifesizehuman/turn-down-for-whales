@@ -13,72 +13,76 @@
 
 <body>
 
-  <nav class="navbar navbar-inverse">
+  <nav class="navbar navbar-default">
   <div class="container-fluid">
-    <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
+
       <a class="navbar-brand" href="#">Turn Down for Whales</a>
     </div>
-
-    <!-- Collect the nav links, forms, and other content for toggling -->
-
-  </div><!-- /.container-fluid -->
+  </div>
 </nav>
 
-  <div class="container-fluid">
+
     <div id="mapid"></div>
-  </div>
+
+
+
     <div class="container-fluid">
       <div class="row">
       <div class="col-sm-3">
-        <h3>Look For Whales</h3>
-        <select id="species-input">
-                    <option value="orca">Orca</option>
-                    <option value="humpback">Humpback</option>
-                    <option value="gray whale">Gray Whale</option>
-                    <option value="sea otter">Sea Otter</option>
-                    <option value="minke">Minke</option>
-                    <option value="atlantic white-sided dolphin">Atlantic White Sided Dolphin</option>
-                    <option value="pacific white-sided dolphin">Pacific White Sided Dolphin</option>
-                    <option value="dalls porpoise">Dalls Porpoise</option>
-                    <option value="harbor porpoise">Harbor Porpoise</option>
-                    <option value="harbor seal">Harbor Seal</option>
-                    <option value="northern elephant seal">Northern Elephant Seal</option>
-                    <option value="southern elephant seal">Southern Elephant Seal</option>
-                    <option value="california sea Lion">California Sea Lion</option>
-                    <option value="steller sea lion">Steller Sea Lion</option>
-                    <option value="other">Other</option>
-                    <option value="unknown">Unknown</option>
-                </select>
-        <p>
-        </p>
-        <button class="btn btn-default btn-sm" id="submit" type="submit">Submit</button>
-        <button class="btn btn-default btn-sm" id="recent-sighting" type="submit">Recent Sightings</button>
-        <!-- <button class="btn btn-default btn-sm" id="clear-map" type="submit">Clear Map</button> -->
-        <p>
-        </p>
-        <div class="panel panel-default">
-          <div class="panel-heading">Recent Searches</div>
-          <div class="panel-body" style="height:150px" id="recent-search-area">
-            <table class="table table-striped" id="recent-searches">
-              <thead>
-              </thead>
-              <tbody>
-              </tbody>
-            </table>
+
+      <div class="panel panel-default">
+
+        <div class="panel-heading">Look For Whales</div>
+
+            <div class="panel-body">
+              <select id="species-input">
+                <option value="orca">Orca</option>
+                <option value="humpback">Humpback</option>
+                <option value="gray whale">Gray Whale</option>
+                <option value="sea otter">Sea Otter</option>
+                <option value="minke">Minke</option>
+                <option value="atlantic white-sided dolphin">Atlantic White Sided Dolphin</option>
+                <option value="pacific white-sided dolphin">Pacific White Sided Dolphin</option>
+                <option value="dalls porpoise">Dalls Porpoise</option>
+                <option value="harbor porpoise">Harbor Porpoise</option>
+                <option value="harbor seal">Harbor Seal</option>
+                <option value="northern elephant seal">Northern Elephant Seal</option>
+                <option value="southern elephant seal">Southern Elephant Seal</option>
+                <option value="california sea Lion">California Sea Lion</option>
+                <option value="steller sea lion">Steller Sea Lion</option>
+                <option value="other">Other</option>
+                <option value="unknown">Unknown</option>
+              </select>
+              <p>
+              </p>
+              <button class="btn btn-default btn-sm" id="submit" type="submit">Submit</button>
+              <button class="btn btn-default btn-sm" id="recent-sighting" type="submit">Recent Sightings</button>
+              <!-- <button class="btn btn-default btn-sm" id="clear-map" type="submit">Clear Map</button> -->
+              <p>
+              </p>
+
+                <h3>Recent Searches</h3>
+                <div id="recent-search-area" style="height:200px">
+                  <table class="table table-striped"  id="recent-searches">
+                    <thead>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
+
+
       <div class="col-sm-9">
-        <h3>I Saw a Whale!</h3>
-        <p>
-          <select id="species-control">
+        <div class="panel panel-default">
+
+          <div class="panel-heading">I Saw a Whale!</div>
+
+              <div class="panel-body">
+                      <select id="species-control">
                         <option value="orca">Orca</option>
                         <option value="humpback">Humpback</option>
                         <option value="gray whale">Gray Whale</option>
@@ -135,11 +139,18 @@
           </div>
         </div>
       </div>
-    </div>
   </div>
-  <div class="container-fluid">
-    <h3>Recent Sightings</h3>
-    <div class="panel-body" style="height:350px" id="recent-sightings-area">
+
+
+
+  <div class="row">
+    <div class="col-xs-12">
+    <div class="panel panel-default">
+
+      <div class="panel-heading">Recent Sightings</div>
+
+          <div class="panel-body">
+    <div class="panel-body" style="height:200px" id="recent-sightings-area">
       <table class="table table-striped" id="species-table">
         <thead>
           <tr>
