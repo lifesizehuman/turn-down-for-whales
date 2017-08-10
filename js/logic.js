@@ -167,7 +167,7 @@ function populateMap() {
                         "<p>" + "On: " + empTime + " on " + empDate + "</p>"
                     );
                   }
-        clearMap();
+        // clearMap();
         recentPop();
     })
   })
