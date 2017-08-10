@@ -21,19 +21,17 @@ $(document).ready(function() {
 
     var mymap = L.map('mapid').setView([38, -123], 3);
 
-
     L.tileLayer('https://api.mapbox.com/styles/v1/lifesizehuman/cj65p1axm6m8t2smwy6tvcm62/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoibGlmZXNpemVodW1hbiIsImEiOiJjajV5N3hleDIwZjE5MnFsbmVrMjNscWJqIn0.epziWwc2W3ssEQt2Cjcm1A', {
         attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery &copy; <a href="http://mapbox.com">Mapbox</a>',
         maxZoom: 18,
         id: 'mapbox.streets',
     }).addTo(mymap);
 
-    var group = L.layerGroup([])
-        .addTo(mymap);
-
+    var group = L.layerGroup([]).addTo(mymap);
     var markers = new L.FeatureGroup();
+    var layer;
 
-    function populateMap() {
+function populateMap() {
         var species = $('#species-input').val();
         var queryURL = "http://hotline.whalemuseum.org/api.json?species=" + species;
 
@@ -44,34 +42,30 @@ $(document).ready(function() {
 
             for (var i = 0; i < response.length; i++) {
 
-                var marker = L.marker([response[i].latitude, response[i].longitude]);
+                var layer = L.marker([response[i].latitude, response[i].longitude]);
+                layer.addTo(group);
 
-                marker.bindPopup(
+                layer.bindPopup(
                     "<p>" + "Species: " + response[i].species + "</p>" +
                     "<p>" + "Description: " + response[i].description + "</p>" +
                     "<p>" + "Seen at: " + response[i].latitude + " / " + response[i].longitude + "</p>" +
                     "<p>" + "On: " + response[i].sighted_at + "</p>"
                 );
-                markers.addLayer(marker);
-
             }
 
             $('select').change(function() {
                 species = this.value;
             })
         })
-        mymap.addLayer(markers);
-        return false;
     }
 
     function clearMap() {
-        mymap.removeLayer(markers);
-        group.clearLayers(markers);
+      group.clearLayers(markers);
     }
 
     $(document).on('click', "#submit", function(event) {
       //  $('#mapid').empty();
-      clearMap();
+        clearMap();
         populateMap();
         var recentSearches = [];
         var searchValue = $('select').val();
@@ -138,15 +132,6 @@ $(document).ready(function() {
         $('#sighting-time').val('');
         $('#latitude-input').val('');
         $('#longitude-input').val('');
-
-        $("#species-table > tbody").append(
-            "<tr><td>" + species +
-            "</td><td>" + description +
-            "</td><td>" + "Lat: " + latitude + " / Long: " + longitude +
-            "</td><td>" + date +
-            "</td><td>" + time +
-            "</td></tr>");
-
     })
 
     database.ref().on("child_added", function(childSnapshot, prevChildKey) {
@@ -160,12 +145,18 @@ $(document).ready(function() {
         var empDate = childSnapshot.val().date;
         var empTime = childSnapshot.val().time;
 
+        $("#species-table > tbody").append(
+            "<tr><td>" + empSpecies +
+            "</td><td>" + empDescription +
+            "</td><td>" + "Lat: " + empLat + " / Long: " + empLong +
+            "</td><td>" + empDate +
+            "</td><td>" + empTime +
+            "</td></tr>");
 
         $('#recent-sighting').on('click', function(event) {
+            // clearMap();
             event.preventDefault();
-
-            var marker = L.marker([empLat, empLong]);
-            group.addLayer(marker);
+            var marker = L.marker([empLat, empLong]).addTo(group);
 
             marker.bindPopup(
                 "<p>" + "Species: " + empSpecies + "</p>" +
@@ -173,13 +164,10 @@ $(document).ready(function() {
                 "<p>" + "Seen at: " + empLat + " / " + empLong + "</p>" +
                 "<p>" + "On: " + empTime + " on " + empDate + "</p>"
             );
-
         })
-
     })
 
     $('#clear-map').on('click', function(event) {
-        markers.clearLayers();
-        group.clearLayers();
+        clearMap();
     })
 })
