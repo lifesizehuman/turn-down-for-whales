@@ -30,6 +30,19 @@ $(document).ready(function() {
     }
   });
 
+//   var WhaleIcon = L.Icon({
+//         iconUrl: '../assets/whale-icon.png',
+//
+// });
+
+var myIcon = L.icon({
+    iconUrl: 'assets/whale-icon.png',
+    iconSize: [32, 37],
+    iconAnchor: [16, 37],
+    popupAnchor: [0, -37]
+});
+// L.marker([50.505, 30.57], {icon: myIcon}).addTo(mymap);
+
 
     L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/light-v9/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoibGlmZXNpemVodW1hbiIsImEiOiJjajV5N3hleDIwZjE5MnFsbmVrMjNscWJqIn0.epziWwc2W3ssEQt2Cjcm1A', {
 
@@ -40,6 +53,8 @@ $(document).ready(function() {
     var group = L.layerGroup([]).addTo(mymap);
     var markers = new L.FeatureGroup();
     var layer;
+
+
 
 function populateMap() {
         var species = $('#species-input').val();
@@ -52,7 +67,7 @@ function populateMap() {
 
             for (var i = 0; i < response.length; i++) {
 
-                var layer = L.marker([response[i].latitude, response[i].longitude]);
+                var layer = L.marker([response[i].latitude, response[i].longitude],{icon: myIcon});
                 layer.addTo(group);
 
                 layer.bindPopup(
@@ -168,7 +183,7 @@ function populateMap() {
 
         function recentPop() {
 
-                    var layer = L.marker([empLat, empLong]).addTo(group);
+                    var layer = L.marker([empLat, empLong], {icon: myIcon}).addTo(group);
                     layer.addTo(group);
                     layer.bindPopup(
                         "<p>" + "Species: " + empSpecies + "</p>" +
