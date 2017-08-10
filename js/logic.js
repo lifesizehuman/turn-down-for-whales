@@ -30,18 +30,12 @@ $(document).ready(function() {
     }
   });
 
-//   var WhaleIcon = L.Icon({
-//         iconUrl: '../assets/whale-icon.png',
-//
-// });
-
 var myIcon = L.icon({
     iconUrl: 'assets/whale-icon.png',
     iconSize: [32, 37],
     iconAnchor: [16, 37],
     popupAnchor: [0, -37]
 });
-// L.marker([50.505, 30.57], {icon: myIcon}).addTo(mymap);
 
 
     L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/light-v9/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoibGlmZXNpemVodW1hbiIsImEiOiJjajV5N3hleDIwZjE5MnFsbmVrMjNscWJqIn0.epziWwc2W3ssEQt2Cjcm1A', {
@@ -197,17 +191,17 @@ function populateMap() {
     })
   })
 
-    var query = firebase.database().ref("turn-down-for-whales").orderByKey();
-    query.once("value")
-      .then(function(snapshot) {
-      snapshot.forEach(function(childSnapshot) {
-    // key will be "ada" the first time and "alan" the second time
-    var key = childSnapshot.key;
-    // childData will be the actual contents of the child
-    var childData = childSnapshot.val();
-    console.log(query);
-    console.log(key);
-    console.log(childData);
-    });
-    });
+    // var query = firebase.database().ref("turn-down-for-whales").orderByKey();
+    // query.once("value")
+    //   .then(function(snapshot) {
+    //   snapshot.forEach(function(childSnapshot) {
+    // // key will be "ada" the first time and "alan" the second time
+    // var key = childSnapshot.key;
+    // // childData will be the actual contents of the child
+    // var childData = childSnapshot.val();
+    // console.log(query);
+    // console.log(key);
+    // console.log(childData);
+    // });
+    // });
 })
