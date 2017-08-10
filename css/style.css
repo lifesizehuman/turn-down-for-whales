@@ -1,9 +1,18 @@
-#mapid {
-	height: 60vh;
+* {
+    outline: none !important;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    border-radius: 0;
 }
 
-.container-fluid {
-	margin-bottom: 50px;
+.navbar {
+    border-radius: 0px !important;
+}
+
+#mapid {
+	height: 60vh;
+	width:100%;
 }
 
 #recent-search-area, #recent-sightings-area {

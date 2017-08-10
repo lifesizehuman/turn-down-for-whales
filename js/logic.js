@@ -20,9 +20,19 @@ $(document).ready(function() {
     var database = firebase.database();
 
     var mymap = L.map('mapid').setView([38, -123], 3);
+    mymap.once('focus', function() { mymap.scrollWheelZoom.enable(); });
+    mymap.on('click', function() {
+  if (mymap.scrollWheelZoom.enabled()) {
+    mymap.scrollWheelZoom.disable();
+    }
+    else {
+    mymap.scrollWheelZoom.enable();
+    }
+  });
+
 
     L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/light-v9/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoibGlmZXNpemVodW1hbiIsImEiOiJjajV5N3hleDIwZjE5MnFsbmVrMjNscWJqIn0.epziWwc2W3ssEQt2Cjcm1A', {
-      
+
         maxZoom: 18,
         id: 'mapbox.streets',
     }).addTo(mymap);
