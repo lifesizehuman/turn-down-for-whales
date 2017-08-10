@@ -61,7 +61,9 @@ function populateMap() {
 
             for (var i = 0; i < response.length; i++) {
 
-                var layer = L.marker([response[i].latitude, response[i].longitude],{icon: myIcon});
+                var layer = L.marker([response[i].latitude, response[i].longitude]
+                  // ,{icon: myIcon}
+                );
                 layer.addTo(group);
 
                 layer.bindPopup(
@@ -177,7 +179,9 @@ function populateMap() {
 
         function recentPop() {
 
-                    var layer = L.marker([empLat, empLong], {icon: myIcon}).addTo(group);
+                    var layer = L.marker([empLat, empLong]
+                      // , {icon: myIcon}
+                    ).addTo(group);
                     layer.addTo(group);
                     layer.bindPopup(
                         "<p>" + "Species: " + empSpecies + "</p>" +
