@@ -153,29 +153,29 @@ function populateMap() {
             "</td><td>" + empTime +
             "</td></tr>");
 
-        $('#recent-sighting').on('click', function(event) {
-            event.preventDefault();
+    $('#recent-sighting').on('click', function(event) {
+        event.preventDefault();
 
-            clearMap();
-            var layer = L.marker([empLat, empLong]);
-            layer.addTo(group);
-            layer.bindPopup(
-                "<p>" + "Species: " + empSpecies + "</p>" +
-                "<p>" + "Description: " + empDescription + "</p>" +
-                "<p>" + "Seen at: " + empLat + " / " + empLong + "</p>" +
-                "<p>" + "On: " + empTime + " on " + empDate + "</p>"
-            );
-        })
+        function recentPop() {
+
+                    var layer = L.marker([empLat, empLong]).addTo(group);
+                    layer.addTo(group);
+                    layer.bindPopup(
+                        "<p>" + "Species: " + empSpecies + "</p>" +
+                        "<p>" + "Description: " + empDescription + "</p>" +
+                        "<p>" + "Seen at: " + empLat + " / " + empLong + "</p>" +
+                        "<p>" + "On: " + empTime + " on " + empDate + "</p>"
+                    );
+                  }
+        clearMap();
+        recentPop();
     })
-
-    // $('#clear-map').on('click', function(event) {
-    //     clearMap();
-    // })
+  })
 
     var query = firebase.database().ref("turn-down-for-whales").orderByKey();
     query.once("value")
       .then(function(snapshot) {
-          snapshot.forEach(function(childSnapshot) {
+      snapshot.forEach(function(childSnapshot) {
     // key will be "ada" the first time and "alan" the second time
     var key = childSnapshot.key;
     // childData will be the actual contents of the child
