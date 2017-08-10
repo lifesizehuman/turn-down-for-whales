@@ -1,8 +1,6 @@
 
 $(document).ready(function() {
 
-
-
     $.ajaxPrefilter(function(options) {
         if (options.crossDomain && $.support.cors) {
             options.url = 'https://cors-anywhere.herokuapp.com/' + options.url;
@@ -28,7 +26,6 @@ $(document).ready(function() {
         attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery &copy; <a href="http://mapbox.com">Mapbox</a>',
         maxZoom: 18,
         id: 'mapbox.streets',
-        // accessToken: 'pk.eyJ1IjoibGlmZXNpemVodW1hbiIsImEiOiJjajV5N3h5aTIwYm95MzJ0YmZrMDN1Z3BwIn0.ArVX3kcpkvnawxCcNcCWhg'
     }).addTo(mymap);
 
     var group = L.layerGroup([])
