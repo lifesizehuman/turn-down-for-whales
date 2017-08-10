@@ -1,5 +1,5 @@
-#mapid { 
-	height: 50vh;
+#mapid {
+	height: 60vh;
 }
 
 .container-fluid {
@@ -9,4 +9,3 @@
 #recent-search-area, #recent-sightings-area {
 	overflow: auto;
 }
-
