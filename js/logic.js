@@ -53,6 +53,7 @@ $(document).ready(function() {
                     "<p>" + "On: " + response[i].sighted_at + "</p>"
                 );
                 markers.addLayer(marker);
+
             }
 
             $('select').change(function() {
@@ -65,10 +66,12 @@ $(document).ready(function() {
 
     function clearMap() {
         mymap.removeLayer(markers);
-        group.clearLayers();
+        group.clearLayers(markers);
     }
 
-    $("#submit").on('click', function(event) {
+    $(document).on('click', "#submit", function(event) {
+      //  $('#mapid').empty();
+      clearMap();
         populateMap();
         var recentSearches = [];
         var searchValue = $('select').val();
@@ -135,6 +138,15 @@ $(document).ready(function() {
         $('#sighting-time').val('');
         $('#latitude-input').val('');
         $('#longitude-input').val('');
+
+        $("#species-table > tbody").append(
+            "<tr><td>" + species +
+            "</td><td>" + description +
+            "</td><td>" + "Lat: " + latitude + " / Long: " + longitude +
+            "</td><td>" + date +
+            "</td><td>" + time +
+            "</td></tr>");
+
     })
 
     database.ref().on("child_added", function(childSnapshot, prevChildKey) {
@@ -148,23 +160,9 @@ $(document).ready(function() {
         var empDate = childSnapshot.val().date;
         var empTime = childSnapshot.val().time;
 
-        $("#species-table > tbody").append(
-            "<tr><td>" + empSpecies +
-            "</td><td>" + empDescription +
-            "</td><td>" + "Lat: " + empLat + " / Long: " + empLong +
-            "</td><td>" + empDate +
-            "</td><td>" + empTime +
-            "</td></tr>");
 
         $('#recent-sighting').on('click', function(event) {
             event.preventDefault();
-
-            var empSpecies = childSnapshot.val().species;
-            var empDescription = childSnapshot.val().description;
-            var empLat = childSnapshot.val().latitude;
-            var empLong = childSnapshot.val().longitude;
-            var empDate = childSnapshot.val().date;
-            var empTime = childSnapshot.val().time;
 
             var marker = L.marker([empLat, empLong]);
             group.addLayer(marker);
@@ -175,7 +173,9 @@ $(document).ready(function() {
                 "<p>" + "Seen at: " + empLat + " / " + empLong + "</p>" +
                 "<p>" + "On: " + empTime + " on " + empDate + "</p>"
             );
+
         })
+
     })
 
     $('#clear-map').on('click', function(event) {
