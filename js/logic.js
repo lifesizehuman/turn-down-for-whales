@@ -60,7 +60,7 @@ function populateMap() {
     }
 
     function clearMap() {
-      group.clearLayers(markers);
+      group.clearLayers();
     }
 
     $(document).on('click', "#submit", function(event) {
@@ -154,11 +154,12 @@ function populateMap() {
             "</td></tr>");
 
         $('#recent-sighting').on('click', function(event) {
-            // clearMap();
             event.preventDefault();
-            var marker = L.marker([empLat, empLong]).addTo(group);
 
-            marker.bindPopup(
+            clearMap();
+            var layer = L.marker([empLat, empLong]);
+            layer.addTo(group);
+            layer.bindPopup(
                 "<p>" + "Species: " + empSpecies + "</p>" +
                 "<p>" + "Description: " + empDescription + "</p>" +
                 "<p>" + "Seen at: " + empLat + " / " + empLong + "</p>" +
@@ -167,7 +168,21 @@ function populateMap() {
         })
     })
 
-    $('#clear-map').on('click', function(event) {
-        clearMap();
-    })
+    // $('#clear-map').on('click', function(event) {
+    //     clearMap();
+    // })
+
+    var query = firebase.database().ref("turn-down-for-whales").orderByKey();
+    query.once("value")
+      .then(function(snapshot) {
+          snapshot.forEach(function(childSnapshot) {
+    // key will be "ada" the first time and "alan" the second time
+    var key = childSnapshot.key;
+    // childData will be the actual contents of the child
+    var childData = childSnapshot.val();
+    console.log(query);
+    console.log(key);
+    console.log(childData);
+    });
+    });
 })
