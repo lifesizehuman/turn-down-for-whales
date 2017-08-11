@@ -50,6 +50,10 @@ var myIcon = L.icon({
     var markers = new L.FeatureGroup();
     var layer;
 
+
+
+mymap.on('click', onMapClick);
+
 function populateMap() {
         var species = $('#species-input').val();
         var queryURL = "http://hotline.whalemuseum.org/api.json?species=" + species;
@@ -104,6 +108,14 @@ function populateMap() {
                 "</td></tr>");
         }
     })
+
+    var popup = L.popup();
+
+function onMapClick(e) {
+    console.log(e.latlng.lat, e.latlng.lng);
+    $('#latitude-input').val(e.latlng.lat);
+    $('#longitude-input').val(e.latlng.lng);
+}
 
     $('#getLocation').on('click', function(event) {
         event.preventDefault();
