@@ -60,7 +60,7 @@ function populateMap() {
             for (var i = 0; i < response.length; i++) {
 
                 var layer = L.marker([response[i].latitude, response[i].longitude]
-                  // ,{icon: myIcon}
+                  ,{icon: myIcon}
                 );
                 layer.addTo(group);
 
@@ -178,7 +178,7 @@ function populateMap() {
         function recentPop() {
 
                     var layer = L.marker([empLat, empLong]
-                      // , {icon: myIcon}
+                      , {icon: myIcon}
                     ).addTo(group);
                     layer.addTo(group);
                     layer.bindPopup(
