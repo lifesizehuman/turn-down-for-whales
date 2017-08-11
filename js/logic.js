@@ -54,9 +54,12 @@ L.control.layers(baseMaps).addTo(mymap);
   }
 
 var myIcon = L.icon({
-    iconUrl: 'assets/whale-icon.png',
-    iconSize: [32, 37],
-    iconAnchor: [16, 37],
+  iconUrl: 'assets/tail-icon.png',
+  shadowIcon: 'assets/whale-tail-shadow.png',
+    iconSize: [37, 37],
+    shadowSize: [32, 37],
+    // iconAnchor: [16, 37],
+    shadowAnchor: [4, 62],
     popupAnchor: [0, -37]
 });
 
