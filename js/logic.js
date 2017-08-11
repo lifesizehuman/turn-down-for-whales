@@ -193,12 +193,12 @@ function populateMap() {
     })
   })
 
-    var ref = firebase.database().ref("turn-down-for-whales");
-    ref.once("value")
-  .then(function(snapshot) {
-    var a = snapshot.numChildren(); // 1 ("name")
-    var b = snapshot.child("name").numChildren(); // 2 ("first", "last")
-    var c = snapshot.child("name/first").numChildren(); // 0
-  });
+  //   var ref = firebase.database().ref("turn-down-for-whales");
+  //   ref.once("value")
+  // .then(function(snapshot) {
+  //   var a = snapshot.numChildren(); // 1 ("name")
+  //   var b = snapshot.child("name").numChildren(); // 2 ("first", "last")
+  //   var c = snapshot.child("name/first").numChildren(); // 0
+  // });
 
     });
