@@ -1,4 +1,6 @@
 
+
+
 $(document).ready(function() {
 
     $.ajaxPrefilter(function(options) {
@@ -130,7 +132,7 @@ function populateMap() {
         event.preventDefault();
 
         var speciesControl = $('#species-control').val();
-        var description = $('#sighting-description').val();
+        var description = $('#sighting-description').text();
         var sightingDate = $('#sighting-date').val();
         var sightingTime = $('#sighting-time').val();
         var latitude = $('#latitude-input').val();
@@ -163,6 +165,14 @@ function populateMap() {
         var empLong = childSnapshot.val().longitude;
         var empDate = childSnapshot.val().date;
         var empTime = childSnapshot.val().time;
+
+        // function  (empDescription)  {
+        //     return $( $.parseHTML(html) ).text();
+        // }
+        //
+        //
+        // empDescription = html.replace(/</g, "&lt;").replace(/>/g, "&gt;");
+
 
         $("#species-table > tbody").append(
             "<tr><td>" + empSpecies +
