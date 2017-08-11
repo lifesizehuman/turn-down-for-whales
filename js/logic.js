@@ -109,8 +109,6 @@ function populateMap() {
         }
     })
 
-    var popup = L.popup();
-
 function onMapClick(e) {
     console.log(e.latlng.lat, e.latlng.lng);
     $('#latitude-input').val(e.latlng.lat);
