@@ -86,13 +86,13 @@ function populateMap() {
     }
 
     $(document).on('click', "#submit", function(event) {
-      
+
         clearMap();
         populateMap();
 
         var searchValue = $('select').val();
 
-        recentSearches.push(searchValue);
+        // recentSearches.push(searchValue);
 
         database.ref("/search").push ({
           search: searchValue,
