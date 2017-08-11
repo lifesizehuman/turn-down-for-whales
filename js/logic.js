@@ -226,15 +226,18 @@ function populateMap() {
           var mDate = $("<h6>").text(empDate);
           var mTime = $("<h6>").text(empTime);
 
+
+
                     var layer = L.marker([empLat, empLong]
                       // , {icon: myIcon}
-                    ).addTo(group);
+                    );
                     layer.addTo(group);
-                    layer.bindPopup(
-                        "<p>" + "Species: " + mSpecies + "</p>" +
-                        "<p>" + "Description: " + mDescription + "</p>" +
-                        "<p>" + "Seen at: " + mLocation + "</p>" +
-                        "<p>" + "On: " + mTime + " on " + mDate + "</p>"
+                    layer.bindPopup();
+                    layer.setPopupContent(
+                        "<p>" + "Species: " + empSpecies + "</p>" +
+                        "<p>" + "Description: " + empDescription + "</p>" +
+                        "<p>" + "Seen at: " + empLat + " / " + empLong + "</p>" +
+                        "<p>" + "On: " + empTime + " on " + empDate + "</p>"
                     );
                   }
         recentPop();
