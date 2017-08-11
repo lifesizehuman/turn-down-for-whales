@@ -102,8 +102,25 @@ function populateMap() {
 
         recentSearches.push(searchValue);
 
+        database.ref("/search").push ({
+          search: searchValue,
+        })
+
+        database.ref("/search").on("child_added", function(childSnapshot, prevChildKey) {
+          var searchList = childSnapshot.val().search;
+
+          var tableBody = $('#recent-searches > tbody');
+      var tr = $("<tr>");
+
+      var tdSearches = $("<td>").text(searchList);
+
+      tr.append(tdSearches);
+      tableBody.append(tr);
+
+    })
+
         for (var i = 0; i < recentSearches.length; i++) {
-            $('#recent-searches > tbody').append(
+            $('#recent-searches > tbody').prepend(
                 "<tr><td>" + recentSearches[i] +
                 "</td></tr>");
         }
