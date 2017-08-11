@@ -39,12 +39,19 @@ L.control.layers(baseMaps).addTo(mymap);
     mymap.on('click', function() {
   if (mymap.scrollWheelZoom.enabled()) {
     mymap.scrollWheelZoom.disable();
-    layers
+    // layers
     }
     else {
     mymap.scrollWheelZoom.enable();
     }
+
   });
+
+  function onMapClick(mymap) {
+      console.log(mymap.latlng.lat, mymap.latlng.lng);
+      $('#latitude-input').val(mymap.latlng.lat);
+      $('#longitude-input').val(mymap.latlng.lng);
+  }
 
 var myIcon = L.icon({
     iconUrl: 'assets/whale-icon.png',
@@ -125,11 +132,7 @@ function populateMap() {
       })
     })
 
-function onMapClick(e) {
-    console.log(e.latlng.lat, e.latlng.lng);
-    $('#latitude-input').val(e.latlng.lat);
-    $('#longitude-input').val(e.latlng.lng);
-}
+
 
     $('#getLocation').on('click', function(event) {
         event.preventDefault();
@@ -217,15 +220,21 @@ function onMapClick(e) {
 
         function recentPop() {
 
+          var mSpecies = $("<h6>").text(empSpecies);
+          var mDescription = $("<h6>").text(empDescription);
+          var mLocation = $("<h6>").text(empLat + empLong);
+          var mDate = $("<h6>").text(empDate);
+          var mTime = $("<h6>").text(empTime);
+
                     var layer = L.marker([empLat, empLong]
                       // , {icon: myIcon}
                     ).addTo(group);
                     layer.addTo(group);
                     layer.bindPopup(
-                        "<p>" + "Species: " + empSpecies + "</p>" +
-                        "<p>" + "Description: " + empDescription + "</p>" +
-                        "<p>" + "Seen at: " + empLat + " / " + empLong + "</p>" +
-                        "<p>" + "On: " + empTime + " on " + empDate + "</p>"
+                        "<p>" + "Species: " + mSpecies + "</p>" +
+                        "<p>" + "Description: " + mDescription + "</p>" +
+                        "<p>" + "Seen at: " + mLocation + "</p>" +
+                        "<p>" + "On: " + mTime + " on " + mDate + "</p>"
                     );
                   }
         recentPop();
