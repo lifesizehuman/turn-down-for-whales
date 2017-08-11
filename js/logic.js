@@ -88,6 +88,11 @@ function populateMap() {
       //  $('#mapid').empty();
         clearMap();
         populateMap();
+
+        // database.ref("/searches").push({
+        //     species: species
+        // })
+
         var recentSearches = [];
         var searchValue = $('select').val();
 
@@ -138,7 +143,7 @@ function populateMap() {
         var latitude = $('#latitude-input').val();
         var longitude = $('#longitude-input').val();
 
-        database.ref().push({
+        database.ref("/sightings").push({
             species: speciesControl,
             description: description,
             date: sightingDate,
@@ -155,7 +160,7 @@ function populateMap() {
         $('#longitude-input').val('');
     })
 
-    database.ref().on("child_added", function(childSnapshot, prevChildKey) {
+    database.ref("/sightings").on("child_added", function(childSnapshot, prevChildKey) {
 
         console.log(childSnapshot.val());
 
@@ -166,21 +171,33 @@ function populateMap() {
         var empDate = childSnapshot.val().date;
         var empTime = childSnapshot.val().time;
 
-        // function  (empDescription)  {
-        //     return $( $.parseHTML(html) ).text();
-        // }
-        //
-        //
-        // empDescription = html.replace(/</g, "&lt;").replace(/>/g, "&gt;");
+        var tableBody = $('#species-table > tbody');
 
 
-        $("#species-table > tbody").append(
-            "<tr><td>" + empSpecies +
-            "</td><td>" + empDescription +
-            "</td><td>" + "Lat: " + empLat + " / Long: " + empLong +
-            "</td><td>" + empDate +
-            "</td><td>" + empTime +
-            "</td></tr>");
+    // Create a new tr (name of var doesn't matter)
+    var tr = $("<tr>");
+
+    // Create a td entry for the name column
+    var tdSpecies = $("<td>").text(empSpecies);
+    var tdDescription = $("<td>").text(empDescription);
+    var tdLocation = $("<td>").text(empLat + empLong);
+    var tdDate = $("<td>").text(empDate);
+    var tdTime = $("<td>").text(empTime);
+
+    // Add the td's into the row
+    tr.append(tdSpecies, tdDescription, tdLocation, tdDate, tdTime);
+
+    // Finally, add our new row into the table itself
+    tableBody.append(tr);
+
+
+        // $("#species-table > tbody").append(
+        //     "<tr><td>" + empSpecies +
+        //     "</td><td>" + empDescription +
+        //     "</td><td>" + "Lat: " + empLat + " / Long: " + empLong +
+        //     "</td><td>" + empDate +
+        //     "</td><td>" + empTime +
+        //     "</td></tr>");
 
     $('#recent-sighting').on('click', function(event) {
         event.preventDefault();
