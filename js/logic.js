@@ -18,11 +18,28 @@ $(document).ready(function() {
 
     var database = firebase.database();
 
-    var mymap = L.map('mapid').setView([38, -123], 3);
+    var outdoors = L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/satellite-v9/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoibGlmZXNpemVodW1hbiIsImEiOiJjajV5N3hleDIwZjE5MnFsbmVrMjNscWJqIn0.epziWwc2W3ssEQt2Cjcm1A', {
+        id: 'mapbox.outdoors'}),
+    dark   = L.tileLayer('https://api.mapbox.com/styles/v1/lifesizehuman/cj65p1axm6m8t2smwy6tvcm62/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoibGlmZXNpemVodW1hbiIsImEiOiJjajV5N3hleDIwZjE5MnFsbmVrMjNscWJqIn0.epziWwc2W3ssEQt2Cjcm1A', {id: 'mapbox.dark'});
+
+    var mymap = L.map('mapid', {
+    center: [38, -123],
+    zoom: 3,
+    layers: [outdoors]
+});
+
+var baseMaps = {
+    "Dark": dark,
+    "Satellite": outdoors
+};
+
+L.control.layers(baseMaps).addTo(mymap);
+
     mymap.once('focus', function() { mymap.scrollWheelZoom.enable(); });
     mymap.on('click', function() {
   if (mymap.scrollWheelZoom.enabled()) {
     mymap.scrollWheelZoom.disable();
+    layers
     }
     else {
     mymap.scrollWheelZoom.enable();
