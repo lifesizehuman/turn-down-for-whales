@@ -137,7 +137,7 @@ function populateMap() {
         event.preventDefault();
 
         var speciesControl = $('#species-control').val();
-        var description = $('#sighting-description').text();
+        var description = $('#sighting-description').val();
         var sightingDate = $('#sighting-date').val();
         var sightingTime = $('#sighting-time').val();
         var latitude = $('#latitude-input').val();
