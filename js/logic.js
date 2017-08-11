@@ -47,8 +47,6 @@ var myIcon = L.icon({
     var markers = new L.FeatureGroup();
     var layer;
 
-
-
 mymap.on('click', onMapClick);
 
 function populateMap() {
@@ -92,8 +90,6 @@ function populateMap() {
 
         var searchValue = $('select').val();
 
-        // recentSearches.push(searchValue);
-
         database.ref("/search").push ({
           search: searchValue,
         })
@@ -109,13 +105,7 @@ function populateMap() {
       tr.append(tdSearches);
       tableBody.append(tr);
 
-    })
-
-        // for (var i = 0; i < recentSearches.length; i++) {
-        //     $('#recent-searches > tbody').prepend(
-        //         "<tr><td>" + recentSearches[i] +
-        //         "</td></tr>");
-        // }
+      })
     })
 
 function onMapClick(e) {
@@ -193,30 +183,17 @@ function onMapClick(e) {
         var tableBody = $('#species-table > tbody');
 
 
-    // Create a new tr (name of var doesn't matter)
     var tr = $("<tr>");
 
-    // Create a td entry for the name column
     var tdSpecies = $("<td>").text(empSpecies);
     var tdDescription = $("<td>").text(empDescription);
     var tdLocation = $("<td>").text(empLat + empLong);
     var tdDate = $("<td>").text(empDate);
     var tdTime = $("<td>").text(empTime);
 
-    // Add the td's into the row
     tr.append(tdSpecies, tdDescription, tdLocation, tdDate, tdTime);
 
-    // Finally, add our new row into the table itself
     tableBody.append(tr);
-
-
-        // $("#species-table > tbody").append(
-        //     "<tr><td>" + empSpecies +
-        //     "</td><td>" + empDescription +
-        //     "</td><td>" + "Lat: " + empLat + " / Long: " + empLong +
-        //     "</td><td>" + empDate +
-        //     "</td><td>" + empTime +
-        //     "</td></tr>");
 
     $('#recent-sighting').on('click', function(event) {
         event.preventDefault();
@@ -234,17 +211,7 @@ function onMapClick(e) {
                         "<p>" + "On: " + empTime + " on " + empDate + "</p>"
                     );
                   }
-        // clearMap();
         recentPop();
     })
   })
-
-  //   var ref = firebase.database().ref("turn-down-for-whales");
-  //   ref.once("value")
-  // .then(function(snapshot) {
-  //   var a = snapshot.numChildren(); // 1 ("name")
-  //   var b = snapshot.child("name").numChildren(); // 2 ("first", "last")
-  //   var c = snapshot.child("name/first").numChildren(); // 0
-  // });
-
-    });
+});
