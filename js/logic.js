@@ -191,7 +191,7 @@ function onMapClick(e) {
     var tdDate = $("<td>").text(empDate);
     var tdTime = $("<td>").text(empTime);
 
-    tr.prepend(tdSpecies, tdDescription, tdLocation, tdDate, tdTime);
+    tr.append(tdSpecies, tdDescription, tdLocation, tdDate, tdTime);
 
     tableBody.append(tr);
 
