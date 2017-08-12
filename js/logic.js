@@ -129,35 +129,40 @@ var llBounds = mymap.getBounds();
   }
 
 
-function recentSearch() {
+
+function pushSearch() {
 
   var searchValue = $("select").val();
   database.ref("/search").push({
     search: searchValue
-
   });
+}
 
-  database
-    .ref("/search").limitToLast(5).on("child_added", function(childSnapshot, prevChildKey) {
+function prependSearches() {
+  database.ref("/search").limitToLast(5).on("child_added", function(childSnapshot, prevChildKey) {
 
       var searchList = childSnapshot.val().search;
       var tableBody = $("#recent-searches > tbody");
       var tr = $("<tr>");
       var tdSearches = $("<td>").text(searchList);
 
-      tr.append(tdSearches);
-      tableBody.append(tr);
+      tr.prepend(tdSearches);
+      tableBody.prepend(tr);
     });
-  }
+}
+
+
+
 
   $(document).on("click", "#submit", function(event) {
+    event.preventDefault();
     clearMap();
     populateMap();
     mymap.fitBounds(llBounds);
-    recentSearch();
+    pushSearch();
   });
 
-
+prependSearches();
 
   $("#getLocation").on("click", function(event) {
     event.preventDefault();

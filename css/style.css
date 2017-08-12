@@ -10,5 +10,8 @@
 	height: 60vh;
 	width:100%;
 	margin-bottom: 15px;
+}
 
+#recent-search-area {
+  overflow: auto;
 }
