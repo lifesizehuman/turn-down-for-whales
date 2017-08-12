@@ -280,7 +280,7 @@ $(document).ready(function() {
     });
 });
 
-var facts = ["fact1", "fact2", "fact3", "fact4"];
+var facts = ["Moby Dick was based on a real whale named Mocha Dick. #mochadick", "Female Humpbacks Have BFFs. #squadgoals", "The Blue Whale Is The Largest Animal that has ever lived on earth. #thatsahugebitch", "Beluga Whales Love Music #bumpinbeluga"];
 
 var whaleFactDisplay = facts[Math.floor(Math.random() * facts.length)];
 
