@@ -119,7 +119,6 @@ $(document).ready(function() {
       $('select').change(function() {
         species = this.value;
       });
-
     });
   }
 
@@ -128,6 +127,7 @@ var llBounds = mymap.getBounds();
   function clearMap() {
     group.clearLayers();
   }
+  
 
 function recentSearch() {
 
@@ -189,8 +189,10 @@ recentSearch();
   });
 
   $("#submit-sighting").on("click", function(event) {
+
     event.preventDefault();
     group.clearLayers();
+
     var speciesControl = $("#species-control").val();
     var description = $("#sighting-description").val();
     var sightingDate = $("#sighting-date").val();
@@ -199,31 +201,13 @@ recentSearch();
     var longitude = $("#longitude-input").val();
 
 
-    L.marker([latitude, longitude]).addTo(mymap);
-
-//     var slayer = L.marker([latitude, longitude]);
-
-//     slayer.addTo(group);
-//     slayer.bindPopup(
-//       "<p>" +
-//         "Species: " +
-//         speciesControl +
-//         "</p>" +
-//         "<p>" +
-//         "Description: " +
-//         description +
-//         "</p>" +
-//         "<p>" +
-//         "Seen at: " +
-//         latitude +
-//         " / " +
-//         longitude +
-//         "</p>" +
-//         "<p>" +
-//         "On: " +
-//         sightingDate + " " + sightingTime +
-//         "</p>"
-//     );
+    var slayer = L.marker([latitude, longitude]).addTo(group);
+    slayer.bindPopup(
+      "<p>" + "Species: " + speciesControl + "</p>" +
+      "<p>" + "Description: " + description + "</p>" +
+      "<p>" + "Seen at: " + latitude + " / " + longitude + "</p>" +
+      "<p>" + "On: " + sightingDate + " at " + sightingTime + "</p>"
+    );
 
     database.ref("/sightings").push({
       species: speciesControl,
@@ -232,7 +216,6 @@ recentSearch();
       time: sightingTime,
       latitude: latitude,
       longitude: longitude
-
     });
 
     $("#species-control").val("");
