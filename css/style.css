@@ -12,6 +12,6 @@
 	margin-bottom: 15px;
 }
 
-#recent-search-area {
-  overflow: auto;
+tr:nth-child(n + 6) {
+    display:none;
 }
