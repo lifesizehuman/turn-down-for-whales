@@ -1,4 +1,6 @@
 $(document).ready(function() {
+  $('select').material_select();
+
   $.ajaxPrefilter(function(options) {
     if (options.crossDomain && $.support.cors) {
       options.url = "https://cors-anywhere.herokuapp.com/" + options.url;
