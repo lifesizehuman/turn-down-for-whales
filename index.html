@@ -4,30 +4,53 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Turn Down For Whales</title>
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="" />
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/css/materialize.min.css">
   <link rel="stylesheet" type="text/css" href="css/style.css">
   <link rel="icon" type="image/png" href="assets/whale-icon.png">
 </head>
 
 <body>
 
-  <nav class="navbar navbar-default">
-    <div class="container-fluid">
-      <div class="navbar-header">
-        <a class="navbar-brand" href="#">Turn Down for Whales</a>
-      </div>
+  <nav>
+    <div class="nav-wrapper teal">
+      <a href="#" class="brand-logo">Turn Down for Whales</a>
     </div>
   </nav>
 
+  <div class="row">
+    <div class="col s12">
+      <div class="card">
+         <div class="card-image">
+           <img src="assets/dark-blue-ocean.jpg" id="conservation">
+                      <span class="card-title">Mission Statement + Conservation Resources</span>
+                    </div>
+          <div class="card-content">
+          <p class="info">Turn Down for Whales was inspired by our love of the ocean and a desire to share information about whales and all of their marine friends. </p>
+          <p class="info">We hope that you use our site as an interactive way to experience the wonder of the ocean and are inspired to take action on behalf of the amazing creatures that live there. </p>
+          </div>
+<div class="card-action">
+          <a href="" id="learn">Learn</a>
+          <a href="" id="volunteer">Volunteer</a>
+          <a href="" id="donate">Donate</a>
+</div>
+          </div>
+          </div>
+        </div>
+      </div>
+
+
+<div class="container">
   <div id="mapid"></div>
+</div>
 
-  <div class="container-fluid">
+
+
+
     <div class="row">
-      <div class="col-sm-3">
-
-        <div class="panel panel-default">
-
-          <div class="panel-heading">Look For Whales</div>
+      <div class="col s4">
+        <div class="card">
+          <div class="card-content">
+          <span class="card-title">Look For Whales</span>
 
           <div class="panel-body">
             <select id="species-input">
@@ -48,16 +71,13 @@
                 <option value="other">Other</option>
                 <option value="unknown">Unknown</option>
               </select>
-            <p>
-            </p>
-            <button class="btn btn-default btn-sm" id="submit" type="submit">Submit</button>
-            <button class="btn btn-default btn-sm" id="recent-sighting" type="submit">Recent Sightings</button>
-            <p>
-            </p>
 
-            <h4>Recent Searches</h4>
-            <div id="recent-search-area" style="height:130px">
-              <table class="table table-striped" id="recent-searches">
+            <a class="waves-effect waves-light btn" id="submit" type="submit">Submit</a>
+            <a class="waves-effect waves-light btn" id="recent-sighting" type="submit">Recent Sightings</a>
+
+            <h5>Recent Searches</h5>
+            <div id="recent-search-area" style="height:290px">
+              <table class="striped" id="recent-searches">
                 <thead>
                 </thead>
                 <tbody>
@@ -67,11 +87,12 @@
           </div>
         </div>
       </div>
+    </div>
 
-      <div class="col-sm-9">
-        <div class="panel panel-default">
-
-          <div class="panel-heading">I Saw a Whale!</div>
+      <div class="col s8">
+        <div class="card">
+          <div class="card-content">
+          <span class="card-title">Look For Whales</span>
 
           <div class="panel-body">
             <select id="species-control">
@@ -94,7 +115,7 @@
                         </select>
             </p>
             <div class="row">
-              <div class="col-xs-12">
+              <div class="col s12">
                 <p>
                   <input type="text" class="form-control" id="sighting-description" placeholder="Sighting Description">
                 </p>
@@ -102,64 +123,65 @@
             </div>
 
             <div class="row">
-              <div class="col-xs-3">
+              <div class="col s3">
                 <input type="number" class="form-control" id="latitude-input" placeholder="Latitude">
               </div>
-              <div class="col-xs-3">
+              <div class="col s3">
                 <input type="number" class="form-control" id="longitude-input" placeholder="Longitude">
               </div>
-              <div class="col-xs-6">
-                <input class="btn btn-default" type="button" id="getLocation" value="Get My Location">
+              <div class="col s6">
+                <input class="waves-effect waves-light btn" type="button" id="getLocation" value="Get My Location">
               </div>
             </div>
             <div class="row">
-              <div class="col-xs-6">
+              <div class="col s6">
                 <h6>Sighting Date</h6>
                 <input type="date" class="form-control" id="sighting-date" placeholder="Sighting Date">
               </div>
-              <div class="col-xs-6">
+              <div class="col s6">
                 <h6>Sighting Time</h6>
                 <input type="time" class="form-control" id="sighting-time" placeholder="Sighting Time">
               </div>
             </div>
-            <p>
-            </p>
+          </div>
             <div class="row">
-              <div class="col-xs-6">
-                <p>
-                  <button class="btn btn-default" id="submit-sighting" type="submit">Submit My Sighting</button>
-                </p>
+              <div class="card-action">
+
+                <a class="waves-effect waves-light btn" id="submit-sighting" type="submit">Submit My Sighting</a>
+
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
+  </div>
 
 <div class="row">
-
-      <div class="col-sm-3">
-        <div class="panel panel-default">
-
-          <div class="panel-heading" id="pop-up-panel">Random Whale Fact</div>
+      <div class="col s4">
+        <div class="card">
+          <div class="card-content">
+          <span class="card-title">Random Whale Fact</span>
 
           <div class="panel-body">
             <p id='fact-display' style='height:155px'></p>
-
-            <button type="button" class="btn btn-info" id="fact-button">Tell Me More!</button>
+</div>
+<div class="card-action">
+            <button class="waves-effect waves-light btn" id="fact-button">Tell Me More!</button>
 
           </div>
         </div>
       </div>
+    </div>
 
-      <div class="col-xs-9">
-        <div class="panel panel-default">
-
-          <div class="panel-heading">Recent Sightings</div>
+      <div class="col s8">
+        <div class="card">
+          <div class="card-content">
+          <span class="card-title">Recent Sightings</span>
 
           <div class="panel-body">
-            <div class="panel-body" style="height:200px" id="recent-sightings-area">
-              <table class="table table-striped" id="species-table">
+            <div id="recent-sightings-area" style="height:200px" >
+              <table class="striped" id="species-table">
                 <thead>
                   <tr>
                     <th>Species</th>
@@ -178,30 +200,10 @@
       </div>
     </div>
 
-    <div class="row">
-      <div class="col-xs-12">
-        <div class="panel panel-default">
 
-          <div class="panel-heading">Conservation</div>
-
-          <div class="panel-body">
-            <div class="panel-body" style="height:350px" id="conservation">
-            <div id="transbox" style="height:295px">
-            <h3 class="info">Turn Down for Whales was inspired by our love of the ocean and a desire to share information about whales and all of their marine friends. </h3>
-            <h3 class="info">We hope that you use our site as an interactive way to experience the wonder of the ocean and are inspired to take action on behalf of the amazing creatures that live there. </h3>
-
-            <button type="button" class="btn btn-info" id="learn">Learn</button>
-            <button type="button" class="btn btn-info" id="volunteer">Volunteer</button>
-            <button type="button" class="btn btn-info" id="donate">Donate</button>
-
-            </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/js/materialize.min.js"></script>
     <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
     <script src="https://d3js.org/d3.v4.min.js"></script>
     <script src="https://www.gstatic.com/firebasejs/4.2.0/firebase.js"></script>

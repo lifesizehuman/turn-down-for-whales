@@ -6,21 +6,10 @@
     border-radius: 0;
 }
 
-
-
-body {
-    background: #081422;
-}
-
-.navbar {
-    border-radius: 0px !important;
-		margin-bottom: 0px;
-}
-
 #mapid {
 	height: 60vh;
 	width:100%;
-	margin-bottom: 30px;
+	margin-bottom: 15px;
 
 }
 
@@ -28,20 +17,20 @@ body {
 	overflow: auto;
 }
 
-#conservation {
+/*#conservation {
     background-image: url('../assets/dark-blue-ocean.jpg');
-}
+}*/
 
-#transbox {
+/*#transbox {
     margin:10px;
     background-color:#ffffff;
     opacity:0.9;
     padding:20px;
     text-align:center;
-}
+}*/
 
-#learn, #volunteer, #donate, #fact-button {
-    padding: 10px;
+/*#learn, #volunteer, #donate, #fact-button {
+    /*padding: 10px;
     margin:20px;
     font-size:18px;
-}
+}*/
