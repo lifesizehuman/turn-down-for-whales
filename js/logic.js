@@ -127,7 +127,7 @@ var llBounds = mymap.getBounds();
   function clearMap() {
     group.clearLayers();
   }
-  
+
 
 function recentSearch() {
 
@@ -154,9 +154,10 @@ function recentSearch() {
     clearMap();
     populateMap();
     mymap.fitBounds(llBounds);
+    recentSearch();
   });
 
-recentSearch();
+
 
   $("#getLocation").on("click", function(event) {
     event.preventDefault();
