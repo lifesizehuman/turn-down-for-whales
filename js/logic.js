@@ -280,7 +280,7 @@ $(document).ready(function() {
     });
 });
 
-var facts = ["Moby Dick was based on a real whale named Mocha Dick. #mochadick", "Female Humpbacks Have BFFs. #squadgoals", "The Blue Whale Is The Largest Animal that has ever lived on earth. #thatsahugebitch", "Beluga Whales Love Music #bumpinbeluga"];
+var facts = ["Moby Dick by Herman Melville was based on a real whale named Mocha Dick. #mochadick", "Female Humpback Whales have BFFs and reunite each year. #squadgoals", "The Blue Whale is the largest animal that has ever lived on earth.", "Beluga Whales love music and even sometimes join in synchronized dance. #bumpinbeluga", "Bowhead Whales can live for over 200 years.", "Some whales imitate human speech. A captive whale called “Lugosi” at the Vancouver Aquarium could reportedly say its own name.", "Whales feed by swallowing their weight in water.", "Sperm Whales sleep standing up. Scientists think they dive down and grab snatches of sleep that can last up to about 12 minutes and then slowly drift to the surface head-first.", "In any area shared by whales, everyone sings the same song. Over time, the song will change, and if the new song is catchy enough, it will spread to other populations of whales. When a new whalesong comes out, it’s sometimes a sort of remix of the previous song", "Whales adopt other animals, and sometimes treat objects as surrogate babies."];
 
 var whaleFactDisplay = facts[Math.floor(Math.random() * facts.length)];
 
