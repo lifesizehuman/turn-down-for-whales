@@ -196,14 +196,36 @@ var llBounds = mymap.getBounds();
 
   $("#submit-sighting").on("click", function(event) {
     event.preventDefault();
-
+    group.clearLayers();
     var speciesControl = $("#species-control").val();
     var description = $("#sighting-description").val();
     var sightingDate = $("#sighting-date").val();
     var sightingTime = $("#sighting-time").val();
     var latitude = $("#latitude-input").val();
     var longitude = $("#longitude-input").val();
-    L.marker([latitude, longitude]).addTo(mymap);
+    var slayer = L.marker([latitude, longitude]);
+
+    slayer.addTo(group);
+    slayer.bindPopup(
+      "<p>" +
+        "Species: " +
+        speciesControl +
+        "</p>" +
+        "<p>" +
+        "Description: " +
+        description +
+        "</p>" +
+        "<p>" +
+        "Seen at: " +
+        latitude +
+        " / " +
+        longitude +
+        "</p>" +
+        "<p>" +
+        "On: " +
+        sightingDate + " " + sightingTime +
+        "</p>"
+    );
 
     database.ref("/sightings").push({
       species: speciesControl,
