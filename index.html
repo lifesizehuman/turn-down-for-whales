@@ -38,13 +38,9 @@
         </div>
       </div>
 
-
 <div class="container">
   <div id="mapid"></div>
 </div>
-
-
-
 
     <div class="row">
       <div class="col s4">
@@ -52,8 +48,9 @@
           <div class="card-content">
           <span class="card-title">Look For Whales</span>
 
-          <div class="panel-body">
+          <div class="input-field col s12">
             <select id="species-input">
+                <option value="" disabled selected>Select a Species</option>
                 <option value="orca">Orca</option>
                 <option value="humpback">Humpback</option>
                 <option value="gray whale">Gray Whale</option>
@@ -71,12 +68,14 @@
                 <option value="other">Other</option>
                 <option value="unknown">Unknown</option>
               </select>
-
-            <a class="waves-effect waves-light btn" id="submit" type="submit">Submit</a>
-            <a class="waves-effect waves-light btn" id="recent-sighting" type="submit">Recent Sightings</a>
-
+              <!-- <label>Select Species</label> -->
+            </div>
+<div class="card-action">
+            <a id="submit" type="submit">Submit</a>
+            <a id="recent-sighting" type="submit">Recent Sightings</a>
+</div>
             <h5>Recent Searches</h5>
-            <div id="recent-search-area" style="height:290px">
+            <div id="recent-search-area" style="height:250px">
               <table class="striped" id="recent-searches">
                 <thead>
                 </thead>
@@ -87,15 +86,16 @@
           </div>
         </div>
       </div>
-    </div>
+
 
       <div class="col s8">
         <div class="card">
           <div class="card-content">
           <span class="card-title">Look For Whales</span>
 
-          <div class="panel-body">
+          <div class="input-field col s12">
             <select id="species-control">
+                <option value="" disabled selected>Select a Species</option>
                             <option value="orca">Orca</option>
                             <option value="humpback">Humpback</option>
                             <option value="gray whale">Gray Whale</option>
@@ -113,12 +113,12 @@
                             <option value="other">Other</option>
                             <option value="unknown">Unknown</option>
                         </select>
-            </p>
+
             <div class="row">
               <div class="col s12">
-                <p>
+
                   <input type="text" class="form-control" id="sighting-description" placeholder="Sighting Description">
-                </p>
+
               </div>
             </div>
 
@@ -144,12 +144,12 @@
               </div>
             </div>
           </div>
-            <div class="row">
+
               <div class="card-action">
 
                 <a class="waves-effect waves-light btn" id="submit-sighting" type="submit">Submit My Sighting</a>
 
-              </div>
+
             </div>
           </div>
         </div>
@@ -167,7 +167,7 @@
             <p id='fact-display' style='height:155px'></p>
 </div>
 <div class="card-action">
-            <button class="waves-effect waves-light btn" id="fact-button">Tell Me More!</button>
+            <a id="fact-button">Tell Me More!</a>
 
           </div>
         </div>
