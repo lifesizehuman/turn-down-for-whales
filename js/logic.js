@@ -1,7 +1,5 @@
 $(document).ready(function() {
 
-  generateFact();
-
   $('select').material_select();
 
   $.ajaxPrefilter(function(options) {
@@ -9,6 +7,8 @@ $(document).ready(function() {
       options.url = "https://cors-anywhere.herokuapp.com/" + options.url;
     }
   });
+
+  generateFact();
 
   var config = {
     apiKey: "AIzaSyAqMI1aab7fpTQsdo7zUXnXAhnIwVTdBAs",
@@ -24,14 +24,10 @@ $(document).ready(function() {
 
   var outdoors = L.tileLayer(
     "https://api.mapbox.com/styles/v1/mapbox/satellite-v9/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoibGlmZXNpemVodW1hbiIsImEiOiJjajV5N3hleDIwZjE5MnFsbmVrMjNscWJqIn0.epziWwc2W3ssEQt2Cjcm1A",
-    {
-      id: "mapbox.outdoors"
-    }
-  ),
+    {id: "mapbox.outdoors"}),
     light = L.tileLayer(
       "https://api.mapbox.com/styles/v1/mapbox/light-v9/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoibGlmZXNpemVodW1hbiIsImEiOiJjajV5N3hleDIwZjE5MnFsbmVrMjNscWJqIn0.epziWwc2W3ssEQt2Cjcm1A",
-      { id: "mapbox.light" }
-    );
+      { id: "mapbox.light" });
 
   var mymap = L.map("mapid", {
     center: [38, -123],
@@ -50,8 +46,7 @@ $(document).ready(function() {
   mymap.on('click', function() {
   if (mymap.scrollWheelZoom.enabled()) {
     mymap.scrollWheelZoom.disable();
-    }
-    else {
+  } else {
     mymap.scrollWheelZoom.enable();
     }
   });
@@ -71,14 +66,6 @@ $(document).ready(function() {
     shadowAnchor: [4, 62],
     popupAnchor: [0, -37]
   });
-
-  // L.tileLayer(
-  //   "https://api.mapbox.com/styles/v1/mapbox/satellite-v9/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoibGlmZXNpemVodW1hbiIsImEiOiJjajV5N3hleDIwZjE5MnFsbmVrMjNscWJqIn0.epziWwc2W3ssEQt2Cjcm1A",
-  //   {
-  //     maxZoom: 18,
-  //     id: "mapbox.outdoors"
-  //   }
-  // ).addTo(mymap);
 
   var group = L.layerGroup([]).addTo(mymap);
   var markers = new L.FeatureGroup();
@@ -102,38 +89,20 @@ $(document).ready(function() {
         layer.addTo(group);
 
         layer.bindPopup(
-          "<p>" +
-            "Species: " +
-            response[i].species +
-            "</p>" +
-            "<p>" +
-            "Description: " +
-            response[i].description +
-            "</p>" +
-            "<p>" +
-            "Seen at: " +
-            response[i].latitude +
-            " / " +
-            response[i].longitude +
-            "</p>" +
-            "<p>" +
-            "On: " +
-            response[i].sighted_at +
-            "</p>"
-        );
-      }
+            "<p>" + "Species: " + response[i].species + "</p>" +
+            "<p>" + "Description: " + response[i].description + "</p>" +
+            "<p>" + "Seen at: " + response[i].latitude + " / " + response[i].longitude + "</p>" +
+            "<p>" + "On: " + response[i].sighted_at + "</p>");
+          }
 
-      $("select").change(function() {
+      $('select').change(function() {
         species = this.value;
       });
+
     });
   }
 
 var llBounds = mymap.getBounds();
-
-
-
-
 
   function clearMap() {
     group.clearLayers();
@@ -141,21 +110,18 @@ var llBounds = mymap.getBounds();
 
 function recentSearch() {
 
-
   var searchValue = $("select").val();
-
   database.ref("/search").push({
     search: searchValue
+
   });
 
   database
-    .ref("/search").limitToLast(5)
-    .on("child_added", function(childSnapshot, prevChildKey) {
-      var searchList = childSnapshot.val().search;
+    .ref("/search").limitToLast(5).on("child_added", function(childSnapshot, prevChildKey) {
 
+      var searchList = childSnapshot.val().search;
       var tableBody = $("#recent-searches > tbody");
       var tr = $("<tr>");
-
       var tdSearches = $("<td>").text(searchList);
 
       tr.append(tdSearches);
@@ -167,13 +133,9 @@ function recentSearch() {
     clearMap();
     populateMap();
     mymap.fitBounds(llBounds);
-
-
-
-
   });
 
-  recentSearch();
+recentSearch();
 
   $("#getLocation").on("click", function(event) {
     event.preventDefault();
@@ -194,6 +156,7 @@ function recentSearch() {
 
       $("#latitude-input").val(`${crd.latitude}`);
       $("#longitude-input").val(`${crd.longitude}`);
+
     }
 
     function error(err) {
@@ -201,6 +164,7 @@ function recentSearch() {
     }
 
     navigator.geolocation.getCurrentPosition(success, error, options);
+
   });
 
   $("#submit-sighting").on("click", function(event) {
@@ -212,29 +176,33 @@ function recentSearch() {
     var sightingTime = $("#sighting-time").val();
     var latitude = $("#latitude-input").val();
     var longitude = $("#longitude-input").val();
-    var slayer = L.marker([latitude, longitude]);
 
-    slayer.addTo(group);
-    slayer.bindPopup(
-      "<p>" +
-        "Species: " +
-        speciesControl +
-        "</p>" +
-        "<p>" +
-        "Description: " +
-        description +
-        "</p>" +
-        "<p>" +
-        "Seen at: " +
-        latitude +
-        " / " +
-        longitude +
-        "</p>" +
-        "<p>" +
-        "On: " +
-        sightingDate + " " + sightingTime +
-        "</p>"
-    );
+
+    L.marker([latitude, longitude]).addTo(mymap);
+
+//     var slayer = L.marker([latitude, longitude]);
+
+//     slayer.addTo(group);
+//     slayer.bindPopup(
+//       "<p>" +
+//         "Species: " +
+//         speciesControl +
+//         "</p>" +
+//         "<p>" +
+//         "Description: " +
+//         description +
+//         "</p>" +
+//         "<p>" +
+//         "Seen at: " +
+//         latitude +
+//         " / " +
+//         longitude +
+//         "</p>" +
+//         "<p>" +
+//         "On: " +
+//         sightingDate + " " + sightingTime +
+//         "</p>"
+//     );
 
     database.ref("/sightings").push({
       species: speciesControl,
@@ -243,6 +211,7 @@ function recentSearch() {
       time: sightingTime,
       latitude: latitude,
       longitude: longitude
+
     });
 
     $("#species-control").val("");
@@ -251,12 +220,12 @@ function recentSearch() {
     $("#sighting-time").val("");
     $("#latitude-input").val("");
     $("#longitude-input").val("");
+
   });
 
   database
-    .ref("/sightings")
-    .limitToLast(5)
-    .on("child_added", function(childSnapshot, prevChildKey) {
+    .ref("/sightings").limitToLast(5).on("child_added", function(childSnapshot, prevChildKey) {
+
       console.log(childSnapshot.val());
 
       var empSpecies = childSnapshot.val().species;
@@ -277,10 +246,10 @@ function recentSearch() {
       var tdTime = $("<td>").text(empTime);
 
       tr.append(tdSpecies, tdDescription, tdLocation, tdDate, tdTime);
-
       tableBody.append(tr);
 
       $("#recent-sighting").on("click", function(event) {
+
         event.preventDefault();
 
         function recentPop() {
@@ -290,41 +259,22 @@ function recentSearch() {
           var mDate = $("<h6>").text(empDate);
           var mTime = $("<h6>").text(empTime);
 
-          var layer = L.marker(
-            [empLat, empLong]
+          var layer = L.marker([empLat, empLong]
             // , {icon: myIcon}
           );
           layer.addTo(group);
           layer.bindPopup();
           layer.setPopupContent(
-            "<p>" +
-              "Species: " +
-              empSpecies +
-              "</p>" +
-              "<p>" +
-              "Description: " +
-              empDescription +
-              "</p>" +
-              "<p>" +
-              "Seen at: " +
-              empLat +
-              " / " +
-              empLong +
-              "</p>" +
-              "<p>" +
-              "On: " +
-              empTime +
-              " on " +
-              empDate +
-              "</p>"
-          );
+              "<p>" + "Species: " + empSpecies + "</p>" +
+              "<p>" + "Description: " + empDescription + "</p>" +
+              "<p>" + "Seen at: " + empLat + " / " + empLong + "</p>" +
+              "<p>" + "On: " + empTime + " on " + empDate + "</p>");
         }
-
         recentPop();
         mymap.fitBounds(llBounds);
       });
     });
-});
+  });
 
 var facts = ["Moby Dick by Herman Melville was based on a real whale named Mocha Dick. #mochadick", "Female Humpback Whales have BFFs and reunite each year. #squadgoals", "The Blue Whale is the largest animal that has ever lived on earth.", "Beluga Whales love music and even sometimes join in synchronized dance. #bumpinbeluga", "Bowhead Whales can live for over 200 years.", "Some whales imitate human speech. A captive whale called Lugosi at the Vancouver Aquarium could reportedly say its own name.", "Whales feed by swallowing their weight in water.", "Sperm Whales sleep standing up. Scientists think they dive down and grab snatches of sleep that can last up to about 12 minutes and then slowly drift to the surface head-first.", "In any area shared by whales, everyone sings the same song. Over time, the song will change, and if the new song is catchy enough, it will spread to other populations of whales. When a new whalesong comes out, it is sometimes a sort of remix of the previous song", "Whales adopt other animals, and sometimes treat objects as surrogate babies."];
 
@@ -334,6 +284,7 @@ function generateFact() {
   var whaleFactDisplay = facts[Math.floor(Math.random() * facts.length)];
 
   $("#fact-display").text(whaleFactDisplay);
+
 }
 
 $("#fact-button").on("click", function() {
