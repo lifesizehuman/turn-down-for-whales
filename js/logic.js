@@ -28,9 +28,9 @@ $(document).ready(function() {
       id: "mapbox.outdoors"
     }
   ),
-    dark = L.tileLayer(
-      "https://api.mapbox.com/styles/v1/lifesizehuman/cj65p1axm6m8t2smwy6tvcm62/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoibGlmZXNpemVodW1hbiIsImEiOiJjajV5N3hleDIwZjE5MnFsbmVrMjNscWJqIn0.epziWwc2W3ssEQt2Cjcm1A",
-      { id: "mapbox.dark" }
+    light = L.tileLayer(
+      "https://api.mapbox.com/styles/v1/mapbox/light-v9/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoibGlmZXNpemVodW1hbiIsImEiOiJjajV5N3hleDIwZjE5MnFsbmVrMjNscWJqIn0.epziWwc2W3ssEQt2Cjcm1A",
+      { id: "mapbox.light" }
     );
 
   var mymap = L.map("mapid", {
@@ -41,7 +41,7 @@ $(document).ready(function() {
   });
 
   var baseMaps = {
-    Dark: dark,
+    Light: light,
     Satellite: outdoors
   };
 
