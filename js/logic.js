@@ -200,6 +200,7 @@ var llBounds = mymap.getBounds();
     var sightingTime = $("#sighting-time").val();
     var latitude = $("#latitude-input").val();
     var longitude = $("#longitude-input").val();
+    L.marker([latitude, longitude]).addTo(mymap);
 
     database.ref("/sightings").push({
       species: speciesControl,
