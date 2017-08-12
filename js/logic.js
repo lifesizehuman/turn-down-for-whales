@@ -69,13 +69,13 @@ $(document).ready(function() {
     popupAnchor: [0, -37]
   });
 
-  L.tileLayer(
-    "https://api.mapbox.com/styles/v1/mapbox/satellite-v9/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoibGlmZXNpemVodW1hbiIsImEiOiJjajV5N3hleDIwZjE5MnFsbmVrMjNscWJqIn0.epziWwc2W3ssEQt2Cjcm1A",
-    {
-      maxZoom: 18,
-      id: "mapbox.outdoors"
-    }
-  ).addTo(mymap);
+  // L.tileLayer(
+  //   "https://api.mapbox.com/styles/v1/mapbox/satellite-v9/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoibGlmZXNpemVodW1hbiIsImEiOiJjajV5N3hleDIwZjE5MnFsbmVrMjNscWJqIn0.epziWwc2W3ssEQt2Cjcm1A",
+  //   {
+  //     maxZoom: 18,
+  //     id: "mapbox.outdoors"
+  //   }
+  // ).addTo(mymap);
 
   var group = L.layerGroup([]).addTo(mymap);
   var markers = new L.FeatureGroup();
@@ -126,6 +126,12 @@ $(document).ready(function() {
     });
   }
 
+var llBounds = mymap.getBounds();
+
+
+
+
+
   function clearMap() {
     group.clearLayers();
   }
@@ -133,6 +139,8 @@ $(document).ready(function() {
   $(document).on("click", "#submit", function(event) {
     clearMap();
     populateMap();
+    mymap.fitBounds(llBounds);
+
 
     var searchValue = $("select").val();
 
@@ -275,7 +283,9 @@ $(document).ready(function() {
               "</p>"
           );
         }
+
         recentPop();
+        mymap.fitBounds(llBounds);
       });
     });
 });
