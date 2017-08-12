@@ -139,32 +139,41 @@ var llBounds = mymap.getBounds();
     group.clearLayers();
   }
 
+function recentSearch() {
+
+
+  var searchValue = $("select").val();
+
+  database.ref("/search").push({
+    search: searchValue
+  });
+
+  database
+    .ref("/search").limitToLast(5)
+    .on("child_added", function(childSnapshot, prevChildKey) {
+      var searchList = childSnapshot.val().search;
+
+      var tableBody = $("#recent-searches > tbody");
+      var tr = $("<tr>");
+
+      var tdSearches = $("<td>").text(searchList);
+
+      tr.append(tdSearches);
+      tableBody.append(tr);
+    });
+  }
+
   $(document).on("click", "#submit", function(event) {
     clearMap();
     populateMap();
     mymap.fitBounds(llBounds);
 
 
-    var searchValue = $("select").val();
 
-    database.ref("/search").push({
-      search: searchValue
-    });
 
-    database
-      .ref("/search")
-      .on("child_added", function(childSnapshot, prevChildKey) {
-        var searchList = childSnapshot.val().search;
-
-        var tableBody = $("#recent-searches > tbody");
-        var tr = $("<tr>");
-
-        var tdSearches = $("<td>").text(searchList);
-
-        tr.append(tdSearches);
-        tableBody.append(tr);
-      });
   });
+
+  recentSearch();
 
   $("#getLocation").on("click", function(event) {
     event.preventDefault();
