@@ -36,7 +36,8 @@ $(document).ready(function() {
   var mymap = L.map("mapid", {
     center: [38, -123],
     zoom: 3,
-    layers: [outdoors]
+    layers: [outdoors],
+    scrollWheelZoom: false
   });
 
   var baseMaps = {
@@ -46,15 +47,12 @@ $(document).ready(function() {
 
   L.control.layers(baseMaps).addTo(mymap);
 
-  mymap.once("focus", function() {
+  mymap.on('click', function() {
+  if (mymap.scrollWheelZoom.enabled()) {
+    mymap.scrollWheelZoom.disable();
+    }
+    else {
     mymap.scrollWheelZoom.enable();
-  });
-  mymap.on("click", function() {
-    if (mymap.scrollWheelZoom.enabled()) {
-      mymap.scrollWheelZoom.disable();
-      // layers
-    } else {
-      mymap.scrollWheelZoom.enable();
     }
   });
 
