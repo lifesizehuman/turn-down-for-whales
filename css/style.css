@@ -12,25 +12,3 @@
 	margin-bottom: 15px;
 
 }
-
-#recent-search-area, #recent-sightings-area {
-	overflow: auto;
-}
-
-/*#conservation {
-    background-image: url('../assets/dark-blue-ocean.jpg');
-}*/
-
-/*#transbox {
-    margin:10px;
-    background-color:#ffffff;
-    opacity:0.9;
-    padding:20px;
-    text-align:center;
-}*/
-
-/*#learn, #volunteer, #donate, #fact-button {
-    /*padding: 10px;
-    margin:20px;
-    font-size:18px;
-}*/
