@@ -148,8 +148,10 @@ function prependSearches() {
 
       tr.prepend(tdSearches);
       tableBody.prepend(tr);
+
     });
 }
+
 
 
 
@@ -233,8 +235,7 @@ prependSearches();
 
   });
 
-  database
-    .ref("/sightings").limitToLast(5).on("child_added", function(childSnapshot, prevChildKey) {
+  database.ref("/sightings").limitToLast(5).on("child_added", function(childSnapshot, prevChildKey) {
 
       console.log(childSnapshot.val());
 
@@ -255,8 +256,8 @@ prependSearches();
       var tdDate = $("<td>").text(empDate);
       var tdTime = $("<td>").text(empTime);
 
-      tr.append(tdSpecies, tdDescription, tdLocation, tdDate, tdTime);
-      tableBody.append(tr);
+      tr.prepend(tdSpecies, tdDescription, tdLocation, tdDate, tdTime);
+      tableBody.prepend(tr);
 
       $("#recent-sighting").on("click", function(event) {
 
