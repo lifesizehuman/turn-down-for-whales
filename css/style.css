@@ -6,8 +6,10 @@
     border-radius: 0;
 }
 
-.container-fluid {
-    background: #998972;
+
+
+body {
+    background: #081422;
 }
 
 .navbar {
@@ -15,18 +17,11 @@
 		margin-bottom: 0px;
 }
 
-.panel-heading {
-    background-color: #2d6d79;
-}
-
-.panel-body {
-    background-color: #e6eef0;
-}
-
 #mapid {
 	height: 60vh;
 	width:100%;
 	margin-bottom: 30px;
+
 }
 
 #recent-search-area, #recent-sightings-area {
@@ -49,5 +44,4 @@
     padding: 10px;
     margin:20px;
     font-size:18px;
-    background-color:#2d6d79;
 }
