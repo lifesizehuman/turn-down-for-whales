@@ -72,19 +72,7 @@
             </div>
           </div>
         </div>
-        <div class="panel panel-default">
-
-          <div class="panel-heading" id="pop-up-panel">Random Whale Fact</div>
-
-          <div class="panel-body">
-            <p id='fact-display' style='height:155px'></p>
-
-            <button type="button" class="btn btn-info" id="fact-button">Tell Me More!</button>
-
-          </div>
-        </div>
       </div>
-
 
       <div class="col-sm-9">
         <div class="panel panel-default">
@@ -93,23 +81,23 @@
 
           <div class="panel-body">
             <select id="species-control">
-                        <option value="orca">Orca</option>
-                        <option value="humpback">Humpback</option>
-                        <option value="gray whale">Gray Whale</option>
-                        <option value="sea otter">Sea Otter</option>
-                        <option value="minke">Minke</option>
-                        <option value="atlantic white-sided dolphin">Atlantic White Sided Dolphin</option>
-                        <option value="pacific white-sided dolphin">Pacific White Sided Dolphin</option>
-                        <option value="dalls porpoise">Dalls Porpoise</option>
-                        <option value="harbor porpoise">Harbor Porpoise</option>
-                        <option value="harbor seal">Harbor Seal</option>
-                        <option value="northern elephant seal">Northern Elephant Seal</option>
-                        <option value="southern elephant seal">Southern Elephant Seal</option>
-                        <option value="california sea Lion">California Sea Lion</option>
-                        <option value="steller sea lion">Steller Sea Lion</option>
-                        <option value="other">Other</option>
-                        <option value="unknown">Unknown</option>
-                    </select>
+                            <option value="orca">Orca</option>
+                            <option value="humpback">Humpback</option>
+                            <option value="gray whale">Gray Whale</option>
+                            <option value="sea otter">Sea Otter</option>
+                            <option value="minke">Minke</option>
+                            <option value="atlantic white-sided dolphin">Atlantic White Sided Dolphin</option>
+                            <option value="pacific white-sided dolphin">Pacific White Sided Dolphin</option>
+                            <option value="dalls porpoise">Dalls Porpoise</option>
+                            <option value="harbor porpoise">Harbor Porpoise</option>
+                            <option value="harbor seal">Harbor Seal</option>
+                            <option value="northern elephant seal">Northern Elephant Seal</option>
+                            <option value="southern elephant seal">Southern Elephant Seal</option>
+                            <option value="california sea Lion">California Sea Lion</option>
+                            <option value="steller sea lion">Steller Sea Lion</option>
+                            <option value="other">Other</option>
+                            <option value="unknown">Unknown</option>
+                        </select>
             </p>
             <div class="row">
               <div class="col-xs-12">
@@ -118,6 +106,7 @@
                 </p>
               </div>
             </div>
+
             <div class="row">
               <div class="col-xs-3">
                 <input type="number" class="form-control" id="latitude-input" placeholder="Latitude">
@@ -150,55 +139,79 @@
             </div>
           </div>
         </div>
-
-
-        <div class="row">
-          <div class="col-xs-12">
-            <div class="panel panel-default">
-
-              <div class="panel-heading">Recent Sightings</div>
-
-              <div class="panel-body">
-                <div class="panel-body" style="height:200px" id="recent-sightings-area">
-                  <table class="table table-striped" id="species-table">
-                    <thead>
-                      <tr>
-                        <th>Species</th>
-                        <th>Description</th>
-                        <th>Location</th>
-                        <th>Date</th>
-                        <th>Time</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-            </div>
-          </div> 
-        </div> 
       </div>
-        
-      <div class="row">
-        <div class="col-xs-12">
-           <div class="panel panel-default">
+    </div>
 
-              <div class="panel-heading">Conservation</div>
 
-              <div class="panel-body">
-                <div class="panel-body" style="height:200px" id="conservation">
-                </div>
-              </div>
-            </div> 
-          </div>  
-        </div>  
 
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-                <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
-                <script src="https://d3js.org/d3.v4.min.js"></script>
-                <script src="https://www.gstatic.com/firebasejs/4.2.0/firebase.js"></script>
-                <script src="js/logic.js"></script>
+
+
+
+
+
+
+    <div class="row">
+
+      <div class="col-sm-3">
+        <div class="panel panel-default">
+
+          <div class="panel-heading" id="pop-up-panel">Random Whale Fact</div>
+
+          <div class="panel-body">
+            <p id='fact-display' style='height:155px'></p>
+
+            <button type="button" class="btn btn-info" id="fact-button">Tell Me More!</button>
+
+          </div>
+        </div>
+      </div>
+
+      <div class="col-xs-9">
+        <div class="panel panel-default">
+
+          <div class="panel-heading">Recent Sightings</div>
+
+          <div class="panel-body">
+            <div class="panel-body" style="height:200px" id="recent-sightings-area">
+              <table class="table table-striped" id="species-table">
+                <thead>
+                  <tr>
+                    <th>Species</th>
+                    <th>Description</th>
+                    <th>Location</th>
+                    <th>Date</th>
+                    <th>Time</th>
+                  </tr>
+                </thead>
+                <tbody>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="panel panel-default">
+
+          <div class="panel-heading">Conservation</div>
+
+          <div class="panel-body">
+            <div class="panel-body" style="height:200px" id="conservation">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.2.0/firebase.js"></script>
+    <script src="js/logic.js"></script>
 </body>
 
 </html>
