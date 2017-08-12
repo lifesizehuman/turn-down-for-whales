@@ -6,9 +6,21 @@
     border-radius: 0;
 }
 
+.container-fluid {
+    background: #998972;
+}
+
 .navbar {
     border-radius: 0px !important;
 		margin-bottom: 0px;
+}
+
+.panel-heading {
+    background-color: #2d6d79;
+}
+
+.panel-body {
+    background-color: #e6eef0;
 }
 
 #mapid {
@@ -19,4 +31,23 @@
 
 #recent-search-area, #recent-sightings-area {
 	overflow: auto;
+}
+
+#conservation {
+    background-image: url('../assets/dark-blue-ocean.jpg');
+}
+
+#transbox {
+    margin:10px;
+    background-color:#ffffff;
+    opacity:0.9;
+    padding:20px;
+    text-align:center;
+}
+
+#learn, #volunteer, #donate, #fact-button {
+    padding: 10px;
+    margin:20px;
+    font-size:18px;
+    background-color:#2d6d79;
 }
