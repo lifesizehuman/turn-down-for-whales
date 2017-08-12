@@ -14,29 +14,28 @@
 <body>
 
   <nav class="navbar navbar-default">
-  <div class="container-fluid">
-    <div class="navbar-header">
-
-      <a class="navbar-brand" href="#">Turn Down for Whales</a>
-    </div>
-  </div>
-</nav>
-
-
-    <div id="mapid"></div>
-
-
-
     <div class="container-fluid">
-      <div class="row">
+      <div class="navbar-header">
+
+        <a class="navbar-brand" href="#">Turn Down for Whales</a>
+      </div>
+    </div>
+  </nav>
+
+
+  <div id="mapid"></div>
+
+
+  <div class="container-fluid">
+    <div class="row">
       <div class="col-sm-3">
 
-      <div class="panel panel-default">
+        <div class="panel panel-default">
 
-        <div class="panel-heading">Look For Whales</div>
+          <div class="panel-heading">Look For Whales</div>
 
-            <div class="panel-body">
-              <select id="species-input">
+          <div class="panel-body">
+            <select id="species-input">
                 <option value="orca">Orca</option>
                 <option value="humpback">Humpback</option>
                 <option value="gray whale">Gray Whale</option>
@@ -54,26 +53,37 @@
                 <option value="other">Other</option>
                 <option value="unknown">Unknown</option>
               </select>
-              <p>
-              </p>
-              <button class="btn btn-default btn-sm" id="submit" type="submit">Submit</button>
-              <button class="btn btn-default btn-sm" id="recent-sighting" type="submit">Recent Sightings</button>
-              <!-- <button class="btn btn-default btn-sm" id="clear-map" type="submit">Clear Map</button> -->
-              <p>
-              </p>
+            <p>
+            </p>
+            <button class="btn btn-default btn-sm" id="submit" type="submit">Submit</button>
+            <button class="btn btn-default btn-sm" id="recent-sighting" type="submit">Recent Sightings</button>
+            <!-- <button class="btn btn-default btn-sm" id="clear-map" type="submit">Clear Map</button> -->
+            <p>
+            </p>
 
-                <h4>Recent Searches</h4>
-                <div id="recent-search-area" style="height:150px">
-                  <table class="table table-striped"  id="recent-searches">
-                    <thead>
-                    </thead>
-                    <tbody>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
+            <h4>Recent Searches</h4>
+            <div id="recent-search-area" style="height:130px">
+              <table class="table table-striped" id="recent-searches">
+                <thead>
+                </thead>
+                <tbody>
+                </tbody>
+              </table>
             </div>
           </div>
+        </div>
+        <div class="panel panel-default">
+
+          <div class="panel-heading" id="pop-up-panel">Random Whale Fact</div>
+
+          <div class="panel-body">
+            <p id='fact-display' style='height:155px'></p>
+
+            <button type="button" class="btn btn-info" id="fact-button">Tell Me More!</button>
+
+          </div>
+        </div>
+      </div>
 
 
       <div class="col-sm-9">
@@ -81,8 +91,8 @@
 
           <div class="panel-heading">I Saw a Whale!</div>
 
-              <div class="panel-body">
-                      <select id="species-control">
+          <div class="panel-body">
+            <select id="species-control">
                         <option value="orca">Orca</option>
                         <option value="humpback">Humpback</option>
                         <option value="gray whale">Gray Whale</option>
@@ -100,75 +110,95 @@
                         <option value="other">Other</option>
                         <option value="unknown">Unknown</option>
                     </select>
-        </p>
+            </p>
+            <div class="row">
+              <div class="col-xs-12">
+                <p>
+                  <input type="text" class="form-control" id="sighting-description" placeholder="Sighting Description">
+                </p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-3">
+                <input type="number" class="form-control" id="latitude-input" placeholder="Latitude">
+              </div>
+              <div class="col-xs-3">
+                <input type="number" class="form-control" id="longitude-input" placeholder="Longitude">
+              </div>
+              <div class="col-xs-6">
+                <input class="btn btn-default" type="button" id="getLocation" value="Get My Location">
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-6">
+                <h6>Sighting Date</h6>
+                <input type="date" class="form-control" id="sighting-date" placeholder="Sighting Date">
+              </div>
+              <div class="col-xs-6">
+                <h6>Sighting Time</h6>
+                <input type="time" class="form-control" id="sighting-time" placeholder="Sighting Time">
+              </div>
+            </div>
+            <p>
+            </p>
+            <div class="row">
+              <div class="col-xs-6">
+                <p>
+                  <button class="btn btn-default" id="submit-sighting" type="submit">Submit My Sighting</button>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
         <div class="row">
           <div class="col-xs-12">
-            <p>
-              <input type="text" class="form-control" id="sighting-description" placeholder="Sighting Description">
-            </p>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-xs-3">
-            <input type="number" class="form-control" id="latitude-input" placeholder="Latitude">
-          </div>
-          <div class="col-xs-3">
-            <input type="number" class="form-control" id="longitude-input" placeholder="Longitude">
-          </div>
-          <div class="col-xs-6">
-            <input class="btn btn-default" type="button" id="getLocation" value="Get My Location">
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-xs-6">
-            <h6>Sighting Date</h6>
-            <input type="date" class="form-control" id="sighting-date" placeholder="Sighting Date">
-          </div>
-          <div class="col-xs-6">
-            <h6>Sighting Time</h6>
-            <input type="time" class="form-control" id="sighting-time" placeholder="Sighting Time">
-          </div>
-        </div>
-        <p>
-        </p>
-        <div class="row">
-          <div class="col-xs-6">
-            <p>
-              <button class="btn btn-default" id="submit-sighting" type="submit">Submit My Sighting</button>
-            </p>
-          </div>
-        </div>
+            <div class="panel panel-default">
+
+              <div class="panel-heading">Recent Sightings</div>
+
+              <div class="panel-body">
+                <div class="panel-body" style="height:200px" id="recent-sightings-area">
+                  <table class="table table-striped" id="species-table">
+                    <thead>
+                      <tr>
+                        <th>Species</th>
+                        <th>Description</th>
+                        <th>Location</th>
+                        <th>Date</th>
+                        <th>Time</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div> 
+        </div> 
       </div>
-  </div>
+        
+      <div class="row">
+        <div class="col-xs-12">
+           <div class="panel panel-default">
 
+              <div class="panel-heading">Conservation</div>
 
+              <div class="panel-body">
+                <div class="panel-body" style="height:200px" id="conservation">
+                </div>
+              </div>
+            </div> 
+          </div>  
+        </div>  
 
-  <div class="row">
-    <div class="col-xs-12">
-    <div class="panel panel-default">
-
-      <div class="panel-heading">Recent Sightings</div>
-
-          <div class="panel-body">
-    <div class="panel-body" style="height:200px" id="recent-sightings-area">
-      <table class="table table-striped" id="species-table">
-        <thead>
-          <tr>
-            <th>Species</th>
-            <th>Description</th>
-            <th>Location</th>
-            <th>Date</th>
-            <th>Time</th>
-          </tr>
-        </thead>
-        <tbody>
-        </tbody>
-      </table>
-    </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
-    <script src="https://d3js.org/d3.v4.min.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/4.2.0/firebase.js"></script>
-    <script src="js/logic.js"></script>
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+                <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
+                <script src="https://d3js.org/d3.v4.min.js"></script>
+                <script src="https://www.gstatic.com/firebasejs/4.2.0/firebase.js"></script>
+                <script src="js/logic.js"></script>
 </body>
+
 </html>
