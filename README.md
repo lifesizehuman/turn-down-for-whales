@@ -6,7 +6,7 @@ Turn Down for Whales allows users to search for specific marine species and see 
 •	Location (latitude and longitude)
 •	Time and Date
 
-The site also features a random whale fact generator, a human to whale translator and resources for users interested in ocean conservation.
+The site also features a random whale fact generator, an interactive map and resources for users interested in ocean conservation.
 
 Motivation
 Turn Down for Whales was inspired by our love of the ocean and a desire to share information, both useful and fun, about whales and all of their marine friends. We hope people that love whales will learn something new, and that everyone can leave with a new appreciation for the amazing creatures that live in our oceans.
