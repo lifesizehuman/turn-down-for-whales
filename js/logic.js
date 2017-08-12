@@ -220,6 +220,7 @@ var llBounds = mymap.getBounds();
 
   database
     .ref("/sightings")
+    .limitToLast(15)
     .on("child_added", function(childSnapshot, prevChildKey) {
       console.log(childSnapshot.val());
 
