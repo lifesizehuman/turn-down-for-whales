@@ -6,6 +6,19 @@
     border-radius: 0;
 }
 
+body {
+    background:#203a4a;
+}
+
+.card {
+    background-color:#e6eef0;
+    box-shadow:2px 2px 2px 2px black;
+}
+
+.card-title {
+    color: #203a4a;
+}
+
 #mapid {
 	height: 60vh;
 	width:100%;
