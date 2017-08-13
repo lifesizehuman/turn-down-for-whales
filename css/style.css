@@ -15,3 +15,7 @@
 tr:nth-child(n + 6) {
     display:none;
 }
+
+a, input, label[for], select, button, .pointer {
+       cursor: pointer;
+}
