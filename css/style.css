@@ -21,6 +21,10 @@ body {
     font-family: 'Ubuntu', Helvetica, Arial, sans-serif;
 }
 
+.sightings-box {
+    height:620px;
+}
+
 .photo-buttons {
     align-items:center;
 }
@@ -60,6 +64,16 @@ a, input, label[for], select, button, .pointer {
 
  .card-action {
     font-color:#265778;
+ }
+
+ .fact-box {
+    height:404px;
+ }
+
+ #fact-display {
+    padding:25px;
+    font-size:20px;
+    text-align:center;
  }
 
  #submit-sighting, #getLocation, .btn {
