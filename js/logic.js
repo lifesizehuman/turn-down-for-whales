@@ -43,27 +43,6 @@ $(document).ready(function() {
 
   L.control.layers(baseMaps).addTo(mymap);
 
-  $("#learn").on("click", function() {
-  window.open(
-  'https://marine-conservation.org/',
-  '_blank'
-)
-  });
-
-    $("#volunteer").on("click", function() {
-  window.open(
-  'https://healthebay.org/take-part/',
-  '_blank'
-)
-  });
-
-        $("#donate").on("click", function() {
-  window.open(
-  'https://www.edf.org/',
-  '_blank'
-)
-  });
-
   mymap.on('click', function() {
   if (mymap.scrollWheelZoom.enabled()) {
     mymap.scrollWheelZoom.disable();

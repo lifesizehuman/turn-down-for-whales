@@ -13,16 +13,25 @@ body {
 .card {
     background-color:#e6eef0;
     box-shadow:2px 2px 2px 2px black;
+    font-family: 'Vollkorn', Georgia, Times, serif;
 }
 
 .card-title {
     color: #203a4a;
+    font-family: 'Ubuntu', Helvetica, Arial, sans-serif;
 }
 
 .photo-buttons {
     align-items:center;
 }
 
+h3 {
+    font-family: 'Ubuntu', Helvetica, Arial, sans-serif;
+}
+
+h5 {
+    font-family: 'Vollkorn', Georgia, Times, serif;
+}
 
 #mapid {
 	height: 60vh;
@@ -39,13 +48,26 @@ a, input, label[for], select, button, .pointer {
 }
 
 .quote{
-    padding:10px 150px 10px 150px;
-    font-size:16px;
-    font-style:italic;
+    padding:10px 250px 10px 250px;
+    font-size:24px;
     text-align:center;
 }
 
 .info{
-    padding:10px;
+    padding:10px 50px 10px 50px;
     font-size:16px;
+ }
+
+ .card-action {
+    font-color:#265778;
+ }
+
+ #submit-sighting, #getLocation, .btn {
+    background-color:#dd2c00;
+    font-weight:bold;
+ }
+
+ a#submit, a#recent-sighting, a#fact-button, a#donate-button, a#volunteer-button, a#learn-button {
+    color:#dd2c00;
+    font-weight:bold;
  }
