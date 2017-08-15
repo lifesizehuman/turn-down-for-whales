@@ -62,10 +62,6 @@ a, input, label[for], select, button, .pointer {
     font-size:16px;
  }
 
- /*.card-action {
-    font-color:#265778;
- }*/
-
  .fact-box {
     height:404px;
  }
@@ -75,12 +71,6 @@ a, input, label[for], select, button, .pointer {
     font-size:18px;
     text-align:center;
  }
-
- /*#submit-sighting, #getLocation, .btn {
-    background-color:#dd2c00;
-    font-weight:bold;
- }*/
-
 
  a#submit, a#recent-sighting, a#fact-button, a#donate-button, a#volunteer-button, a#learn-button {
     color:#dd2c00;
