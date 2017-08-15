@@ -12,7 +12,7 @@ body {
 
 .card {
     background-color:#e6eef0;
-    box-shadow:2px 2px 2px 2px black;
+    /*box-shadow:2px 2px 2px 2px black;*/
     font-family: 'Vollkorn', Georgia, Times, serif;
 }
 
@@ -62,9 +62,9 @@ a, input, label[for], select, button, .pointer {
     font-size:16px;
  }
 
- .card-action {
+ /*.card-action {
     font-color:#265778;
- }
+ }*/
 
  .fact-box {
     height:404px;
@@ -72,14 +72,15 @@ a, input, label[for], select, button, .pointer {
 
  #fact-display {
     padding:25px;
-    font-size:20px;
+    font-size:18px;
     text-align:center;
  }
 
- #submit-sighting, #getLocation, .btn {
+ /*#submit-sighting, #getLocation, .btn {
     background-color:#dd2c00;
     font-weight:bold;
- }
+ }*/
+
 
  a#submit, a#recent-sighting, a#fact-button, a#donate-button, a#volunteer-button, a#learn-button {
     color:#dd2c00;
