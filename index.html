@@ -1,109 +1,48 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Turn Down For Whales</title>
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/css/materialize.min.css">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <link rel="stylesheet" type="text/css" href="css/style.css">
-  <link rel="icon" type="image/png" href="assets/whale-icon.png">
-  <link href='https://fonts.googleapis.com/css?family=Ubuntu:bold' rel='stylesheet' type='text/css'>
-<link href='https://fonts.googleapis.com/css?family=Vollkorn' rel='stylesheet' type='text/css'>
 
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Turn Down For Whales</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.1.0/dist/leaflet.css" integrity="sha512-wcw6ts8Anuw10Mzh9Ytw4pylW8+NAD4ch3lqm9lzAsTxg0GFeJgoAtxuCLREZSC5lUXdVyo/7yfsqFjQ4S+aKw==" crossorigin="" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/css/materialize.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="icon" type="image/png" href="assets/whale-icon.png">
+    <link href='https://fonts.googleapis.com/css?family=Ubuntu:bold' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Vollkorn' rel='stylesheet' type='text/css'>
 </head>
 
 <body>
-<!--
-  <nav>
-    <div class="nav-wrapper teal">
-      <a href="#" class="brand-logo">Turn Down for Whales</a>
-    </div>
-  </nav> -->
-
-  <div class="row">
-    <div class="col s12">
-      <div class="card">
-        <div class="z-depth-5">
-         <div class="card-image">
-           <img src="assets/dark-blue-ocean.jpg" id="conservation"><span class="card-title">
-             <h3>Turn Down for Whales</h3>
-            <h5>A Marine Wildlife Spotting Site + Conservation Resources</h5></span>
-                    </div>
-          <div class="card-content">
-
-          <p class="flow-text">"Far and away, the greatest threat to the ocean, and thus to ourselves, is ignorance. But we can do something about that."<p>
-
-          <p class="flow-text">Sylvia Earle, oceanographer and explorer</p>
-
-          <hr>
-
-          <p class="info"> Few things generate a sense of awe and wonder the way that the ocean does. Scientists believe that for every known species that lives in the ocean, there could be at least three more that have not been discovered yet. Not only does the ocean sustain an entire underwater world, but half of the air we breathe is produced by the ocean - it literally gives us life.</p>
-          <p class="info">Turn Down for Whales was inspired by our love of the sea and a desire to share information about whales and their marine friends. We hope that you use our site as an interactive way to experience the wonder of the ocean and are inspired to take action on behalf of the amazing creatures that live there. </p>
-         </div>
-          </div>
-          </div>
-        </div>
-      </div>
-
-
-  <div id="mapid"></div>
-
-
     <div class="row">
-      <div class="col s12 m4">
-        <div class="card">
-          <div class="card-content">
-          <span class="card-title">Look For Whales</span>
-          <div class="input-field col s12">
-            <select id="species-input" required="" aria-required="true">
-                <option value="" disabled selected>Choose a Species</option>
-                <option value="orca">Orca</option>
-                <option value="humpback">Humpback</option>
-                <option value="gray whale">Gray Whale</option>
-                <option value="sea otter">Sea Otter</option>
-                <option value="minke">Minke</option>
-                <option value="atlantic white-sided dolphin">Atlantic White Sided Dolphin</option>
-                <option value="pacific white-sided dolphin">Pacific White Sided Dolphin</option>
-                <option value="dalls porpoise">Dalls Porpoise</option>
-                <option value="harbor porpoise">Harbor Porpoise</option>
-                <option value="harbor seal">Harbor Seal</option>
-                <option value="northern elephant seal">Northern Elephant Seal</option>
-                <option value="southern elephant seal">Southern Elephant Seal</option>
-                <option value="california sea Lion">California Sea Lion</option>
-                <option value="steller sea lion">Steller Sea Lion</option>
-                <option value="other">Other</option>
-                <option value="unknown">Unknown</option>
-              </select>
+        <div class="col s12">
+            <div class="card">
+                <div class="z-depth-5">
+                    <div class="card-image">
+                        <img src="assets/dark-blue-ocean.jpg" id="conservation"><span class="card-title">
+                           <h3>Turn Down for Whales</h3>
+                           <h5>A Marine Wildlife Spotting Site + Conservation Resources</h5></span>
+                    </div>
+                    <div class="card-content">
+                        <p class="flow-text">"Far and away, the greatest threat to the ocean, and thus to ourselves, is ignorance. But we can do something about that."
+                            <p>
+                                <p class="flow-text">Sylvia Earle, oceanographer and explorer</p>
+                                <hr>
+                                <p class="info"> Few things generate a sense of awe and wonder the way that the ocean does. Scientists believe that for every known species that lives in the ocean, there could be at least three more that have not been discovered yet. Not only does the ocean sustain an entire underwater world, but half of the air we breathe is produced by the ocean - it literally gives us life.</p>
+                                <p class="info">Turn Down for Whales was inspired by our love of the sea and a desire to share information about whales and their marine friends. We hope that you use our site as an interactive way to experience the wonder of the ocean and are inspired to take action on behalf of the amazing creatures that live there. </p>
+                    </div>
+                </div>
             </div>
-            <p>Search for all sorts of different species of marine wildlife with our easy-to-use tool!</p>
-          </div>
-            <div class="card-action">
-                <a id="submit" type="submit">Submit</a>
-                <a id="recent-sighting" type="submit">Recent Sightings</a>
-            </div>
-            <div class="card-content">
-            <span class="card-title">Recent Searches</span>
-            <div id="recent-search-area">
-              <table class="striped" id="recent-searches">
-                <thead>
-                </thead>
-                <tbody>
-                </tbody>
-              </table>
-            </div>
-          </div>
         </div>
-      </div>
-
-
-      <div class="col s12 m8">
-        <div class="card sightings-box">
-          <div class="card-content">
-          <span class="card-title">I Saw a Whale!</span>
-          <div class="input-field col s12" id="whale-sighting">
-
-            <select id="species-control" required="" aria-required="true">
+    </div>
+    <div id="mapid"></div>
+    <div class="row">
+        <div class="col s12 m4">
+            <div class="card">
+                <div class="card-content">
+                    <span class="card-title">Look For Whales</span>
+                    <div class="input-field col s12">
+                        <select id="species-input" required="" aria-required="true">
                             <option value="" disabled selected>Choose a Species</option>
                             <option value="orca">Orca</option>
                             <option value="humpback">Humpback</option>
@@ -122,140 +61,170 @@
                             <option value="other">Other</option>
                             <option value="unknown">Unknown</option>
                         </select>
-                      </div>
-            <div class="row">
-              <div class="input-field col s12">
-                  <input type="text" id="sighting-description" placeholder="Sighting Description">
-              </div>
+                    </div>
+                    <p>Search for all sorts of different species of marine wildlife with our easy-to-use tool!</p>
+                </div>
+                <div class="card-action">
+                    <a id="submit" type="submit">Submit</a>
+                    <a id="recent-sighting" type="submit">Recent Sightings</a>
+                </div>
+                <div class="card-content">
+                    <span class="card-title">Recent Searches</span>
+                    <div id="recent-search-area">
+                        <table class="striped" id="recent-searches">
+                            <thead>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
-
-            <div class="row">
-              <div class="input-field col s3">
-                <input type="text" id="latitude-input" required="" aria-required="true" placeholder="Latitude">
-              </div>
-              <div class="input-field col s3">
-                <input type="text" id="longitude-input" required="" aria-required="true" placeholder="Longitude">
-              </div>
-              <div class="input-field col s6">
-                <input class="waves-effect waves-light btn" type="button" id="getLocation" value="Find Me">
-              </div>
-            </div>
-            <div class="row">
-              <div class="input-field col s6">
-                <input type="text" id="sighting-date" class="datepicker">
-                <label for="sighting-date">Sighting Date</label>
-              </div>
-              <div class="input-field col s6">
-                 <input type="text" id="sighting-time" class="timepicker">
-                 <label for="sighting-time">Sighting Time</label>
-              </div>
-            </div>
-          </div>
-
-
-              <div class="card-action">
-                <div class="input-field">
-                <a class="waves-effect waves-light btn" disabled value="Register" id="submit-sighting" type="submit">Submit My Sighting</a>
-              </div>
-            </div>
-          </div>
         </div>
-      </div>
+        <div class="col s12 m8">
+            <div class="card sightings-box">
+                <div class="card-content">
+                    <span class="card-title">I Saw a Whale!</span>
+                    <div class="input-field col s12" id="whale-sighting">
+                        <select id="species-control" required="" aria-required="true">
+                            <option value="" disabled selected>Choose a Species</option>
+                            <option value="orca">Orca</option>
+                            <option value="humpback">Humpback</option>
+                            <option value="gray whale">Gray Whale</option>
+                            <option value="sea otter">Sea Otter</option>
+                            <option value="minke">Minke</option>
+                            <option value="atlantic white-sided dolphin">Atlantic White Sided Dolphin</option>
+                            <option value="pacific white-sided dolphin">Pacific White Sided Dolphin</option>
+                            <option value="dalls porpoise">Dalls Porpoise</option>
+                            <option value="harbor porpoise">Harbor Porpoise</option>
+                            <option value="harbor seal">Harbor Seal</option>
+                            <option value="northern elephant seal">Northern Elephant Seal</option>
+                            <option value="southern elephant seal">Southern Elephant Seal</option>
+                            <option value="california sea Lion">California Sea Lion</option>
+                            <option value="steller sea lion">Steller Sea Lion</option>
+                            <option value="other">Other</option>
+                            <option value="unknown">Unknown</option>
+                        </select>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input type="text" id="sighting-description" placeholder="Sighting Description">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s3">
+                            <input type="text" id="latitude-input" required="" aria-required="true" placeholder="Latitude">
+                        </div>
+                        <div class="input-field col s3">
+                            <input type="text" id="longitude-input" required="" aria-required="true" placeholder="Longitude">
+                        </div>
+                        <div class="input-field col s6">
+                            <input class="waves-effect waves-light btn" type="button" id="getLocation" value="Find Me">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s6">
+                            <input type="text" id="sighting-date" class="datepicker">
+                            <label for="sighting-date">Sighting Date</label>
+                        </div>
+                        <div class="input-field col s6">
+                            <input type="text" id="sighting-time" class="timepicker">
+                            <label for="sighting-time">Sighting Time</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-action">
+                    <div class="input-field">
+                        <a class="waves-effect waves-light btn" disabled value="Register" id="submit-sighting" type="submit">Submit My Sighting</a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-
-
-<div class="row">
-      <div class="col s12 m4">
-        <div class="card fact-box">
-          <div class="card-content">
-          <span class="card-title">Whale Facts!</span>
-
-          <div class="panel-body">
-            <p id='fact-display' style='height:250px'></p>
-</div>
-<div class="card-action">
-            <a id="fact-button">Tell Me More!</a>
-
-          </div>
-        </div>
-      </div>
     </div>
-
-      <div class="col s12 m8">
-        <div class="card">
-          <div class="card-content">
-          <span class="card-title">Recent Sightings</span>
-
-          <div class="panel-body">
-            <div id="recent-sightings-area" >
-              <table class="responsive-table" id="species-table">
-                <thead>
-                  <tr>
-                    <th>Species</th>
-                    <th>Description</th>
-                    <th>Location</th>
-                    <th>Date</th>
-                    <th>Time</th>
-                  </tr>
-                </thead>
-                <tbody>
-                </tbody>
-              </table>
+    <div class="row">
+        <div class="col s12 m4">
+            <div class="card fact-box">
+                <div class="card-content">
+                    <span class="card-title">Whale Facts!</span>
+                    <div class="panel-body">
+                        <p id='fact-display' style='height:250px'></p>
+                    </div>
+                    <div class="card-action">
+                        <a id="fact-button">Tell Me More!</a>
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
-      </div>
+        <div class="col s12 m8">
+            <div class="card">
+                <div class="card-content">
+                    <span class="card-title">Recent Sightings</span>
+                    <div class="panel-body">
+                        <div id="recent-sightings-area">
+                            <table class="responsive-table" id="species-table">
+                                <thead>
+                                    <tr>
+                                        <th>Species</th>
+                                        <th>Description</th>
+                                        <th>Location</th>
+                                        <th>Date</th>
+                                        <th>Time</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-   </div>
-
-<div class="photo-buttons">
-      <div class="row">
-        <div class="col s4">
-          <div class="card">
-            <div class="card-image">
-              <img src="assets/whale.jpg">
+    <div class="photo-buttons">
+        <div class="row">
+            <div class="col s4">
+                <div class="card">
+                    <div class="card-image">
+                        <img src="assets/whale.jpg">
+                    </div>
+                    <div class="card-content">
+                        <p>Learn more about marine conservation efforts around the globe.</p>
+                    </div>
+                    <div class="card-action">
+                        <a href="https://marine-conservation.org" a id="learn-button">Learn More</a>
+                    </div>
+                </div>
             </div>
-            <div class="card-content">
-              <p>Learn more about marine conservation efforts around the globe.</p>
+            <div class="col s4">
+                <div class="card">
+                    <div class="card-image">
+                        <img src="assets/reef.jpg">
+                    </div>
+                    <div class="card-content">
+                        <p>Find ways to volunteer in your community for the betterment of our oceans!</p>
+                    </div>
+                    <div class="card-action">
+                        <a href="https://healthebay.org" a id="volunteer-button">Volunteer</a>
+                    </div>
+                </div>
             </div>
-            <div class="card-action">
-             <a href="https://marine-conservation.org"a id="learn-button">Learn More</a>
+            <div class="col s4">
+                <div class="card">
+                    <div class="card-image">
+                        <img src="assets/ocean.jpg">
+                    </div>
+                    <div class="card-content">
+                        <p>Make a charitable contribution to the global effort to save our planet!</p>
+                    </div>
+                    <div class="card-action">
+                        <a href="https://www.edf.org" a id="donate-button">Donate</a>
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
-
-        <div class="col s4">
-          <div class="card">
-            <div class="card-image">
-              <img src="assets/reef.jpg" >
-            </div>
-            <div class="card-content">
-              <p>Find ways to volunteer in your community for the betterment of our oceans!</p>
-            </div>
-            <div class="card-action">
-              <a href="https://healthebay.org" a id="volunteer-button">Volunteer</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="col s4">
-          <div class="card">
-            <div class="card-image">
-              <img src="assets/ocean.jpg" >
-            </div>
-            <div class="card-content">
-              <p>Make a charitable contribution to the global effort to save our planet!</p>
-            </div>
-            <div class="card-action">
-              <a href="https://www.edf.org" a id="donate-button">Donate</a>
-            </div>
-          </div>
-        </div>
-      </div>
-     </div>
-   </div>
-
-
+    </div>
+    </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/js/materialize.min.js"></script>
     <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
     <script src="https://d3js.org/d3.v4.min.js"></script>
