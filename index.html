@@ -32,9 +32,9 @@
                     </div>
           <div class="card-content">
 
-          <p class="quote">"Far and away, the greatest threat to the ocean, and thus to ourselves, is ignorance. But we can do something about that."<p>
+          <p class="flow-text">"Far and away, the greatest threat to the ocean, and thus to ourselves, is ignorance. But we can do something about that."<p>
 
-          <p class="quote">Sylvia Earle, oceanographer and explorer</p>
+          <p class="flow-text">Sylvia Earle, oceanographer and explorer</p>
 
           <hr>
 
@@ -57,6 +57,7 @@
           <span class="card-title">Look For Whales</span>
           <div class="input-field col s12">
             <select id="species-input" required="" aria-required="true">
+                <option value="" disabled selected>Choose a Species</option>
                 <option value="orca">Orca</option>
                 <option value="humpback">Humpback</option>
                 <option value="gray whale">Gray Whale</option>
@@ -100,8 +101,10 @@
         <div class="card sightings-box">
           <div class="card-content">
           <span class="card-title">I Saw a Whale!</span>
-          <div class="input-field col s12">
+          <div class="input-field col s12" id="whale-sighting">
+
             <select id="species-control" required="" aria-required="true">
+                            <option value="" disabled selected>Choose a Species</option>
                             <option value="orca">Orca</option>
                             <option value="humpback">Humpback</option>
                             <option value="gray whale">Gray Whale</option>
@@ -134,7 +137,7 @@
                 <input type="text" id="longitude-input" required="" aria-required="true" placeholder="Longitude">
               </div>
               <div class="input-field col s6">
-                <input class="waves-effect waves-light btn" type="button" id="getLocation" value="Get My Location">
+                <input class="waves-effect waves-light btn" type="button" id="getLocation" value="Find Me">
               </div>
             </div>
             <div class="row">
@@ -149,9 +152,10 @@
             </div>
           </div>
 
+
               <div class="card-action">
                 <div class="input-field">
-                <a class="waves-effect waves-light btn" id="submit-sighting" type="submit">Submit My Sighting</a>
+                <a class="waves-effect waves-light btn" disabled value="Register" id="submit-sighting" type="submit">Submit My Sighting</a>
               </div>
             </div>
           </div>
@@ -184,7 +188,7 @@
 
           <div class="panel-body">
             <div id="recent-sightings-area" >
-              <table class="striped" id="species-table">
+              <table class="responsive-table" id="species-table">
                 <thead>
                   <tr>
                     <th>Species</th>
@@ -202,14 +206,17 @@
         </div>
       </div>
     </div>
-   </div> 
+   </div>
 
 <div class="photo-buttons">
       <div class="row">
-        <div class="col s3 m3">
-          <div class="card bottom-row">
+        <div class="col s4">
+          <div class="card">
             <div class="card-image">
               <img src="assets/whale.jpg">
+            </div>
+            <div class="card-content">
+              <p>Learn more about marine conservation efforts around the globe.</p>
             </div>
             <div class="card-action">
              <a href="https://marine-conservation.org"a id="learn-button">Learn More</a>
@@ -217,10 +224,13 @@
           </div>
         </div>
 
-        <div class="col s3 m3">
-          <div class="card bottom-row">
+        <div class="col s4">
+          <div class="card">
             <div class="card-image">
-              <img src="assets/reef.jpg">
+              <img src="assets/reef.jpg" >
+            </div>
+            <div class="card-content">
+              <p>Find ways to volunteer in your community for the betterment of our oceans!</p>
             </div>
             <div class="card-action">
               <a href="https://healthebay.org" a id="volunteer-button">Volunteer</a>
@@ -228,10 +238,13 @@
           </div>
         </div>
 
-        <div class="col s3 m3">
-          <div class="card bottom-row">
+        <div class="col s4">
+          <div class="card">
             <div class="card-image">
-              <img src="assets/ocean.jpg">
+              <img src="assets/ocean.jpg" >
+            </div>
+            <div class="card-content">
+              <p>Make a charitable contribution to the global effort to save our planet!</p>
             </div>
             <div class="card-action">
               <a href="https://www.edf.org" a id="donate-button">Donate</a>
@@ -239,7 +252,8 @@
           </div>
         </div>
       </div>
-     </div> 
+     </div>
+   </div>
 
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/js/materialize.min.js"></script>

@@ -8,8 +8,6 @@ $(document).ready(function() {
     }
   });
 
-  generateFact();
-
   var config = {
     apiKey: "AIzaSyAqMI1aab7fpTQsdo7zUXnXAhnIwVTdBAs",
     authDomain: "turn-down-for-whales.firebaseapp.com",
@@ -107,8 +105,6 @@ var llBounds = mymap.getBounds();
     group.clearLayers();
   }
 
-
-
 function pushSearch() {
 
   var searchValue = $("select").val();
@@ -131,59 +127,61 @@ function prependSearches() {
     });
 }
 
-
-
-
-
   $(document).on("click", "#submit", function(event) {
     event.preventDefault();
     clearMap();
     populateMap();
     mymap.fitBounds(llBounds);
     pushSearch();
+    // $('#submit-sighting').attr('disabled');
   });
 
 prependSearches();
 
-  $("#getLocation").on("click", function(event) {
-    event.preventDefault();
-    if ("geolocation" in navigator) {
-      console.log("geolocation IS available");
-    } else {
-      console.log("geolocation IS NOT available");
-    }
+$("#getLocation").on("click", function(event) {
+  event.preventDefault();
+  if ("geolocation" in navigator) {
+    console.log("geolocation IS available");
+  } else {
+    console.log("geolocation IS NOT available");
+  }
 
-    var options = {
-      enableHighAccuracy: true,
-      timeout: 5000,
-      maximumAge: 0
-    };
+  var options = {
+    enableHighAccuracy: true,
+    timeout: 5000,
+    maximumAge: 0
+  };
 
-    function success(pos) {
-      var crd = pos.coords;
+  function success(pos) {
+    var crd = pos.coords;
 
-      $("#latitude-input").val(`${crd.latitude}`);
-      $("#longitude-input").val(`${crd.longitude}`);
+    $("#latitude-input").val(`${crd.latitude}`);
+    $("#longitude-input").val(`${crd.longitude}`);
 
-    }
+  }
 
-    function error(err) {
-      console.warn(`ERROR(${err.code}): ${err.message}`);
-    }
+  function error(err) {
+    console.warn(`ERROR(${err.code}): ${err.message}`);
+  }
 
-    navigator.geolocation.getCurrentPosition(success, error, options);
+  navigator.geolocation.getCurrentPosition(success, error, options);
 
-  });
+});
 
   $(document).ready(function(){
-      $('#submit-sighting').attr('disabled',true);
-      $('#sighting-description').keyup(function(){
-          if($(this).val() != "")
-              $('#submit-sighting').attr('disabled', false);
-          else
-              $('#submit-sighting').attr('disabled',true);
-      })
-  });
+
+
+$('#species-control, #sighting-description, #latitude-input, #longitude-input, #sighting-date, #sighting-time').on('change', function() {
+    if(allFilled()) $('#submit-sighting').removeAttr('disabled');
+});
+
+function allFilled() {
+    var filled = true;
+    $('body input').each(function() {
+        if($(this).val() == '') filled = false;
+    });
+    return filled;
+}
 
   $("#submit-sighting").on("click", function(event) {
 
@@ -291,6 +289,8 @@ $("#fact-button").on("click", function() {
 generateFact();
 });
 
+//timepicker and datepicker pulled from materialize docs
+
 $('.timepicker').pickatime({
     default: 'now', // Set default time: 'now', '1:30AM', '16:30'
     fromnow: 0,       // set default time to * milliseconds from now (using with default = 'now')
@@ -311,3 +311,6 @@ $('.timepicker').pickatime({
     close: 'Ok',
     closeOnSelect: false // Close upon selecting a date,
   });
+
+  generateFact();
+});
