@@ -1,5 +1,13 @@
 $(document).ready(function() {
 
+  $('.key-filter').on("keydown", function () {
+    if (event.key.replace(/[^\w\-.]/g,'')=='') event.preventDefault();
+
+  $('.key-filter').bind('copy paste', function (e) {
+     e.preventDefault();
+  });
+});
+
     $('select').material_select();
 
     $.ajaxPrefilter(function(options) {
@@ -145,6 +153,8 @@ $(document).ready(function() {
         });
     }
 
+
+
     $(document).on("click", "#submit", function(event) {
         event.preventDefault();
         clearMap();
@@ -270,11 +280,6 @@ $(document).ready(function() {
                 event.preventDefault();
 
                 function recentPop() {
-                    var mSpecies = $("<h6>").text(empSpecies);
-                    var mDescription = $("<h6>").text(empDescription);
-                    var mLocation = $("<h6>").text(empLat + empLong);
-                    var mDate = $("<h6>").text(empDate);
-                    var mTime = $("<h6>").text(empTime);
 
                     var layer = L.marker([empLat, empLong]
                         // , {icon: myIcon}
