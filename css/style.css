@@ -21,6 +21,10 @@ body {
     font-family: 'Ubuntu', Helvetica, Arial, sans-serif;
 }
 
+.card-image{
+  height:300px;
+}
+
 .sightings-box {
     height:620px;
 }
@@ -38,6 +42,7 @@ h5 {
 }
 
 #mapid {
+
 	height: 60vh;
 	width:100%;
 	margin-bottom: 15px;
@@ -58,7 +63,7 @@ a, input, label[for], select, button, .pointer {
 }
 
 .info{
-    padding:10px 50px 10px 50px;
+    padding:10px 15px 10px 15px;
     font-size:16px;
  }
 

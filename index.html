@@ -18,8 +18,9 @@
         <div class="col s12">
             <div class="card">
                 <div class="z-depth-5">
-                    <div class="card-image">
-                        <img src="assets/dark-blue-ocean.jpg" id="conservation"><span class="card-title">
+                    <div class="card-image" style="background-image:url(assets/dark-blue-ocean.jpg); background-size:cover;background-position:center;" id="conservation">
+                        <!-- <img src="assets/dark-blue-ocean.jpg" id="conservation"> -->
+                        <span class="card-title">
                            <h3>Turn Down for Whales</h3>
                            <h5>A Marine Wildlife Spotting Site + Conservation Resources</h5></span>
                     </div>
@@ -35,7 +36,9 @@
             </div>
         </div>
     </div>
+    <div class="container-fluid">
     <div id="mapid"></div>
+  </div>
     <div class="row">
         <div class="col s12 m4">
             <div class="card">
@@ -65,8 +68,8 @@
                     <p>Search for all sorts of different species of marine wildlife with our easy-to-use tool!</p>
                 </div>
                 <div class="card-action">
-                    <a id="submit" type="submit">Submit</a>
-                    <a id="recent-sighting" type="submit">Recent Sightings</a>
+                    <a class="light-blue-text" id="submit" type="submit">Submit</a>
+                    <a class="light-blue-text" id="recent-sighting" type="submit">Recent Sightings</a>
                 </div>
                 <div class="card-content">
                     <span class="card-title">Recent Searches</span>
@@ -119,7 +122,7 @@
                             <input type="text" id="longitude-input" required="" aria-required="true" placeholder="Longitude">
                         </div>
                         <div class="input-field col s6">
-                            <input class="waves-effect waves-light btn" type="button" id="getLocation" value="Find Me">
+                            <input class="waves-effect waves-light light-blue btn" type="button" id="getLocation" value="Find Me">
                         </div>
                     </div>
                     <div class="row">
@@ -135,7 +138,7 @@
                 </div>
                 <div class="card-action">
                     <div class="input-field">
-                        <a class="waves-effect waves-light btn" disabled value="Register" id="submit-sighting" type="submit">Submit My Sighting</a>
+                        <a class="waves-effect waves-light light-blue btn" disabled value="Register" id="submit-sighting" type="submit">Submit My Sighting</a>
                     </div>
                 </div>
             </div>
@@ -151,7 +154,7 @@
                         <p id='fact-display' style='height:250px'></p>
                     </div>
                     <div class="card-action">
-                        <a id="fact-button">Tell Me More!</a>
+                        <a class="light-blue-text" id="fact-button">Tell Me More!</a>
                     </div>
                 </div>
             </div>
@@ -183,42 +186,39 @@
     </div>
     <div class="photo-buttons">
         <div class="row">
-            <div class="col s4">
+            <div class="col s12 m4">
                 <div class="card">
-                    <div class="card-image">
-                        <img src="assets/whale.jpg">
+                    <div class="card-image" style="background-image:url(assets/whale_photo.jpg); background-size:cover;background-position:center;">
                     </div>
                     <div class="card-content">
-                        <p>Learn more about marine conservation efforts around the globe.</p>
+                        <p>Learn about marine conservation efforts around the globe.</p>
                     </div>
                     <div class="card-action">
-                        <a href="https://marine-conservation.org" a id="learn-button">Learn More</a>
+                        <a href="https://marine-conservation.org" class="light-blue-text" id="learn-button">Learn More</a>
                     </div>
                 </div>
             </div>
-            <div class="col s4">
+            <div class="col s12 m4">
                 <div class="card">
-                    <div class="card-image">
-                        <img src="assets/reef.jpg">
+                    <div class="card-image" style="background-image:url(assets/reef_photo.jpg); background-size:cover;background-position:center;">
                     </div>
                     <div class="card-content">
                         <p>Find ways to volunteer in your community to benefit our oceans!</p>
                     </div>
                     <div class="card-action">
-                        <a href="https://healthebay.org" a id="volunteer-button">Volunteer</a>
+                        <a href="https://healthebay.org" class="light-blue-text" id="volunteer-button">Volunteer</a>
                     </div>
                 </div>
             </div>
-            <div class="col s4">
+            <div class="col s12 m4">
                 <div class="card">
-                    <div class="card-image">
-                        <img src="assets/ocean.jpg">
+                    <div class="card-image" style="background-image:url(assets/ocean_photo.jpg); background-size:cover;background-position:center;">
                     </div>
                     <div class="card-content">
                         <p>Make a charitable contribution to the global effort to save our planet!</p>
                     </div>
                     <div class="card-action">
-                        <a href="https://www.edf.org" a id="donate-button">Donate</a>
+                        <a href="https://www.edf.org" class="light-blue-text" id="donate-button">Donate</a>
                     </div>
                 </div>
             </div>
