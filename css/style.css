@@ -12,7 +12,6 @@ body {
 
 .card {
     background-color:#e6eef0;
-    /*box-shadow:2px 2px 2px 2px black;*/
     font-family: 'Vollkorn', Georgia, Times, serif;
 }
 
@@ -43,9 +42,9 @@ h5 {
 
 #mapid {
 
-	height: 60vh;
+	height: 70vh;
 	width:100%;
-	margin-bottom: 15px;
+	margin-bottom: 30px;
 }
 
 tr:nth-child(n + 6) {
@@ -57,7 +56,7 @@ a, input, label[for], select, button, .datepicker, .timepicker, .input, .pointer
 }
 
 .quote{
-    padding:10px 250px 10px 250px;
+    /*padding:10px 250px 10px 250px;*/
     font-size:24px;
     text-align:center;
 }

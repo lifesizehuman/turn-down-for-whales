@@ -38,25 +38,30 @@ $(document).ready(function() {
 
 // mapbox tile layer initialization
 
-    var outdoors = L.tileLayer(
+    var satellite = L.tileLayer(
             "https://api.mapbox.com/styles/v1/mapbox/satellite-v9/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoibGlmZXNpemVodW1hbiIsImEiOiJjajV5N3hleDIwZjE5MnFsbmVrMjNscWJqIn0.epziWwc2W3ssEQt2Cjcm1A", { id: "mapbox.outdoors" }),
-        light = L.tileLayer(
-            "https://api.mapbox.com/styles/v1/mapbox/light-v9/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoibGlmZXNpemVodW1hbiIsImEiOiJjajV5N3hleDIwZjE5MnFsbmVrMjNscWJqIn0.epziWwc2W3ssEQt2Cjcm1A", { id: "mapbox.light" });
+        outdoors = L.tileLayer(
+            "https://api.mapbox.com/styles/v1/mapbox/outdoors-v10/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoibGlmZXNpemVodW1hbiIsImEiOiJjajV5N3hleDIwZjE5MnFsbmVrMjNscWJqIn0.epziWwc2W3ssEQt2Cjcm1A", { id: "mapbox.outdoors" }),
+        classic = L.tileLayer(
+          "https://api.mapbox.com/styles/v1/lifesizehuman/cj6f6h72g28rz2rpjw2vana0x/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoibGlmZXNpemVodW1hbiIsImEiOiJjajV5N3hleDIwZjE5MnFsbmVrMjNscWJqIn0.epziWwc2W3ssEQt2Cjcm1A",
+          { id: "mapbox.classic"});
+
 
 // leaflet map initialization
 
     var mymap = L.map("mapid", {
         center: [38, -123],
         zoom: 3,
-        layers: [outdoors],
+        layers: [classic],
         scrollWheelZoom: false,
     });
 
 // set up layer control for light and Satellite map layers
 
     var baseMaps = {
-        Light: light,
-        Satellite: outdoors
+        Classic: classic,
+        Outdoors: outdoors,
+        Satellite: satellite
     };
 
     L.control.layers(baseMaps).addTo(mymap);
