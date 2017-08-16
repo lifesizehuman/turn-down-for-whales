@@ -268,7 +268,7 @@ $(document).ready(function() {
 
             var tdSpecies = $("<td>").text(empSpecies);
             var tdDescription = $("<td>").text(empDescription);
-            var tdLocation = $("<td>").text(empLat + empLong);
+            var tdLocation = $("<td>").text("Lat: " + empLat + " / " + "Long: " + empLong);
             var tdDate = $("<td>").text(empDate);
             var tdTime = $("<td>").text(empTime);
 
