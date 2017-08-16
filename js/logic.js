@@ -55,24 +55,6 @@ $(document).ready(function() {
         }
     });
 
-    mymap.dragging.disable();
-mymap.touchZoom.disable();
-mymap.doubleClickZoom.disable();
-mymap.scrollWheelZoom.disable();
-mymap.boxZoom.disable();
-mymap.keyboard.disable();
-if (mymap.tap) mymap.tap.disable();
-document.getElementById('mapid').style.cursor='default';
-
-mymap.dragging.enable();
-mymap.touchZoom.enable();
-mymap.doubleClickZoom.enable();
-
-mymap.boxZoom.enable();
-mymap.keyboard.enable();
-if (mymap.tap) mymap.tap.enable();
-document.getElementById('mapid').style.cursor='grab';
-
     function onMapClick(mymap) {
         console.log(mymap.latlng.lat, mymap.latlng.lng);
         $("#latitude-input").val(mymap.latlng.lat);
