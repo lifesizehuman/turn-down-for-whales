@@ -70,7 +70,7 @@ $(document).ready(function() {
 
     function populateMap() {
         var species = $("#species-input").val();
-        var queryURL = "http://hotline.whalemuseum.org/api.json?limit=15?species=" + species;
+        var queryURL = "http://hotline.whalemuseum.org/api.json?species=" + species;
 
         $.ajax({
             url: queryURL,
@@ -90,10 +90,10 @@ $(document).ready(function() {
                     "<p>" + "On: " + response[i].sighted_at + "</p>");
             }
 
-          var speciesSearch = $("select").val();
 
             database.ref("/sightings").limitToLast(15).on("child_added", function(childSnapshot) {
 
+            var speciesSearch = $("select").val();
             var recSpecies = childSnapshot.val().species;
             var recDescription = childSnapshot.val().description;
             var recLat = childSnapshot.val().latitude;
@@ -125,7 +125,6 @@ $(document).ready(function() {
     }
 
     function pushSearch() {
-
         var searchValue = $("select").val();
         database.ref("/search").push({
             search: searchValue
