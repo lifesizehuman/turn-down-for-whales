@@ -1,5 +1,7 @@
 $(document).ready(function() {
 
+// illegal character and copy paste prevention logic for submission form
+
   $('.key-filter').on("keydown", function () {
     if (event.key.replace(/[^\w\-. ]/g,'')=='') event.preventDefault();
 
@@ -8,13 +10,19 @@ $(document).ready(function() {
   });
 });
 
+// materialize select initialization
+
     $('select').material_select();
+
+// ajax prefiter to enable CORS
 
     $.ajaxPrefilter(function(options) {
         if (options.crossDomain && $.support.cors) {
             options.url = "https://cors-anywhere.herokuapp.com/" + options.url;
         }
     });
+
+// firebase initialization
 
     var config = {
         apiKey: "AIzaSyAqMI1aab7fpTQsdo7zUXnXAhnIwVTdBAs",
@@ -28,10 +36,14 @@ $(document).ready(function() {
 
     var database = firebase.database();
 
+// mapbox tile layer initialization
+
     var outdoors = L.tileLayer(
             "https://api.mapbox.com/styles/v1/mapbox/satellite-v9/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoibGlmZXNpemVodW1hbiIsImEiOiJjajV5N3hleDIwZjE5MnFsbmVrMjNscWJqIn0.epziWwc2W3ssEQt2Cjcm1A", { id: "mapbox.outdoors" }),
         light = L.tileLayer(
             "https://api.mapbox.com/styles/v1/mapbox/light-v9/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoibGlmZXNpemVodW1hbiIsImEiOiJjajV5N3hleDIwZjE5MnFsbmVrMjNscWJqIn0.epziWwc2W3ssEQt2Cjcm1A", { id: "mapbox.light" });
+
+// leaflet map initialization
 
     var mymap = L.map("mapid", {
         center: [38, -123],
@@ -40,12 +52,16 @@ $(document).ready(function() {
         scrollWheelZoom: false,
     });
 
+// set up layer control for light and Satellite map layers
+
     var baseMaps = {
         Light: light,
         Satellite: outdoors
     };
 
     L.control.layers(baseMaps).addTo(mymap);
+
+// enable map scrolling on click
 
     mymap.on('click', function() {
         if (mymap.scrollWheelZoom.enabled()) {
@@ -55,11 +71,17 @@ $(document).ready(function() {
         }
     });
 
+// get geographic coordinates on map click
+
     function onMapClick(mymap) {
         console.log(mymap.latlng.lat, mymap.latlng.lng);
         $("#latitude-input").val(mymap.latlng.lat);
         $("#longitude-input").val(mymap.latlng.lng);
     }
+
+    mymap.on("click", onMapClick);
+
+// custom icon setup
 
     var myIcon = L.icon({
         iconUrl: "assets/tail-icon.png",
@@ -70,16 +92,17 @@ $(document).ready(function() {
         popupAnchor: [0, -37]
     });
 
+// leaflet layer group initialization
+
     var group = L.layerGroup([]).addTo(mymap);
     var markers = new L.FeatureGroup();
     var layer;
 
-    mymap.on("click", onMapClick);
+// populate map logic for whale hotline api species searches
 
     function populateMap() {
         var species = $("#species-input").val();
         var queryURL = "http://hotline.whalemuseum.org/api.json?species=" + species;
-
         $.ajax({
             url: queryURL,
             method: "GET"
@@ -90,7 +113,6 @@ $(document).ready(function() {
                     // ,{icon: myIcon}
                 );
                 layer.addTo(group);
-
                 layer.bindPopup(
                     "<p>" + "Species: " + response[i].species + "</p>" +
                     "<p>" + "Description: " + response[i].description + "</p>" +
@@ -98,6 +120,7 @@ $(document).ready(function() {
                     "<p>" + "On: " + response[i].sighted_at + "</p>");
             }
 
+// integrates firebase entries into whale hotline api species searches
 
             database.ref("/sightings").limitToLast(15).on("child_added", function(childSnapshot) {
 
@@ -119,18 +142,13 @@ $(document).ready(function() {
             );
           } else return false;
           });
-
             $('select').change(function() {
                 species = this.value;
             });
         });
     }
 
-    var llBounds = mymap.getBounds();
-
-    function clearMap() {
-        group.clearLayers();
-    }
+// pushes species search queries to firebase
 
     function pushSearch() {
         var searchValue = $("select").val();
@@ -139,6 +157,8 @@ $(document).ready(function() {
         });
     }
 
+// lists 5 most recent species searches in table
+
     function prependSearches() {
         database.ref("/search").limitToLast(5).on("child_added", function(childSnapshot, prevChildKey) {
 
@@ -146,14 +166,22 @@ $(document).ready(function() {
             var tableBody = $("#recent-searches > tbody");
             var tr = $("<tr>");
             var tdSearches = $("<td>").text(searchList);
-
             tr.prepend(tdSearches);
             tableBody.prepend(tr);
-
         });
     }
 
+// reset leaflet map bounds
 
+    var llBounds = mymap.getBounds();
+
+// leaflet clear map logic
+
+    function clearMap() {
+      group.clearLayers();
+    }
+
+// submit species search logic
 
     $(document).on("click", "#submit", function(event) {
         event.preventDefault();
@@ -165,7 +193,7 @@ $(document).ready(function() {
 
     prependSearches();
 
-    // HTML geolocation logic
+// HTML geolocation button logic
 
     $("#getLocation").on("click", function(event) {
         event.preventDefault();
@@ -174,30 +202,23 @@ $(document).ready(function() {
         } else {
             console.log("geolocation IS NOT available");
         }
-
         var options = {
             enableHighAccuracy: true,
             timeout: 5000,
             maximumAge: 0
         };
-
         function success(pos) {
             var crd = pos.coords;
-
             $("#latitude-input").val(`${crd.latitude}`);
             $("#longitude-input").val(`${crd.longitude}`);
-
         }
-
         function error(err) {
             console.warn(`ERROR(${err.code}): ${err.message}`);
         }
-
         navigator.geolocation.getCurrentPosition(success, error, options);
-
     });
 
-    //submit sighting button logic
+//submit sighting button logic
 
     $(document).ready(function() {
 
@@ -212,6 +233,8 @@ $(document).ready(function() {
             });
             return filled;
         }
+
+// submit sighting logic
 
         $("#submit-sighting").on("click", function(event) {
 
@@ -248,8 +271,9 @@ $(document).ready(function() {
             $("#sighting-time").val("");
             $("#latitude-input").val("");
             $("#longitude-input").val("");
-
         });
+
+// recent sightings table logic
 
         database.ref("/sightings").limitToLast(5).on("child_added", function(childSnapshot, prevChildKey) {
 
