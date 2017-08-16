@@ -55,7 +55,7 @@ $(document).ready(function() {
     var mymap = L.map("mapid", {
         center: [38, -123],
         zoom: 3,
-        layers: [classic],
+        layers: [standard],
         scrollWheelZoom: false,
     });
 
@@ -391,3 +391,9 @@ function checkLayers() {
     generateFact();
 
 });
+
+// materialize modal initialization
+
+$(document).ready(function(){
+    $('.modal').modal();
+  });
