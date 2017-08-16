@@ -42,6 +42,9 @@ $(document).ready(function() {
             "https://api.mapbox.com/styles/v1/mapbox/satellite-v9/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoibGlmZXNpemVodW1hbiIsImEiOiJjajV5N3hleDIwZjE5MnFsbmVrMjNscWJqIn0.epziWwc2W3ssEQt2Cjcm1A", { id: "mapbox.outdoors" }),
         outdoors = L.tileLayer(
             "https://api.mapbox.com/styles/v1/mapbox/outdoors-v10/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoibGlmZXNpemVodW1hbiIsImEiOiJjajV5N3hleDIwZjE5MnFsbmVrMjNscWJqIn0.epziWwc2W3ssEQt2Cjcm1A", { id: "mapbox.outdoors" }),
+        standard = L.tileLayer(
+          "https://api.mapbox.com/styles/v1/lifesizehuman/cj6f69cwm1mry2rqixg8ieigr/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoibGlmZXNpemVodW1hbiIsImEiOiJjajV5N3hleDIwZjE5MnFsbmVrMjNscWJqIn0.epziWwc2W3ssEQt2Cjcm1A",
+          { id: "mapbox.standard"}),
         classic = L.tileLayer(
           "https://api.mapbox.com/styles/v1/lifesizehuman/cj6f6h72g28rz2rpjw2vana0x/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoibGlmZXNpemVodW1hbiIsImEiOiJjajV5N3hleDIwZjE5MnFsbmVrMjNscWJqIn0.epziWwc2W3ssEQt2Cjcm1A",
           { id: "mapbox.classic"});
@@ -59,6 +62,7 @@ $(document).ready(function() {
 // set up layer control for light and Satellite map layers
 
     var baseMaps = {
+        Standard: standard,
         Classic: classic,
         Outdoors: outdoors,
         Satellite: satellite
