@@ -11,12 +11,12 @@ body {
 }
 
 .card {
-    background-color:#e6eef0;
+    background-color:#f4f8fb;
     font-family: 'Vollkorn', Georgia, Times, serif;
 }
 
 .card-title {
-    color: #203a4a;
+    color: #505152;
     font-family: 'Ubuntu', Helvetica, Arial, sans-serif;
 }
 
@@ -41,7 +41,6 @@ h5 {
 }
 
 #mapid {
-
 	height: 70vh;
 	width:100%;
 	margin-bottom: 30px;
@@ -68,7 +67,7 @@ a, input, label[for], select, button, .datepicker, .timepicker, .input, .pointer
 
  .fact-box {
     height:404px;
-    background-color:#e6eef0;
+    /*background-color:#e6eef0;*/
 
  }
 
@@ -79,6 +78,23 @@ a, input, label[for], select, button, .datepicker, .timepicker, .input, .pointer
  }
 
  a#submit, a#recent-sighting, a#fact-button, a#donate-button, a#volunteer-button, a#learn-button {
-    color:#dd2c00;
+    /*color:#dd2c00;*/
     font-weight:bold;
+ }
+
+ a#submit:hover, a#recent-sighting:hover, a#fact-button:hover, a#donate-button:hover, a#volunteer-button:hover, a#learn-button:hover {
+    color:#505152 !important;
+    font-weight:bold;
+ }
+
+ .btn {
+   background-color: #505152;
+ }
+
+ .btn:hover {
+   background-color: #95a5ac;
+ }
+
+ .text {
+   color: #95a5ac !important;
  }
