@@ -104,7 +104,8 @@ $(document).ready(function() {
 // leaflet layer group initialization
 
     var group = L.layerGroup([]).addTo(mymap);
-    var markers = new L.FeatureGroup();
+    // var markers = new L.FeatureGroup();
+    var recentGroup = L.layerGroup([]).addTo(mymap);
     var layer;
 
 // populate map logic for whale hotline api species searches
@@ -190,11 +191,16 @@ $(document).ready(function() {
       group.clearLayers();
     }
 
+    function clearRecents() {
+      recentGroup.clearLayers();
+    }
+
 // submit species search logic
 
     $(document).on("click", "#submit", function(event) {
         event.preventDefault();
         clearMap();
+        clearRecents();
         populateMap();
         mymap.fitBounds(llBounds);
         pushSearch();
@@ -284,7 +290,7 @@ $(document).ready(function() {
 
 // recent sightings table logic
 
-        database.ref("/sightings").limitToLast(5).on("child_added", function(childSnapshot, prevChildKey) {
+        database.ref("/sightings").limitToLast(15).on("child_added", function(childSnapshot, prevChildKey) {
 
             console.log(childSnapshot.val());
 
@@ -308,23 +314,24 @@ $(document).ready(function() {
             tr.prepend(tdSpecies, tdDescription, tdLocation, tdDate, tdTime);
             tableBody.prepend(tr);
 
-            $("#recent-sighting").on("click", function(event) {
+            function recentPop() {
 
+              // for (var i = 0; i < 15; i++) {
+                var attach = L.marker([empLat, empLong]).addTo(recentGroup);
+                    // , {icon: myIcon}
+
+                attach.bindPopup();
+                attach.setPopupContent(
+                    "<p>" + "Species: " + empSpecies + "</p>" +
+                    "<p>" + "Description: " + empDescription + "</p>" +
+                    "<p>" + "Seen at: " + empLat + " / " + empLong + "</p>" +
+                    "<p>" + "On: " + empTime + " on " + empDate + "</p>");
+            }
+          // }
+
+            $(document).on("click", "#recent-sighting", function(event) {
                 event.preventDefault();
-
-                function recentPop() {
-
-                    var layer = L.marker([empLat, empLong]
-                        // , {icon: myIcon}
-                    );
-                    layer.addTo(group);
-                    layer.bindPopup();
-                    layer.setPopupContent(
-                        "<p>" + "Species: " + empSpecies + "</p>" +
-                        "<p>" + "Description: " + empDescription + "</p>" +
-                        "<p>" + "Seen at: " + empLat + " / " + empLong + "</p>" +
-                        "<p>" + "On: " + empTime + " on " + empDate + "</p>");
-                }
+                clearMap();
                 recentPop();
                 mymap.fitBounds(llBounds);
             });
