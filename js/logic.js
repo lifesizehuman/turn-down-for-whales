@@ -1,20 +1,20 @@
 $(document).ready(function() {
 
-// illegal character and copy paste prevention logic for submission form
+    // illegal character and copy paste prevention logic for submission form
 
-  $('.key-filter').on("keydown", function () {
-    if (event.key.replace(/[^\w\-. ]/g,'')=='') event.preventDefault();
+    $('.key-filter').on("keydown", function() {
+        if (event.key.replace(/[^\w\-. ]/g, '') == '') event.preventDefault();
 
-  $('.key-filter').bind('copy paste', function (e) {
-     e.preventDefault();
-  });
-});
+        $('.key-filter').bind('copy paste', function(e) {
+            e.preventDefault();
+        });
+    });
 
-// materialize select initialization
+    // materialize select initialization
 
     $('select').material_select();
 
-// ajax prefiter to enable CORS
+    // ajax prefiter to enable CORS
 
     $.ajaxPrefilter(function(options) {
         if (options.crossDomain && $.support.cors) {
@@ -22,7 +22,7 @@ $(document).ready(function() {
         }
     });
 
-// firebase initialization
+    // firebase initialization
 
     var config = {
         apiKey: "AIzaSyAqMI1aab7fpTQsdo7zUXnXAhnIwVTdBAs",
@@ -36,21 +36,19 @@ $(document).ready(function() {
 
     var database = firebase.database();
 
-// mapbox tile layer initialization
+    // mapbox tile layer initialization
 
     var satellite = L.tileLayer(
             "https://api.mapbox.com/styles/v1/mapbox/satellite-v9/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoibGlmZXNpemVodW1hbiIsImEiOiJjajV5N3hleDIwZjE5MnFsbmVrMjNscWJqIn0.epziWwc2W3ssEQt2Cjcm1A", { id: "mapbox.outdoors" }),
         outdoors = L.tileLayer(
             "https://api.mapbox.com/styles/v1/mapbox/outdoors-v10/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoibGlmZXNpemVodW1hbiIsImEiOiJjajV5N3hleDIwZjE5MnFsbmVrMjNscWJqIn0.epziWwc2W3ssEQt2Cjcm1A", { id: "mapbox.outdoors" }),
         standard = L.tileLayer(
-          "https://api.mapbox.com/styles/v1/lifesizehuman/cj6f69cwm1mry2rqixg8ieigr/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoibGlmZXNpemVodW1hbiIsImEiOiJjajV5N3hleDIwZjE5MnFsbmVrMjNscWJqIn0.epziWwc2W3ssEQt2Cjcm1A",
-          { id: "mapbox.standard"}),
+            "https://api.mapbox.com/styles/v1/lifesizehuman/cj6f69cwm1mry2rqixg8ieigr/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoibGlmZXNpemVodW1hbiIsImEiOiJjajV5N3hleDIwZjE5MnFsbmVrMjNscWJqIn0.epziWwc2W3ssEQt2Cjcm1A", { id: "mapbox.standard" }),
         classic = L.tileLayer(
-          "https://api.mapbox.com/styles/v1/lifesizehuman/cj6f6h72g28rz2rpjw2vana0x/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoibGlmZXNpemVodW1hbiIsImEiOiJjajV5N3hleDIwZjE5MnFsbmVrMjNscWJqIn0.epziWwc2W3ssEQt2Cjcm1A",
-          { id: "mapbox.classic"});
+            "https://api.mapbox.com/styles/v1/lifesizehuman/cj6f6h72g28rz2rpjw2vana0x/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoibGlmZXNpemVodW1hbiIsImEiOiJjajV5N3hleDIwZjE5MnFsbmVrMjNscWJqIn0.epziWwc2W3ssEQt2Cjcm1A", { id: "mapbox.classic" });
 
 
-// leaflet map initialization
+    // leaflet map initialization
 
     var mymap = L.map("mapid", {
         center: [38, -123],
@@ -59,7 +57,7 @@ $(document).ready(function() {
         scrollWheelZoom: false,
     });
 
-// set up layer control for light and Satellite map layers
+    // set up layer control for light and Satellite map layers
 
     var baseMaps = {
         Standard: standard,
@@ -70,7 +68,7 @@ $(document).ready(function() {
 
     L.control.layers(baseMaps).addTo(mymap);
 
-// enable map scrolling on click
+    // enable map scrolling on click
 
     mymap.on('click', function() {
         if (mymap.scrollWheelZoom.enabled()) {
@@ -80,7 +78,7 @@ $(document).ready(function() {
         }
     });
 
-// get geographic coordinates on map click
+    // get geographic coordinates on map click
 
     function onMapClick(mymap) {
         console.log(mymap.latlng.lat, mymap.latlng.lng);
@@ -90,14 +88,14 @@ $(document).ready(function() {
 
     mymap.on("click", onMapClick);
 
-// leaflet layer group initialization
+    // leaflet layer group initialization
 
     var group = L.layerGroup([]).addTo(mymap);
     // var markers = new L.FeatureGroup();
     var recentGroup = L.layerGroup([]).addTo(mymap);
     var layer;
 
-// populate map logic for whale hotline api species searches
+    // populate map logic for whale hotline api species searches
 
     function populateMap() {
         var limit = $("#limit-input").val();
@@ -120,28 +118,28 @@ $(document).ready(function() {
                     "<p>" + "On: " + response[i].sighted_at + "</p>");
             }
 
-// integrates firebase entries into whale hotline api species searches
+            // integrates firebase entries into whale hotline api species searches
 
             database.ref("/sightings").limitToLast(15).on("child_added", function(childSnapshot) {
 
-            var speciesSearch = $("select").val();
-            var recSpecies = childSnapshot.val().species;
-            var recDescription = childSnapshot.val().description;
-            var recLat = childSnapshot.val().latitude;
-            var recLong = childSnapshot.val().longitude;
-            var recDate = childSnapshot.val().date;
-            var recTime = childSnapshot.val().time;
+                var speciesSearch = $("select").val();
+                var recSpecies = childSnapshot.val().species;
+                var recDescription = childSnapshot.val().description;
+                var recLat = childSnapshot.val().latitude;
+                var recLong = childSnapshot.val().longitude;
+                var recDate = childSnapshot.val().date;
+                var recTime = childSnapshot.val().time;
 
-          if (speciesSearch === recSpecies) {
-            var recents = L.marker([recLat, recLong]).addTo(group);
-            recents.bindPopup(
-                "<p>" + "Species: " + recSpecies + "</p>" +
-                "<p>" + "Description: " + recDescription + "</p>" +
-                "<p>" + "Seen at: " + recLat + " / " + recLong + "</p>" +
-                "<p>" + "On: " + recDate + " at " + recTime + "</p>"
-            );
-          } else return false;
-          });
+                if (speciesSearch === recSpecies) {
+                    var recents = L.marker([recLat, recLong]).addTo(group);
+                    recents.bindPopup(
+                        "<p>" + "Species: " + recSpecies + "</p>" +
+                        "<p>" + "Description: " + recDescription + "</p>" +
+                        "<p>" + "Seen at: " + recLat + " / " + recLong + "</p>" +
+                        "<p>" + "On: " + recDate + " at " + recTime + "</p>"
+                    );
+                } else return false;
+            });
 
             $('select').change(function() {
                 species = this.value;
@@ -149,7 +147,7 @@ $(document).ready(function() {
         });
     }
 
-// limit slider logic
+    // limit slider logic
 
     var limitLabel = "Select a Search limit.";
     $('#limit-label').text(limitLabel);
@@ -158,7 +156,7 @@ $(document).ready(function() {
         $('#limit-label').text(limit);
     });
 
-// pushes species search queries to firebase
+    // pushes species search queries to firebase
 
     function pushSearch() {
         var searchValue = $("select").val();
@@ -167,7 +165,7 @@ $(document).ready(function() {
         });
     }
 
-// lists 5 most recent species searches in table
+    // lists 5 most recent species searches in table
 
     function prependSearches() {
         database.ref("/search").limitToLast(5).on("child_added", function(childSnapshot, prevChildKey) {
@@ -181,21 +179,21 @@ $(document).ready(function() {
         });
     }
 
-// reset leaflet map bounds
+    // reset leaflet map bounds
 
     var llBounds = mymap.getBounds();
 
-// leaflet clear map logic
+    // leaflet clear map logic
 
     function clearMap() {
-      group.clearLayers();
+        group.clearLayers();
     }
 
     function clearRecents() {
-      recentGroup.clearLayers();
+        recentGroup.clearLayers();
     }
 
-// submit species search logic
+    // submit species search logic
 
     $(document).on("click", "#submit", function(event) {
         event.preventDefault();
@@ -208,7 +206,7 @@ $(document).ready(function() {
 
     prependSearches();
 
-// HTML geolocation button logic
+    // HTML geolocation button logic
 
     $("#getLocation").on("click", function(event) {
         event.preventDefault();
@@ -222,18 +220,20 @@ $(document).ready(function() {
             timeout: 5000,
             maximumAge: 0
         };
+
         function success(pos) {
             var crd = pos.coords;
             $("#latitude-input").val(`${crd.latitude}`);
             $("#longitude-input").val(`${crd.longitude}`);
         }
+
         function error(err) {
             console.warn(`ERROR(${err.code}): ${err.message}`);
         }
         navigator.geolocation.getCurrentPosition(success, error, options);
     });
 
-//submit sighting button logic
+    //submit sighting button logic
 
     $(document).ready(function() {
 
@@ -248,75 +248,75 @@ $(document).ready(function() {
             });
             return filled;
         }
-});
+    });
 
-// submit sighting logic
+    // submit sighting logic
 
-        $("#submit-sighting").on("click", function(event) {
+    $("#submit-sighting").on("click", function(event) {
 
-            event.preventDefault();
-            group.clearLayers();
+        event.preventDefault();
+        group.clearLayers();
 
-            var speciesControl = $("#species-control").val();
-            var description = $("#sighting-description").val();
-            var sightingDate = $("#sighting-date").val();
-            var sightingTime = $("#sighting-time").val();
-            var latitude = $("#latitude-input").val();
-            var longitude = $("#longitude-input").val();
+        var speciesControl = $("#species-control").val();
+        var description = $("#sighting-description").val();
+        var sightingDate = $("#sighting-date").val();
+        var sightingTime = $("#sighting-time").val();
+        var latitude = $("#latitude-input").val();
+        var longitude = $("#longitude-input").val();
 
-            var slayer = L.marker([latitude, longitude]).addTo(group);
-            slayer.bindPopup(
-                "<p>" + "Species: " + speciesControl + "</p>" +
-                "<p>" + "Description: " + description + "</p>" +
-                "<p>" + "Seen at: " + latitude + " / " + longitude + "</p>" +
-                "<p>" + "On: " + sightingDate + " at " + sightingTime + "</p>"
-            );
+        var slayer = L.marker([latitude, longitude]).addTo(group);
+        slayer.bindPopup(
+            "<p>" + "Species: " + speciesControl + "</p>" +
+            "<p>" + "Description: " + description + "</p>" +
+            "<p>" + "Seen at: " + latitude + " / " + longitude + "</p>" +
+            "<p>" + "On: " + sightingDate + " at " + sightingTime + "</p>"
+        );
 
-            database.ref("/sightings").push({
-                species: speciesControl,
-                description: description,
-                date: sightingDate,
-                time: sightingTime,
-                latitude: latitude,
-                longitude: longitude
-            });
-
-            $("#species-control").val("");
-            $("#sighting-description").val("");
-            $("#sighting-date").val("");
-            $("#sighting-time").val("");
-            $("#latitude-input").val("");
-            $("#longitude-input").val("");
+        database.ref("/sightings").push({
+            species: speciesControl,
+            description: description,
+            date: sightingDate,
+            time: sightingTime,
+            latitude: latitude,
+            longitude: longitude
         });
 
-// recent sightings table logic
+        $("#species-control").val("");
+        $("#sighting-description").val("");
+        $("#sighting-date").val("");
+        $("#sighting-time").val("");
+        $("#latitude-input").val("");
+        $("#longitude-input").val("");
+    });
 
-        database.ref("/sightings").limitToLast(5).on("child_added", function(childSnapshot, prevChildKey) {
+    // recent sightings table logic
 
-            console.log(childSnapshot.val());
+    database.ref("/sightings").limitToLast(5).on("child_added", function(childSnapshot, prevChildKey) {
 
-            var empSpecies = childSnapshot.val().species;
-            var empDescription = childSnapshot.val().description;
-            var empLat = childSnapshot.val().latitude;
-            var empLong = childSnapshot.val().longitude;
-            var empDate = childSnapshot.val().date;
-            var empTime = childSnapshot.val().time;
+        console.log(childSnapshot.val());
 
-            var tableBody = $("#species-table > tbody");
+        var empSpecies = childSnapshot.val().species;
+        var empDescription = childSnapshot.val().description;
+        var empLat = childSnapshot.val().latitude;
+        var empLong = childSnapshot.val().longitude;
+        var empDate = childSnapshot.val().date;
+        var empTime = childSnapshot.val().time;
 
-            var tr = $("<tr>");
+        var tableBody = $("#species-table > tbody");
 
-            var tdSpecies = $("<td>").text(empSpecies);
-            var tdDescription = $("<td>").text(empDescription);
-            var tdLocation = $("<td>").text("Lat: " + empLat + " / " + "Long: " + empLong);
-            var tdDate = $("<td>").text(empDate);
-            var tdTime = $("<td>").text(empTime);
+        var tr = $("<tr>");
 
-            tr.prepend(tdSpecies, tdDescription, tdLocation, tdDate, tdTime);
-            tableBody.prepend(tr);
+        var tdSpecies = $("<td>").text(empSpecies);
+        var tdDescription = $("<td>").text(empDescription);
+        var tdLocation = $("<td>").text("Lat: " + empLat + " / " + "Long: " + empLong);
+        var tdDate = $("<td>").text(empDate);
+        var tdTime = $("<td>").text(empTime);
+
+        tr.prepend(tdSpecies, tdDescription, tdLocation, tdDate, tdTime);
+        tableBody.prepend(tr);
 
 
-// populates map with recent sightings
+        // populates map with recent sightings
 
         function recentPop() {
 
@@ -330,15 +330,15 @@ $(document).ready(function() {
                 "<p>" + "On: " + empTime + " on " + empDate + "</p>");
         }
 
-// checks recent group for existing layers and clears if they exist
+        // checks recent group for existing layers and clears if they exist
 
-function checkLayers() {
-        if (recentGroup.hasLayer() != true) {
-          recentPop();
-        } else clearRecents();
-      }
+        function checkLayers() {
+            if (recentGroup.hasLayer() != true) {
+                recentPop();
+            } else clearRecents();
+        }
 
-// recent sighting search button logic
+        // recent sighting search button logic
 
         $(document).on("click", "#recent-sighting", function(event) {
             event.preventDefault();
@@ -346,9 +346,9 @@ function checkLayers() {
             checkLayers();
             mymap.fitBounds(llBounds);
         });
-      });
+    });
 
-//fact generator logic
+    //fact generator logic
 
     var facts = ["Moby Dick by Herman Melville was based on a real whale named Mocha Dick. #mochadick", "Female Humpback Whales have BFFs and reunite each year. #squadgoals", "The Blue Whale is the largest animal that has ever lived on earth.", "Beluga Whales love music and even sometimes join in synchronized dance. #bumpinbeluga", "Bowhead Whales can live for over 200 years.", "Some whales imitate human speech. A captive whale called Lugosi at the Vancouver Aquarium could reportedly say its own name.", "Whales feed by swallowing their weight in water.", "Sperm Whales sleep standing up. Scientists think they dive down and grab snatches of sleep that can last up to about 12 minutes and then slowly drift to the surface head-first.", "In any area shared by whales, everyone sings the same song. Over time, the song will change, and if the new song is catchy enough, it will spread to other populations of whales.", "Whales adopt other animals, and sometimes treat objects as surrogate babies."];
 
@@ -394,6 +394,16 @@ function checkLayers() {
 
 // materialize modal initialization
 
-$(document).ready(function(){
+$(document).ready(function() {
     $('.modal').modal();
-  });
+});
+
+// materialze pulse hover logic
+
+$('.btn-large').on("mouseenter", function() {
+    $(this).removeClass("pulse");
+})
+
+$('.btn-large').on("mouseleave", function() {
+    $(this).addClass("pulse");
+})

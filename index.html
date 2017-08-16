@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <!-- A student project by Slater Combes, Abbey Hudson, Ashkan Maher, and Cornel Catrina.-->
+
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Turn Down For Whales</title>
@@ -15,165 +16,153 @@
 </head>
 
 <body>
-
-  <!-- Element Showed -->
-
-
     <div class="row">
         <div class="col s12">
             <div class="card">
                 <div class="z-depth-5">
                     <div class="card-image" style="background-image:url(assets/dark-blue-ocean.jpg); background-size:cover;background-position:center;" id="conservation">
-                        <!-- <img src="assets/dark-blue-ocean.jpg" id="conservation"> -->
                         <span class="card-title">
                            <h3>Turn Down for Whales</h3>
                            <h5>A Marine Wildlife Spotting Site + Conservation Resources</h5></span>
                     </div>
                     <div class="card-content">
-                        <p class="flow-text">"Far and away, the greatest threat to the ocean, and thus to ourselves, is ignorance. But we can do something about that."
-                            <p>
-                                <p class="flow-text">Sylvia Earle, oceanographer and explorer</p>
-                                <hr>
-                                <p class="info"> Few things generate a sense of awe and wonder the way that the ocean does. Scientists believe that for every known species that lives in the ocean, there could be at least three more that have not been discovered yet. Not only does the ocean sustain an entire underwater world, but half of the air we breathe is produced by the ocean - it literally gives us life.</p>
-                                <p class="info">Turn Down for Whales was inspired by our love of the sea and a desire to share information about whales and their marine friends. We hope that you use our site as an interactive way to experience the wonder of the ocean and are inspired to take action on behalf of the amazing creatures that live there. </p>
+                        <p class="flow-text">"Far and away, the greatest threat to the ocean, and thus to ourselves, is ignorance. But we can do something about that."</p>
+                        <p class="flow-text right-align">Sylvia Earle, oceanographer and explorer</p>
+                        <hr>
+                        <p class="info"> Few things generate a sense of awe and wonder the way that the ocean does. Scientists believe that for every known species that lives in the ocean, there could be at least three more that have not been discovered yet. Not only does the ocean sustain an entire underwater world, but half of the air we breathe is produced by the ocean - it literally gives us life.</p>
+                        <p class="info">Turn Down for Whales was inspired by our love of the sea and a desire to share information about whales and their marine friends. We hope that you use our site as an interactive way to experience the wonder of the ocean and are inspired to take action on behalf of the amazing creatures that live there. </p>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
     <div class="row">
-          <div class="col s12">
+        <div class="col s12">
             <div class="card">
                 <div class="card-content">
-            <div id="mapid"></div>
-          </div>
-        </div>
-          </div>
-        <div class="col s12 l4">
-                <div id="modal2" class="modal">
-                  <div class="modal-content">
-                    <div class="card z-depth-0">
-                        <div class="card-content">
-                            <span class="card-title">Look For Whales</span>
-                            <div class="input-field col s12">
-                                <select id="species-input" required="" aria-required="true">
-                                    <option value="orca">Orca</option>
-                                    <option value="humpback">Humpback</option>
-                                    <option value="gray whale">Gray Whale</option>
-                                    <option value="sea otter">Sea Otter</option>
-                                    <option value="minke">Minke</option>
-                                    <option value="atlantic white-sided dolphin">Atlantic White Sided Dolphin</option>
-                                    <option value="pacific white-sided dolphin">Pacific White Sided Dolphin</option>
-                                    <option value="dalls porpoise">Dalls Porpoise</option>
-                                    <option value="harbor porpoise">Harbor Porpoise</option>
-                                    <option value="harbor seal">Harbor Seal</option>
-                                    <option value="northern elephant seal">Northern Elephant Seal</option>
-                                    <option value="southern elephant seal">Southern Elephant Seal</option>
-                                    <option value="california sea Lion">California Sea Lion</option>
-                                    <option value="steller sea lion">Steller Sea Lion</option>
-                                    <option value="other">Other</option>
-                                    <option value="unknown">Unknown</option>
-                                </select>
-                                <label for="species-input">Select a Species</label>
-                            </div>
-
-                          <p>Search for all sorts of different species of marine wildlife with our easy-to-use tool!</p>
-
-                          <form action="#"><p class="center-align" id="limit-label"></p>
-                              <p class="range-field">
-                                  <input type="range" id="limit-input" min="5" max="50" />
-                              </p>
-                          </form>
-                            <span class="card-title">Recent Searches</span>
-                            <div id="recent-search-area">
-                                <table id="recent-searches">
-                                    <thead>
-                                    </thead>
-                                    <tbody>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                  <div class="modal-footer">
-                    <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat" id="submit" type="submit">Search by Species</a>
-                    <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat" id="recent-sighting" type="submit">Display Recent Sightings</a>
-                  </div>
+                    <div id="mapid"></div>
                 </div>
-
-                <div id="modal1" class="modal">
-                    <div class="modal-content">
-                      <h4>Submit a Sighting</h4>
-                      <div class="card-content">
-                          <span class="card-title">I Saw a Whale!</span>
-                          <div class="input-field col s12" id="whale-sighting">
-                              <select id="species-control" required="" aria-required="true">
-                                  <option value="orca">Orca</option>
-                                  <option value="humpback">Humpback</option>
-                                  <option value="gray whale">Gray Whale</option>
-                                  <option value="sea otter">Sea Otter</option>
-                                  <option value="minke">Minke</option>
-                                  <option value="atlantic white-sided dolphin">Atlantic White Sided Dolphin</option>
-                                  <option value="pacific white-sided dolphin">Pacific White Sided Dolphin</option>
-                                  <option value="dalls porpoise">Dalls Porpoise</option>
-                                  <option value="harbor porpoise">Harbor Porpoise</option>
-                                  <option value="harbor seal">Harbor Seal</option>
-                                  <option value="northern elephant seal">Northern Elephant Seal</option>
-                                  <option value="southern elephant seal">Southern Elephant Seal</option>
-                                  <option value="california sea Lion">California Sea Lion</option>
-                                  <option value="steller sea lion">Steller Sea Lion</option>
-                                  <option value="other">Other</option>
-                                  <option value="unknown">Unknown</option>
-                              </select>
-                              <label for="species-control">Select a Species</label>
-                          </div>
-                          <div class="row">
-                              <div class="input-field col s12">
-                                  <input type="text" id="sighting-description" placeholder="Sighting Description" class="key-filter">
-                              </div>
-                          </div>
-                          <div class="row">
-                              <div class="input-field col s3">
-                                  <input type="text" id="latitude-input" required="" aria-required="true" placeholder="Latitude" class="key-filter">
-                              </div>
-                              <div class="input-field col s3">
-                                  <input type="text" id="longitude-input" required="" aria-required="true" placeholder="Longitude" class="key-filter" >
-                              </div>
-                              <div class="input-field col s6">
-                                  <a class="waves-effect waves-light btn-floating text" id="getLocation" type="button"><i class="material-icons">my_location</i></a>
-                              </div>
-                          </div>
-                          <div class="row">
-                              <div class="input-field col s6">
-                                  <input type="text" id="sighting-date" class="datepicker">
-                                  <label for="sighting-date">Sighting Date</label>
-                              </div>
-                              <div class="input-field col s6">
-                                  <input type="text" id="sighting-time" class="timepicker">
-                                  <label for="sighting-time">Sighting Time</label>
-                              </div>
-                          </div>
-                      </div>
-                    </div>
-                    <div class="modal-footer">
-                      <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat" disabled value="Register" id="submit-sighting" type="submit"><i class="material-icons">send</i></a>
-                    </div>
-                </div>
-              </div>
             </div>
         </div>
-      </div>
-
-      <div class="fixed-action-btn">
-        <a class="btn-floating btn-large">
+    </div>
+    <div id="modal2" class="modal">
+        <div class="modal-content">
+            <div class="card z-depth-0">
+                <div class="card-content">
+                    <span class="card-title">Look For Whales</span>
+                    <div class="input-field col s12">
+                        <select id="species-input" required="" aria-required="true">
+                            <option value="orca">Orca</option>
+                            <option value="humpback">Humpback</option>
+                            <option value="gray whale">Gray Whale</option>
+                            <option value="sea otter">Sea Otter</option>
+                            <option value="minke">Minke</option>
+                            <option value="atlantic white-sided dolphin">Atlantic White Sided Dolphin</option>
+                            <option value="pacific white-sided dolphin">Pacific White Sided Dolphin</option>
+                            <option value="dalls porpoise">Dalls Porpoise</option>
+                            <option value="harbor porpoise">Harbor Porpoise</option>
+                            <option value="harbor seal">Harbor Seal</option>
+                            <option value="northern elephant seal">Northern Elephant Seal</option>
+                            <option value="southern elephant seal">Southern Elephant Seal</option>
+                            <option value="california sea Lion">California Sea Lion</option>
+                            <option value="steller sea lion">Steller Sea Lion</option>
+                            <option value="other">Other</option>
+                            <option value="unknown">Unknown</option>
+                        </select>
+                        <label for="species-input">Select a Species</label>
+                    </div>
+                    <p>Search for all sorts of different species of marine wildlife with our easy-to-use tool!</p>
+                    <form action="#">
+                        <p class="center-align" id="limit-label"></p>
+                        <p class="range-field">
+                            <input type="range" id="limit-input" min="5" max="50" />
+                        </p>
+                    </form>
+                    <span class="card-title">Recent Searches</span>
+                    <div id="recent-search-area">
+                        <table id="recent-searches">
+                            <thead>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat" id="submit" type="submit">Search by Species</a>
+                    <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat" id="recent-sighting" type="submit">Display Recent Sightings</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="modal3" class="modal">
+        <div class="modal-content">
+            <div class="card z-depth-0">
+                <div class="card-content">
+                    <span class="card-title">Submit a Sighting</span>
+                    <div class="input-field col s12" id="whale-sighting">
+                        <select id="species-control" required="" aria-required="true">
+                            <option value="orca">Orca</option>
+                            <option value="humpback">Humpback</option>
+                            <option value="gray whale">Gray Whale</option>
+                            <option value="sea otter">Sea Otter</option>
+                            <option value="minke">Minke</option>
+                            <option value="atlantic white-sided dolphin">Atlantic White Sided Dolphin</option>
+                            <option value="pacific white-sided dolphin">Pacific White Sided Dolphin</option>
+                            <option value="dalls porpoise">Dalls Porpoise</option>
+                            <option value="harbor porpoise">Harbor Porpoise</option>
+                            <option value="harbor seal">Harbor Seal</option>
+                            <option value="northern elephant seal">Northern Elephant Seal</option>
+                            <option value="southern elephant seal">Southern Elephant Seal</option>
+                            <option value="california sea Lion">California Sea Lion</option>
+                            <option value="steller sea lion">Steller Sea Lion</option>
+                            <option value="other">Other</option>
+                            <option value="unknown">Unknown</option>
+                        </select>
+                        <label for="species-control">Select a Species</label>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input type="text" id="sighting-description" placeholder="Sighting Description" class="key-filter">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s3">
+                            <input type="text" id="latitude-input" required="" aria-required="true" placeholder="Latitude" class="key-filter">
+                        </div>
+                        <div class="input-field col s3">
+                            <input type="text" id="longitude-input" required="" aria-required="true" placeholder="Longitude" class="key-filter">
+                        </div>
+                        <div class="input-field col s6">
+                            <a class="waves-effect waves-light btn-floating text" id="getLocation" type="button"><i class="material-icons">my_location</i></a>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s6">
+                            <input type="text" id="sighting-date" class="datepicker">
+                            <label for="sighting-date">Sighting Date</label>
+                        </div>
+                        <div class="input-field col s6">
+                            <input type="text" id="sighting-time" class="timepicker">
+                            <label for="sighting-time">Sighting Time</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat" disabled value="Register" id="submit-sighting" type="submit"><i class="material-icons">send</i></a>
+            </div>
+        </div>
+    </div>
+    <div class="fixed-action-btn">
+        <a class="btn-floating btn-large pulse" id="corner">
           <i class="material-icons">menu</i>
         </a>
         <ul>
-          <li><a class="waves-effect waves-light btn-floating text modal-trigger" href="#modal2" type="submit"><i class="material-icons">search</i></a></li>
-          <li><a class="waves-effect waves-light btn-floating modal-trigger" href="#modal1"><i class="material-icons">add</i></a></li>
+            <li><a class="waves-effect waves-light btn-floating text modal-trigger" href="#modal2" type="submit"><i class="material-icons">search</i></a></li>
+            <li><a class="waves-effect waves-light btn-floating text modal-trigger" href="#modal3" type="submit"><i class="material-icons" >add</i></a></li>
         </ul>
-      </div>
-
+    </div>
     <div class="row">
         <div class="col s12 m4">
             <div class="card fact-box">
@@ -252,7 +241,6 @@
                 </div>
             </div>
         </div>
-    </div>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/js/materialize.min.js"></script>
     <script src="https://unpkg.com/leaflet@1.1.0/dist/leaflet.js" integrity="sha512-mNqn2Wg7tSToJhvHcqfzLMU6J4mkOImSPTxVZAdo+lcPlk+GhZmYgACEe0x35K7YzW1zJ7XyJV/TT1MrdXvMcA==" crossorigin=""></script>
