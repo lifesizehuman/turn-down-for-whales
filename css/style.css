@@ -41,9 +41,8 @@ h5 {
 }
 
 #mapid {
-	height: 70vh;
+	height: 100vh;
 	width:100%;
-	margin-bottom: 30px;
 }
 
 tr:nth-child(n + 6) {
@@ -55,20 +54,16 @@ a, input, label[for], select, button, .datepicker, .timepicker, .input, .pointer
 }
 
 .quote{
-    /*padding:10px 250px 10px 250px;*/
     font-size:24px;
     text-align:center;
 }
 
 .info{
-    padding:10px 15px 10px 15px;
     font-size:16px;
  }
 
  .fact-box {
-    height:404px;
-    /*background-color:#e6eef0;*/
-
+    height:511px;
  }
 
  #fact-display {
@@ -78,7 +73,6 @@ a, input, label[for], select, button, .datepicker, .timepicker, .input, .pointer
  }
 
  a#submit, a#recent-sighting, a#fact-button, a#donate-button, a#volunteer-button, a#learn-button {
-    /*color:#dd2c00;*/
     font-weight:bold;
  }
 
@@ -98,3 +92,20 @@ a, input, label[for], select, button, .datepicker, .timepicker, .input, .pointer
  .text {
    color: #95a5ac !important;
  }
+
+.searchCard {
+  height:107.5vh;
+  width:100%;
+}
+
+@media only screen and (max-width: 500px) {
+  .searchCard {
+    height:100%;
+  }
+  .fact-box {
+     height:100%;
+  }
+  #mapid {
+  	height: 50vh;
+  }
+}
