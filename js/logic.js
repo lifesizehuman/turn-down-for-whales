@@ -70,7 +70,7 @@ $(document).ready(function() {
 
     function populateMap() {
         var species = $("#species-input").val();
-        var queryURL = "http://hotline.whalemuseum.org/api.json?species=" + species;
+        var queryURL = "http://hotline.whalemuseum.org/api.json?limit=15?species=" + species;
 
         $.ajax({
             url: queryURL,
@@ -89,6 +89,28 @@ $(document).ready(function() {
                     "<p>" + "Seen at: " + response[i].latitude + " / " + response[i].longitude + "</p>" +
                     "<p>" + "On: " + response[i].sighted_at + "</p>");
             }
+
+          var speciesSearch = $("select").val();
+
+            database.ref("/sightings").limitToLast(15).on("child_added", function(childSnapshot) {
+
+            var recSpecies = childSnapshot.val().species;
+            var recDescription = childSnapshot.val().description;
+            var recLat = childSnapshot.val().latitude;
+            var recLong = childSnapshot.val().longitude;
+            var recDate = childSnapshot.val().date;
+            var recTime = childSnapshot.val().time;
+
+          if (speciesSearch === recSpecies) {
+            var recents = L.marker([recLat, recLong]).addTo(group);
+            recents.bindPopup(
+                "<p>" + "Species: " + recSpecies + "</p>" +
+                "<p>" + "Description: " + recDescription + "</p>" +
+                "<p>" + "Seen at: " + recLat + " / " + recLong + "</p>" +
+                "<p>" + "On: " + recDate + " at " + recTime + "</p>"
+            );
+          } else return false;
+          });
 
             $('select').change(function() {
                 species = this.value;
