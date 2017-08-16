@@ -78,16 +78,6 @@ $(document).ready(function() {
         }
     });
 
-    // get geographic coordinates on map click
-
-    function onMapClick(mymap) {
-        console.log(mymap.latlng.lat, mymap.latlng.lng);
-        $("#latitude-input").val(mymap.latlng.lat);
-        $("#longitude-input").val(mymap.latlng.lng);
-    }
-
-    mymap.on("click", onMapClick);
-
     // leaflet layer group initialization
 
     var group = L.layerGroup([]).addTo(mymap);
@@ -407,3 +397,32 @@ $('.btn-large').on("mouseenter", function() {
 $('.btn-large').on("mouseleave", function() {
     $(this).addClass("pulse");
 })
+
+// modal map setup
+
+      var map = L.map('hello').setView([38, -123], 3);
+
+        L.tileLayer(
+        "https://api.mapbox.com/styles/v1/mapbox/satellite-v9/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoibGlmZXNpemVodW1hbiIsImEiOiJjajV5N3hleDIwZjE5MnFsbmVrMjNscWJqIn0.epziWwc2W3ssEQt2Cjcm1A", { id: "mapbox.satellite" }).addTo(map);
+
+        $('#helloWorld').on("click", function(){
+            map.invalidateSize(map);
+        });
+
+        var localGroup = L.layerGroup([]).addTo(map);
+
+        // get geographic coordinates on map click
+
+        function onMapClick(map) {
+            localGroup.clearLayers();
+            console.log(map.latlng.lat, map.latlng.lng);
+
+            L.marker([map.latlng.lat, map.latlng.lng])
+            .addTo(localGroup)
+            .bindPopup(map.latlng.lat + " / " + map.latlng.lng)
+            .openPopup();
+            $("#latitude-input").val(map.latlng.lat);
+            $("#longitude-input").val(map.latlng.lng);
+        }
+
+        map.on("click", onMapClick);
