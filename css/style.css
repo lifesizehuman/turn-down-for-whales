@@ -52,7 +52,7 @@ tr:nth-child(n + 6) {
     display:none;
 }
 
-a, input, label[for], select, button, .pointer {
+a, input, label[for], select, button, .datepicker, .timepicker, .input, .pointer {
        cursor: pointer;
 }
 
@@ -69,6 +69,8 @@ a, input, label[for], select, button, .pointer {
 
  .fact-box {
     height:404px;
+    background-color:#e6eef0;
+
  }
 
  #fact-display {
