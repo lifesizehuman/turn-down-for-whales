@@ -90,17 +90,6 @@ $(document).ready(function() {
 
     mymap.on("click", onMapClick);
 
-// custom icon setup
-
-    var myIcon = L.icon({
-        iconUrl: "assets/tail-icon.png",
-        shadowIcon: "assets/whale-tail-shadow.png",
-        iconSize: [37, 37],
-        shadowSize: [32, 37],
-        shadowAnchor: [4, 62],
-        popupAnchor: [0, -37]
-    });
-
 // leaflet layer group initialization
 
     var group = L.layerGroup([]).addTo(mymap);
@@ -111,8 +100,9 @@ $(document).ready(function() {
 // populate map logic for whale hotline api species searches
 
     function populateMap() {
+        var limit = $("#limit-input").val();
         var species = $("#species-input").val();
-        var queryURL = "http://hotline.whalemuseum.org/api.json?species=" + species;
+        var queryURL = "http://hotline.whalemuseum.org/api.json?species=" + species + "&limit=" + limit;
         $.ajax({
             url: queryURL,
             method: "GET"
@@ -152,11 +142,24 @@ $(document).ready(function() {
             );
           } else return false;
           });
+
+
+
             $('select').change(function() {
                 species = this.value;
             });
+
         });
     }
+
+    var limitLabel = "Select a Search limit.";
+    $('#limit-label').text(limitLabel);
+    $('#limit-input').change(function() {
+        limit = this.value;
+        $('#limit-label').text(limit);
+    });
+
+  console.log($("#limit-input").val());
 
 // pushes species search queries to firebase
 
@@ -248,6 +251,7 @@ $(document).ready(function() {
             });
             return filled;
         }
+});
 
 // submit sighting logic
 
@@ -290,7 +294,7 @@ $(document).ready(function() {
 
 // recent sightings table logic
 
-        database.ref("/sightings").limitToLast(15).on("child_added", function(childSnapshot, prevChildKey) {
+        database.ref("/sightings").limitToLast(5).on("child_added", function(childSnapshot, prevChildKey) {
 
             console.log(childSnapshot.val());
 
@@ -314,29 +318,38 @@ $(document).ready(function() {
             tr.prepend(tdSpecies, tdDescription, tdLocation, tdDate, tdTime);
             tableBody.prepend(tr);
 
-            function recentPop() {
 
-              // for (var i = 0; i < 15; i++) {
-                var attach = L.marker([empLat, empLong]).addTo(recentGroup);
-                    // , {icon: myIcon}
+// populates map with recent sightings
 
-                attach.bindPopup();
-                attach.setPopupContent(
-                    "<p>" + "Species: " + empSpecies + "</p>" +
-                    "<p>" + "Description: " + empDescription + "</p>" +
-                    "<p>" + "Seen at: " + empLat + " / " + empLong + "</p>" +
-                    "<p>" + "On: " + empTime + " on " + empDate + "</p>");
-            }
-          // }
+        function recentPop() {
 
-            $(document).on("click", "#recent-sighting", function(event) {
-                event.preventDefault();
-                clearMap();
-                recentPop();
-                mymap.fitBounds(llBounds);
-            });
+            var attach = L.marker([empLat, empLong]).addTo(recentGroup);
+
+            attach.bindPopup();
+            attach.setPopupContent(
+                "<p>" + "Species: " + empSpecies + "</p>" +
+                "<p>" + "Description: " + empDescription + "</p>" +
+                "<p>" + "Seen at: " + empLat + " / " + empLong + "</p>" +
+                "<p>" + "On: " + empTime + " on " + empDate + "</p>");
+        }
+
+function checkLayers() {
+        if (recentGroup.hasLayer() != true) {
+          recentPop();
+        } else clearRecents();
+      }
+
+// recent sighting search button logic
+
+        $(document).on("click", "#recent-sighting", function(event) {
+            event.preventDefault();
+            clearMap();
+            checkLayers();
+
+            mymap.fitBounds(llBounds);
         });
-    });
+
+      });
 
     //fact generator logic
 
