@@ -37,7 +37,8 @@ $(document).ready(function() {
         center: [38, -123],
         zoom: 3,
         layers: [outdoors],
-        scrollWheelZoom: false
+        scrollWheelZoom: false,
+        tap: false
     });
 
     var baseMaps = {
