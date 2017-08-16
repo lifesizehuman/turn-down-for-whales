@@ -1,7 +1,7 @@
 $(document).ready(function() {
 
   $('.key-filter').on("keydown", function () {
-    if (event.key.replace(/[^\w\-.]/g,'')=='') event.preventDefault();
+    if (event.key.replace(/[^\w\-. ]/g,'')=='') event.preventDefault();
 
   $('.key-filter').bind('copy paste', function (e) {
      e.preventDefault();
