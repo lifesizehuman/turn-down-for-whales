@@ -66,6 +66,9 @@ $(document).ready(function() {
         Satellite: satellite
     };
 
+    L.control.layers(baseMaps).addTo(mymap);
+
+
   // enable map scrolling on click
 
     mymap.on('click', function() {
