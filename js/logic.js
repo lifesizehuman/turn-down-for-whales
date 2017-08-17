@@ -51,8 +51,8 @@ $(document).ready(function() {
     // leaflet map initialization
 
     var mymap = L.map("mapid", {
-        center: [30, 0],
-        zoom: 2,
+        center: [38, -123],
+        zoom: 3,
         layers: [standard],
         scrollWheelZoom: false,
     });
@@ -67,7 +67,6 @@ $(document).ready(function() {
     };
 
     L.control.layers(baseMaps).addTo(mymap);
-
 
   // enable map scrolling on click
 
