@@ -42,6 +42,7 @@ h5 {
 #mapid {
 	height: 70vh;
 	width:100%;
+  z-index:0;
 }
 
 #hello {
@@ -62,8 +63,18 @@ a, input, label[for], select, button, .datepicker, .timepicker, .input, .pointer
     text-align:center;
 }
 
+#site-title {
+  padding-top: 100px;
+  color: white;
+}
+
+#source {
+  padding: 10px 0px 10px 0px;
+}
+
 .info{
     font-size:16px;
+    padding-top:10px;
  }
 
  .fact-box {
