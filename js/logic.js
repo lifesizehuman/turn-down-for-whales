@@ -394,11 +394,11 @@ $(document).ready(function() {
 // materialze pulse hover logic
 
 $('.btn-large').on("mouseenter", function() {
-    $(this).removeClass("pulse");
+    $(this).removeClass("pulse-button");
 })
 
 $('.btn-large').on("mouseleave", function() {
-    $(this).addClass("pulse");
+    $(this).addClass("pulse-button");
 })
 
 // modal map setup
