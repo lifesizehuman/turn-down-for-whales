@@ -51,8 +51,8 @@ $(document).ready(function() {
     // leaflet map initialization
 
     var mymap = L.map("mapid", {
-        center: [38, -123],
-        zoom: 3,
+        center: [30, 0],
+        zoom: 2,
         layers: [standard],
         scrollWheelZoom: false,
     });
@@ -66,9 +66,7 @@ $(document).ready(function() {
         Satellite: satellite
     };
 
-    L.control.layers(baseMaps).addTo(mymap);
-
-    // enable map scrolling on click
+  // enable map scrolling on click
 
     mymap.on('click', function() {
         if (mymap.scrollWheelZoom.enabled()) {
@@ -130,7 +128,6 @@ $(document).ready(function() {
                     );
                 } else return false;
             });
-
             $('select').change(function() {
                 species = this.value;
             });
@@ -382,10 +379,14 @@ $(document).ready(function() {
 
 });
 
-// materialize modal initialization
+// materialize modal and map initialization
 
 $(document).ready(function() {
-    $('.modal').modal();
+  $('.modal').modal({
+    ready: function(modal, trigger) {
+      map.invalidateSize();
+    }
+  });
 });
 
 // materialze pulse hover logic
@@ -404,10 +405,6 @@ $('.btn-large').on("mouseleave", function() {
 
         L.tileLayer(
         "https://api.mapbox.com/styles/v1/mapbox/satellite-v9/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoibGlmZXNpemVodW1hbiIsImEiOiJjajV5N3hleDIwZjE5MnFsbmVrMjNscWJqIn0.epziWwc2W3ssEQt2Cjcm1A", { id: "mapbox.satellite" }).addTo(map);
-
-        $('#helloWorld').on("click", function(){
-            map.invalidateSize(map);
-        });
 
         var localGroup = L.layerGroup([]).addTo(map);
 
