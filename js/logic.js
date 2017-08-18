@@ -253,6 +253,8 @@ $(document).ready(function() {
         var latitude = $("#latitude-input").val();
         var longitude = $("#longitude-input").val();
 
+
+
         var slayer = L.marker([latitude, longitude]).addTo(group);
         slayer.bindPopup(
             "<p>" + "Species: " + speciesControl + "</p>" +
@@ -260,6 +262,8 @@ $(document).ready(function() {
             "<p>" + "Seen at: " + latitude + " / " + longitude + "</p>" +
             "<p>" + "On: " + sightingDate + " at " + sightingTime + "</p>"
         );
+
+        mymap.fitBounds(llBounds);
 
         database.ref("/sightings").push({
             species: speciesControl,
